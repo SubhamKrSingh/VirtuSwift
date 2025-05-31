@@ -1,0 +1,218 @@
+@keyframes rocketLaunch {
+  0% { 
+    transform: translate(0, 0); 
+    opacity: 1;
+  }
+  100% { 
+    transform: translate(0, -150px); 
+    opacity: 0;
+  }
+}
+
+@keyframes targetPulse {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.5); }
+}
+
+@keyframes handshake {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(-10deg); }
+  75% { transform: rotate(10deg); }
+  100% { transform: rotate(0deg); }
+}
+
+@keyframes gradientWave {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes scaleUp {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.5); }
+}
+
+.rocket-animate {
+  animation: rocketLaunch 0.8s ease-out forwards;
+  position: relative;
+  z-index: 100;
+}
+
+.target-animate {
+  transform: scale(1.5);
+  transition: transform 0.3s ease-out;
+}
+
+.handshake-animate {
+  animation: handshake 0.3s ease-in-out infinite;
+}
+
+.icon-container {
+  overflow: hidden;
+}
+
+.icon-animate {
+  transform: scale(1);
+  transition: transform 0.3s ease-out;
+}
+
+.icon-animate:hover {
+  transform: scale(1.5);
+}
+
+.service-card {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    45deg,
+    rgba(58, 61, 196, 0.05),
+    rgba(240, 90, 40, 0.05),
+    rgba(58, 61, 196, 0.05)
+  );
+  background-size: 200% 200%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.service-card:hover::before {
+  opacity: 1;
+  animation: gradientWave 3s ease infinite;
+}
+
+.glow-effect {
+  --glow-size: 150px;
+  --glow-opacity: 0;
+  --glow-x: 50%;
+  --glow-y: 50%;
+  
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle var(--glow-size) at var(--glow-x) var(--glow-y),
+    rgba(58, 61, 196, 0.15),
+    rgba(240, 90, 40, 0.1),
+    transparent 100%
+  );
+  opacity: var(--glow-opacity);
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: -1;
+  mask-image: linear-gradient(to right, black, black);
+}
+
+.service-card:hover .glow-effect {
+  --glow-opacity: 1;
+}
+
+.service-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(255, 255, 255, 0.8),
+    transparent
+  );
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+  z-index: -1;
+}
+
+.service-card:hover::after {
+  transform: translateX(100%);
+}
+
+/* Case Study Card Animations */
+.case-study-card {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.case-study-card:hover {
+  transform: translateY(-8px);
+}
+
+.stat-item {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+.stat-item:nth-child(1) { animation-delay: 0.1s; }
+.stat-item:nth-child(2) { animation-delay: 0.2s; }
+.stat-item:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.testimonial {
+  position: relative;
+  font-style: italic;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-left: 4px solid #f05a28;
+  background: rgba(58, 61, 196, 0.05);
+  transition: all 0.3s ease;
+}
+
+.testimonial:hover {
+  background: rgba(58, 61, 196, 0.1);
+}
+
+.view-case-study {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.view-case-study::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #f05a28;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.view-case-study:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.industry-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.case-study-card:hover .industry-icon {
+  transform: scale(1.2);
+} 
