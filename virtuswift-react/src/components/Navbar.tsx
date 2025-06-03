@@ -62,9 +62,9 @@ const Navbar: React.FC = () => {
     });
   };
 
-  const navLinkClass = "text-gray-700 hover:text-primary px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200";
-  const dropdownLinkClass = "block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary transition-colors duration-200";
-  const dropdownButtonClass = "inline-flex items-center text-gray-700 hover:text-primary px-4 py-2 text-sm font-medium transition-colors duration-200";
+  const navLinkClass = "text-gray-700 hover:text-[#3a3dc4] px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200";
+  const dropdownLinkClass = "block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#f05a28] transition-colors duration-200";
+  const dropdownButtonClass = "inline-flex items-center text-gray-700 hover:text-[#3a3dc4] px-4 py-2 text-sm font-medium transition-colors duration-200";
 
   return (
     <>
@@ -106,7 +106,7 @@ const Navbar: React.FC = () => {
                 </svg>
               </button>
               {servicesOpen && (
-                  <div className="absolute top-full w-[600px] rounded-lg shadow-2xl bg-white ring-1 ring-black ring-opacity-5 flex z-50 animate-fade-in" style={{ left: servicesLeft }}>
+                  <div className="absolute top-full w-[750px] rounded-lg shadow-2xl bg-white ring-1 ring-black ring-opacity-5 flex z-50 animate-fade-in border-t" style={{ left: servicesLeft, borderTopColor: '#e5e7eb' }}>
                     {/* Sidebar */}
                     <div className="w-1/3 bg-[#E8E9F5] p-6 flex flex-col items-start border-r border-gray-200 min-h-[300px]">
                       <h3 className="text-xl font-bold text-[#121927] mb-2">Our Services</h3>
@@ -121,86 +121,108 @@ const Navbar: React.FC = () => {
                     {/* Main Mega Menu Content: Only original services */}
                     <div className="w-2/3 grid grid-cols-2 gap-x-8 gap-y-2 p-6">
                       <Link to="/services/aws-migration" className="flex items-start gap-3 mb-3 group">
-                        <span className="bg-[#D3D6E8] p-2 rounded"><FontAwesomeIcon icon={faCloud} className="text-[#3a3dc4]" /></span>
+                        <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] group transition-colors duration-200">
+                          <FontAwesomeIcon icon={faCloud} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
+                        </span>
                         <span>
-                          <span className="font-semibold text-blue-900 group-hover:underline">AWS Migration</span>
+                          <span className="font-semibold text-[#2563eb] group-hover:text-[#f05a28] group-hover:underline">AWS Migration</span>
                           <div className="text-xs text-gray-500">Seamless transition to AWS cloud</div>
                         </span>
                       </Link>
                       <Link to="/services/azure" className="flex items-start gap-3 mb-3 group">
-                        <span className="bg-[#D3D6E8] p-2 rounded"><FontAwesomeIcon icon={faCloud} className="text-[#3a3dc4]" /></span>
+                        <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] group transition-colors duration-200">
+                          <FontAwesomeIcon icon={faCloud} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
+                        </span>
                         <span>
-                          <span className="font-semibold text-blue-900 group-hover:underline">Azure Solutions</span>
+                          <span className="font-semibold text-[#2563eb] group-hover:text-[#f05a28] group-hover:underline">Azure Solutions</span>
                           <div className="text-xs text-gray-500">Empower your business with Azure</div>
                         </span>
                       </Link>
                       <Link to="/services/cloud-security" className="flex items-start gap-3 mb-3 group">
-                        <span className="bg-[#D3D6E8] p-2 rounded"><FontAwesomeIcon icon={faShieldAlt} className="text-[#3a3dc4]" /></span>
+                        <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] group transition-colors duration-200">
+                          <FontAwesomeIcon icon={faShieldAlt} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
+                        </span>
                         <span>
                           <span className="font-semibold text-blue-900 group-hover:underline">Cloud Security</span>
                           <div className="text-xs text-gray-500">Protect your cloud infrastructure</div>
                         </span>
                       </Link>
                       <Link to="/services/supply-chain" className="flex items-start gap-3 mb-3 group">
-                        <span className="bg-[#D3D6E8] p-2 rounded"><FontAwesomeIcon icon={faTruck} className="text-[#3a3dc4]" /></span>
+                        <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] group transition-colors duration-200">
+                          <FontAwesomeIcon icon={faTruck} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
+                        </span>
                         <span>
                           <span className="font-semibold text-blue-900 group-hover:underline">Supply Chain</span>
                           <div className="text-xs text-gray-500">Optimize your supply chain operations</div>
                         </span>
                       </Link>
                       <Link to="/services/sap" className="flex items-start gap-3 mb-3 group">
-                        <span className="bg-[#D3D6E8] p-2 rounded"><FontAwesomeIcon icon={faBriefcase} className="text-[#3a3dc4]" /></span>
+                        <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] group transition-colors duration-200">
+                          <FontAwesomeIcon icon={faBriefcase} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
+                        </span>
                         <span>
                           <span className="font-semibold text-blue-900 group-hover:underline">SAP Services</span>
                           <div className="text-xs text-gray-500">Expert SAP implementation & support</div>
                         </span>
                       </Link>
                       <Link to="/services/salesforce" className="flex items-start gap-3 mb-3 group">
-                        <span className="bg-[#D3D6E8] p-2 rounded"><FontAwesomeIcon icon={faUserShield} className="text-[#3a3dc4]" /></span>
+                        <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] group transition-colors duration-200">
+                          <FontAwesomeIcon icon={faUserShield} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
+                        </span>
                         <span>
                           <span className="font-semibold text-blue-900 group-hover:underline">Salesforce</span>
                           <div className="text-xs text-gray-500">CRM solutions for business growth</div>
                         </span>
                       </Link>
                       <Link to="/services/pharmaceutical" className="flex items-start gap-3 mb-3 group">
-                        <span className="bg-[#D3D6E8] p-2 rounded"><FontAwesomeIcon icon={faPills} className="text-[#3a3dc4]" /></span>
+                        <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] group transition-colors duration-200">
+                          <FontAwesomeIcon icon={faPills} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
+                        </span>
                         <span>
                           <span className="font-semibold text-blue-900 group-hover:underline">Pharmaceutical IT</span>
                           <div className="text-xs text-gray-500">IT solutions for pharma innovation</div>
                         </span>
                       </Link>
                       <Link to="/services/oracle-solutions" className="flex items-start gap-3 mb-3 group">
-                        <span className="bg-[#D3D6E8] p-2 rounded"><FontAwesomeIcon icon={faDatabase} className="text-[#3a3dc4]" /></span>
+                        <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] group transition-colors duration-200">
+                          <FontAwesomeIcon icon={faDatabase} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
+                        </span>
                         <span>
                           <span className="font-semibold text-blue-900 group-hover:underline">Oracle Solutions</span>
                           <div className="text-xs text-gray-500">Robust Oracle enterprise solutions</div>
                         </span>
                       </Link>
                       <Link to="/services/multi-google-cloud" className="flex items-start gap-3 mb-3 group">
-                        <span className="bg-[#D3D6E8] p-2 rounded"><FontAwesomeIcon icon={faGoogle} className="text-[#3a3dc4]" /></span>
+                        <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] group transition-colors duration-200">
+                          <FontAwesomeIcon icon={faGoogle} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
+                        </span>
                         <span>
                           <span className="font-semibold text-blue-900 group-hover:underline">Multi-Cloud Google</span>
                           <div className="text-xs text-gray-500">Integrate Google Cloud with ease</div>
                         </span>
                       </Link>
                       <Link to="/services/microsoft-dynamics" className="flex items-start gap-3 mb-3 group">
-                        <span className="bg-[#D3D6E8] p-2 rounded"><FontAwesomeIcon icon={faMicrosoft} className="text-[#3a3dc4]" /></span>
+                        <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] group transition-colors duration-200">
+                          <FontAwesomeIcon icon={faMicrosoft} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
+                        </span>
                         <span>
                           <span className="font-semibold text-blue-900 group-hover:underline">Microsoft Dynamics</span>
                           <div className="text-xs text-gray-500">Business apps for productivity</div>
                         </span>
                       </Link>
                       <Link to="/services/ibm-systems" className="flex items-start gap-3 mb-3 group">
-                        <span className="bg-[#D3D6E8] p-2 rounded"><FontAwesomeIcon icon={faServer} className="text-[#3a3dc4]" /></span>
+                        <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] group transition-colors duration-200">
+                          <FontAwesomeIcon icon={faServer} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
+                        </span>
                         <span>
                           <span className="font-semibold text-blue-900 group-hover:underline">IBM Systems</span>
                           <div className="text-xs text-gray-500">Enterprise IBM infrastructure</div>
                         </span>
                       </Link>
                     </div>
-                </div>
-              )}
-            </div>
+                  </div>
+                )}
+              </div>
 
             {/* Industries Dropdown */}
               <div className="inline-block text-left">
@@ -211,7 +233,7 @@ const Navbar: React.FC = () => {
                 </svg>
               </button>
               {industriesOpen && (
-                  <div className="absolute top-full w-[600px] rounded-lg shadow-2xl bg-white ring-1 ring-black ring-opacity-5 flex z-50 animate-fade-in" style={{ left: servicesLeft }}>
+                  <div className="absolute top-full w-[750px] rounded-lg shadow-2xl bg-white ring-1 ring-black ring-opacity-5 flex z-50 animate-fade-in border-t" style={{ left: servicesLeft, borderTopColor: '#e5e7eb' }}>
                     {/* Sidebar */}
                     <div className="w-1/3 bg-[#E8E9F5] p-6 flex flex-col items-start border-r border-gray-200 min-h-[300px]">
                       <h3 className="text-xl font-bold text-[#121927] mb-2">Industries</h3>
@@ -227,28 +249,36 @@ const Navbar: React.FC = () => {
                       <div>
                         <h4 className="font-bold text-blue-900 mb-2">Core Industries</h4>
                         <Link to="/industries/healthcare" className="flex items-start gap-3 mb-3 group">
-                          <span className="bg-[#D3D6E8] p-2 rounded"><FontAwesomeIcon icon={faHeartbeat} className="text-[#3a3dc4]" /></span>
+                          <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] group transition-colors duration-200">
+                            <FontAwesomeIcon icon={faHeartbeat} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
+                          </span>
                           <span>
                             <span className="font-semibold text-blue-900 group-hover:underline">Healthcare</span>
                             <div className="text-xs text-gray-500">Innovative IT for patient care</div>
                           </span>
                         </Link>
                         <Link to="/industries/financial" className="flex items-start gap-3 mb-3 group">
-                          <span className="bg-[#D3D6E8] p-2 rounded"><FontAwesomeIcon icon={faLandmark} className="text-[#3a3dc4]" /></span>
+                          <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] group transition-colors duration-200">
+                            <FontAwesomeIcon icon={faLandmark} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
+                          </span>
                           <span>
                             <span className="font-semibold text-blue-900 group-hover:underline">Financial</span>
                             <div className="text-xs text-gray-500">Secure, compliant solutions</div>
                           </span>
                         </Link>
                         <Link to="/industries/retail" className="flex items-start gap-3 mb-3 group">
-                          <span className="bg-[#D3D6E8] p-2 rounded"><FontAwesomeIcon icon={faStore} className="text-[#3a3dc4]" /></span>
+                          <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] group transition-colors duration-200">
+                            <FontAwesomeIcon icon={faStore} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
+                          </span>
                           <span>
                             <span className="font-semibold text-blue-900 group-hover:underline">Retail</span>
                             <div className="text-xs text-gray-500">Digital transformation for retail</div>
                           </span>
                         </Link>
                         <Link to="/manufacturing" className="flex items-start gap-3 group">
-                          <span className="bg-[#D3D6E8] p-2 rounded"><FontAwesomeIcon icon={faIndustry} className="text-[#3a3dc4]" /></span>
+                          <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] group transition-colors duration-200">
+                            <FontAwesomeIcon icon={faIndustry} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
+                          </span>
                           <span>
                             <span className="font-semibold text-blue-900 group-hover:underline">Manufacturing</span>
                             <div className="text-xs text-gray-500">Smart manufacturing solutions</div>
@@ -258,28 +288,36 @@ const Navbar: React.FC = () => {
                       <div>
                         <h4 className="font-bold text-blue-900 mb-2">Specialized Sectors</h4>
                         <Link to="/industries/utilities" className="flex items-start gap-3 mb-3 group">
-                          <span className="bg-[#D3D6E8] p-2 rounded"><FontAwesomeIcon icon={faBolt} className="text-[#3a3dc4]" /></span>
+                          <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] group transition-colors duration-200">
+                            <FontAwesomeIcon icon={faBolt} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
+                          </span>
                           <span>
                             <span className="font-semibold text-blue-900 group-hover:underline">Utilities</span>
                             <div className="text-xs text-gray-500">Powering digital utilities</div>
                           </span>
                         </Link>
                         <Link to="/industries/pharmaceuticals" className="flex items-start gap-3 mb-3 group">
-                          <span className="bg-[#D3D6E8] p-2 rounded"><FontAwesomeIcon icon={faPills} className="text-[#3a3dc4]" /></span>
+                          <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] group transition-colors duration-200">
+                            <FontAwesomeIcon icon={faPills} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
+                          </span>
                           <span>
                             <span className="font-semibold text-blue-900 group-hover:underline">Pharmaceuticals</span>
                             <div className="text-xs text-gray-500">IT for pharma innovation</div>
                           </span>
                         </Link>
                         <Link to="/industries/public-sector" className="flex items-start gap-3 mb-3 group">
-                          <span className="bg-[#D3D6E8] p-2 rounded"><FontAwesomeIcon icon={faUniversity} className="text-[#3a3dc4]" /></span>
+                          <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] group transition-colors duration-200">
+                            <FontAwesomeIcon icon={faUniversity} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
+                          </span>
                           <span>
                             <span className="font-semibold text-blue-900 group-hover:underline">Public Sector</span>
                             <div className="text-xs text-gray-500">Modernizing government IT</div>
                           </span>
                         </Link>
                         <Link to="/industries/logistics" className="flex items-start gap-3 group">
-                          <span className="bg-[#D3D6E8] p-2 rounded"><FontAwesomeIcon icon={faTruck} className="text-[#3a3dc4]" /></span>
+                          <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] group transition-colors duration-200">
+                            <FontAwesomeIcon icon={faTruck} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
+                          </span>
                           <span>
                             <span className="font-semibold text-blue-900 group-hover:underline">Logistics</span>
                             <div className="text-xs text-gray-500">Efficient supply chain IT</div>
@@ -308,7 +346,7 @@ const Navbar: React.FC = () => {
                   </svg>
                 </button>
                 {caseStudiesOpen && (
-                  <div className="absolute top-full w-[600px] rounded-lg shadow-2xl bg-white ring-1 ring-black ring-opacity-5 flex z-50 animate-fade-in" style={{ left: servicesLeft }}>
+                  <div className="absolute top-full w-[750px] rounded-lg shadow-2xl bg-white ring-1 ring-black ring-opacity-5 flex z-50 animate-fade-in border-t" style={{ left: servicesLeft, borderTopColor: '#e5e7eb' }}>
                     {/* Sidebar */}
                     <div className="w-1/3 bg-[#E8E9F5] p-6 flex flex-col items-start border-r border-gray-200 min-h-[300px]">
                       <h3 className="text-xl font-bold text-[#121927] mb-2">Case Studies</h3>
@@ -324,28 +362,36 @@ const Navbar: React.FC = () => {
                       <div>
                         <h4 className="font-bold text-blue-900 mb-2">Featured Industries</h4>
                         <Link to="/case-studies/manufacturing" className="flex items-start gap-3 mb-3 group">
-                          <span className="bg-[#D3D6E8] p-2 rounded"><FontAwesomeIcon icon={faIndustry} className="text-[#3a3dc4]" /></span>
+                          <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] group transition-colors duration-200">
+                            <FontAwesomeIcon icon={faIndustry} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
+                          </span>
                           <span>
                             <span className="font-semibold text-blue-900 group-hover:underline">Manufacturing</span>
                             <div className="text-xs text-gray-500">Driving efficiency and innovation</div>
                           </span>
                         </Link>
                         <Link to="/case-studies/retail" className="flex items-start gap-3 mb-3 group">
-                          <span className="bg-[#D3D6E8] p-2 rounded"><FontAwesomeIcon icon={faShoppingCart} className="text-[#3a3dc4]" /></span>
+                          <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] group transition-colors duration-200">
+                            <FontAwesomeIcon icon={faShoppingCart} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
+                          </span>
                           <span>
                             <span className="font-semibold text-blue-900 group-hover:underline">Retail</span>
                             <div className="text-xs text-gray-500">Transforming customer experience</div>
                           </span>
                         </Link>
                         <Link to="/case-studies/utilities" className="flex items-start gap-3 mb-3 group">
-                          <span className="bg-[#D3D6E8] p-2 rounded"><FontAwesomeIcon icon={faBolt} className="text-[#3a3dc4]" /></span>
+                          <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] group transition-colors duration-200">
+                            <FontAwesomeIcon icon={faBolt} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
+                          </span>
                           <span>
                             <span className="font-semibold text-blue-900 group-hover:underline">Utilities</span>
                             <div className="text-xs text-gray-500">Modernizing infrastructure</div>
                           </span>
                         </Link>
                         <Link to="/case-studies/pharmaceuticals" className="flex items-start gap-3 group">
-                          <span className="bg-[#D3D6E8] p-2 rounded"><FontAwesomeIcon icon={faPills} className="text-[#3a3dc4]" /></span>
+                          <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] group transition-colors duration-200">
+                            <FontAwesomeIcon icon={faPills} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
+                          </span>
                           <span>
                             <span className="font-semibold text-blue-900 group-hover:underline">Pharmaceuticals</span>
                             <div className="text-xs text-gray-500">Accelerating drug development</div>
@@ -355,38 +401,46 @@ const Navbar: React.FC = () => {
                       <div>
                         <h4 className="font-bold text-blue-900 mb-2">More Case Studies</h4>
                         <Link to="/case-studies/finance" className="flex items-start gap-3 mb-3 group">
-                          <span className="bg-[#D3D6E8] p-2 rounded"><FontAwesomeIcon icon={faMoneyBillTrendUp} className="text-[#3a3dc4]" /></span>
+                          <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] group transition-colors duration-200">
+                            <FontAwesomeIcon icon={faMoneyBillTrendUp} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
+                          </span>
                           <span>
                             <span className="font-semibold text-blue-900 group-hover:underline">Finance</span>
                             <div className="text-xs text-gray-500">Securing financial futures</div>
                           </span>
                         </Link>
                         <Link to="/case-studies/public-sector" className="flex items-start gap-3 mb-3 group">
-                          <span className="bg-[#D3D6E8] p-2 rounded"><FontAwesomeIcon icon={faLandmark} className="text-[#3a3dc4]" /></span>
+                          <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] group transition-colors duration-200">
+                            <FontAwesomeIcon icon={faLandmark} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
+                          </span>
                           <span>
                             <span className="font-semibold text-blue-900 group-hover:underline">Public Sector</span>
                             <div className="text-xs text-gray-500">Empowering government services</div>
                           </span>
                         </Link>
                         <Link to="/case-studies/healthcare" className="flex items-start gap-3 mb-3 group">
-                          <span className="bg-[#D3D6E8] p-2 rounded"><FontAwesomeIcon icon={faHospital} className="text-[#3a3dc4]" /></span>
+                          <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] group transition-colors duration-200">
+                            <FontAwesomeIcon icon={faHospital} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
+                          </span>
                           <span>
                             <span className="font-semibold text-blue-900 group-hover:underline">Healthcare</span>
                             <div className="text-xs text-gray-500">Enhancing patient outcomes</div>
                           </span>
                         </Link>
                         <Link to="/case-studies/high-tech" className="flex items-start gap-3 group">
-                          <span className="bg-[#D3D6E8] p-2 rounded"><FontAwesomeIcon icon={faLightbulb} className="text-[#3a3dc4]" /></span>
+                          <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] group transition-colors duration-200">
+                            <FontAwesomeIcon icon={faLightbulb} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
+                          </span>
                           <span>
                             <span className="font-semibold text-blue-900 group-hover:underline">High-Tech</span>
                             <div className="text-xs text-gray-500">Innovating for tomorrow</div>
                           </span>
                         </Link>
                       </div>
+                    </div>
                   </div>
-                </div>
-              )}
-            </div>
+                )}
+              </div>
 
               <Link to="/contact" className={"ml-2 bg-blue-600 text-white font-semibold rounded-lg px-6 py-2 transition-colors duration-200 hover:bg-blue-700"}>Contact Us</Link>
           </div>

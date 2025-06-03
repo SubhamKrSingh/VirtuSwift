@@ -62,7 +62,7 @@ const MultiGoogleCloud: React.FC = () => {
               </p>
               <Link
                 to="/contact?service=multi-google-cloud"
-                className="inline-block bg-primary text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
+                className="inline-block bg-[#3a3dc4] text-white px-6 py-3 rounded-lg hover:bg-[#2f3099] transition-colors"
               >
                 Learn More
               </Link>
@@ -79,19 +79,19 @@ const MultiGoogleCloud: React.FC = () => {
       case 'Capabilities':
         return (
           <div className="mb-12">
-            <h3 className="text-xl font-semibold text-primary mb-2">CAPABILITIES</h3>
+            <h3 className="text-xl font-semibold text-[#3a3dc4] mb-2">CAPABILITIES</h3>
             <h2 className="text-3xl font-bold mb-6 text-gray-800">Transform Your Business with Multi-Cloud</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="bg-white p-6 rounded-lg shadow-md">
-                <h4 className="text-lg font-semibold text-primary mb-2">Hybrid Monitoring</h4>
+                <h4 className="text-lg font-semibold text-[#3a3dc4] mb-2">Hybrid Monitoring</h4>
                 <p className="text-gray-600">Unify monitoring across Google Cloud, AWS, and Azure with integrated analytics tools.</p>
               </div>
               <div className="bg-white p-6 rounded-lg shadow-md">
-                <h4 className="text-lg font-semibold text-primary mb-2">Cost Orchestration</h4>
+                <h4 className="text-lg font-semibold text-[#3a3dc4] mb-2">Cost Orchestration</h4>
                 <p className="text-gray-600">Optimize spending across multiple clouds with Google Cloud's cost management tools.</p>
               </div>
               <div className="bg-white p-6 rounded-lg shadow-md">
-                <h4 className="text-lg font-semibold text-primary mb-2">Multi-Cloud Management</h4>
+                <h4 className="text-lg font-semibold text-[#3a3dc4] mb-2">Multi-Cloud Management</h4>
                 <p className="text-gray-600">Seamlessly manage workloads across Google Cloud, AWS, and Azure with our expertise.</p>
               </div>
             </div>
@@ -111,7 +111,7 @@ const MultiGoogleCloud: React.FC = () => {
                 { icon: faHandshake, title: "Strategic Partnerships", text: "Collaborate with Google and other cloud leaders for cutting-edge solutions." },
               ].map(benefit => (
                 <div key={benefit.title} className="bg-gray-50 p-6 rounded-lg shadow-sm text-center">
-                  <FontAwesomeIcon icon={benefit.icon} className="text-3xl text-primary mb-4" />
+                  <FontAwesomeIcon icon={benefit.icon} className="text-3xl text-[#3a3dc4] mb-4" />
                   <h4 className="font-bold text-lg mb-2 text-gray-700">{benefit.title}</h4>
                   <p className="text-gray-600 text-sm">{benefit.text}</p>
                 </div>
@@ -171,7 +171,7 @@ const MultiGoogleCloud: React.FC = () => {
               <button
                 key={tab}
                 className={`py-3 px-4 text-sm font-medium border-b-2 transition-colors duration-300 
-                  ${activeTab === tab ? 'border-primary text-primary' : 'border-transparent text-gray-400 hover:text-white hover:border-primary'}`}
+                  ${activeTab === tab ? 'border-[#3a3dc4] text-[#3a3dc4]' : 'border-transparent text-gray-400 hover:text-white hover:border-[#3a3dc4]'}`}
                 onClick={() => setActiveTab(tab)}
               >
                 {tab}
@@ -198,7 +198,7 @@ const MultiGoogleCloud: React.FC = () => {
             </p>
             <Link
               to="/contact?service=multi-cloud-support"
-              className="inline-block bg-primary text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
+              className="inline-block bg-[#3a3dc4] text-white px-6 py-3 rounded-lg hover:bg-[#2f3099] transition-colors"
             >
               Explore Support
             </Link>
@@ -221,7 +221,7 @@ const MultiGoogleCloud: React.FC = () => {
             </p>
             <Link
               to="/contact?service=google-cloud-partnerships"
-              className="inline-block bg-primary text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
+              className="inline-block bg-[#3a3dc4] text-white px-6 py-3 rounded-lg hover:bg-[#2f3099] transition-colors"
             >
               Partner with Us
             </Link>
@@ -248,7 +248,7 @@ const MultiGoogleCloud: React.FC = () => {
             ].map(resource => (
               <div key={resource.title} className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
                 <img src={resource.img} alt={resource.title} className="w-full h-40 object-cover rounded-lg mb-4" />
-                <h4 className="text-lg font-semibold text-primary mb-2">{resource.title}</h4>
+                <h4 className="text-lg font-semibold text-[#3a3dc4] mb-2">{resource.title}</h4>
                 <p className="text-gray-600 text-sm">{resource.text}</p>
               </div>
             ))}
@@ -260,14 +260,14 @@ const MultiGoogleCloud: React.FC = () => {
       <div className="fixed bottom-5 right-5 z-50">
         <button 
           onClick={() => setIsChatOpen(!isChatOpen)} 
-          className="bg-gradient-to-r from-google-blue to-google-green text-white w-16 h-16 rounded-full flex items-center justify-center shadow-lg hover:scale-105 transition-transform duration-300"
+          className="bg-[#3a3dc4] text-white w-16 h-16 rounded-full flex items-center justify-center shadow-lg hover:scale-105 transition-transform duration-300"
           aria-label="Toggle chat"
         >
           <FontAwesomeIcon icon={faCommentDots} size="2x" />
         </button>
         {isChatOpen && (
           <div className="absolute bottom-20 right-0 w-80 bg-white rounded-lg shadow-xl overflow-hidden animate-slidein">
-            <div className="bg-gradient-to-r from-google-blue to-google-green p-4 flex justify-between items-center">
+            <div className="bg-[#3a3dc4] p-4 flex justify-between items-center">
               <h3 className="text-white font-semibold text-lg">VirtuSwift GCP Support</h3>
               <button onClick={() => setIsChatOpen(false)} className="text-white hover:text-gray-200 text-2xl">&times;</button>
             </div>
@@ -288,7 +288,7 @@ const MultiGoogleCloud: React.FC = () => {
                 onChange={(e) => setChatInput(e.target.value)}
                 onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
                 placeholder="Type your message..." 
-                className="flex-grow border rounded-full py-2 px-4 mr-2 focus:outline-none focus:ring-2 focus:ring-google-blue"
+                className="flex-grow border rounded-full py-2 px-4 mr-2 focus:outline-none focus:ring-2 focus:ring-[#3a3dc4]"
               />
               <button onClick={handleSendMessage} className="bg-google-green text-white rounded-full p-3 w-12 h-12 flex items-center justify-center hover:opacity-90">
                 <FontAwesomeIcon icon={faPaperPlane} />

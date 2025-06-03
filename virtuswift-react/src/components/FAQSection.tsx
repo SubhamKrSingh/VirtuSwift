@@ -80,6 +80,8 @@ const FAQSection: React.FC = () => {
                 transitionDelay: mounted ? `${index * 80}ms` : '0ms',
               }}
               className="mb-6"
+              onMouseEnter={() => setOpenIndex(index)}
+              onMouseLeave={() => setOpenIndex(null)}
             >
               <button
                 onClick={() => toggleFAQ(index)}

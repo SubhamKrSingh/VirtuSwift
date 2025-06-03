@@ -49,7 +49,7 @@ const CloudSecurity: React.FC = () => {
               </p>
               <Link
                 to="/contact?service=cloud-security" // Example of passing context via query param
-                className="inline-block bg-[#00AEEF] text-white px-6 py-3 rounded-lg hover:bg-[#008BCF] transition-colors"
+                className="inline-block bg-[#3a3dc4] text-white px-6 py-3 rounded-lg hover:bg-[#008BCF] transition-colors"
               >
                 Learn More
               </Link>
@@ -66,20 +66,20 @@ const CloudSecurity: React.FC = () => {
       case 'Capabilities':
         return (
           <div className="mb-12">
-            <h3 className="text-xl font-semibold text-[#00AEEF] mb-2">CAPABILITIES</h3>
+            <h3 className="text-xl font-semibold text-[#3a3dc4] mb-2">CAPABILITIES</h3>
             <h2 className="text-3xl font-bold mb-4 text-gray-800">Secure Your Multi-Cloud Environment</h2>
             <div className="space-y-8">
               <div className="flex flex-col md:flex-row gap-6">
                 <div className="md:w-1/3 bg-white p-6 rounded-lg shadow-md">
-                  <h4 className="text-lg font-semibold text-[#00AEEF]">Security Monitoring</h4>
+                  <h4 className="text-lg font-semibold text-[#3a3dc4]">Security Monitoring</h4>
                   <p className="text-gray-600">Real-time threat detection across Google Cloud, AWS, and Azure using Google Cloud Security Command Center.</p>
                 </div>
                 <div className="md:w-1/3 bg-white p-6 rounded-lg shadow-md">
-                  <h4 className="text-lg font-semibold text-[#00AEEF]">Identity & Access Management</h4>
+                  <h4 className="text-lg font-semibold text-[#3a3dc4]">Identity & Access Management</h4>
                   <p className="text-gray-600">Unified IAM with Google Cloud Identity and BeyondCorp for secure multi-cloud access control.</p>
                 </div>
                 <div className="md:w-1/3 bg-white p-6 rounded-lg shadow-md">
-                  <h4 className="text-lg font-semibold text-[#00AEEF]">Compliance Management</h4>
+                  <h4 className="text-lg font-semibold text-[#3a3dc4]">Compliance Management</h4>
                   <p className="text-gray-600">Ensure compliance with Google Cloud's Assured Workloads and multi-cloud auditing tools.</p>
                 </div>
               </div>
@@ -100,7 +100,7 @@ const CloudSecurity: React.FC = () => {
                 { icon: faHandshake, title: "Strategic Security Partnerships", text: "Collaborate with Google and cloud leaders for cutting-edge security." },
               ].map(benefit => (
                 <div key={benefit.title} className="bg-gray-50 p-6 rounded-lg shadow-sm text-center">
-                  <FontAwesomeIcon icon={benefit.icon} className="text-3xl text-[#00AEEF] mb-4" />
+                  <FontAwesomeIcon icon={benefit.icon} className="text-3xl text-[#3a3dc4] mb-4" />
                   <h4 className="font-bold text-lg mb-2 text-gray-700">{benefit.title}</h4>
                   <p className="text-gray-600 text-sm">{benefit.text}</p>
                 </div>
@@ -158,7 +158,7 @@ const CloudSecurity: React.FC = () => {
               <button
                 key={tab}
                 className={`py-3 px-4 text-sm font-medium border-b-2 transition-colors duration-300 
-                  ${activeTab === tab ? 'border-[#00AEEF] text-[#00AEEF]' : 'border-transparent text-gray-400 hover:text-white'}`}
+                  ${activeTab === tab ? 'border-[#3a3dc4] text-[#3a3dc4]' : 'border-transparent text-gray-400 hover:text-white'}`}
                 onClick={() => setActiveTab(tab)}
               >
                 {tab}
@@ -185,7 +185,7 @@ const CloudSecurity: React.FC = () => {
             </p>
             <Link
               to="/contact?service=cloud-security-support"
-              className="inline-block bg-[#00AEEF] text-white px-6 py-3 rounded-lg hover:bg-[#008BCF] transition-colors"
+              className="inline-block bg-[#3a3dc4] text-white px-6 py-3 rounded-lg hover:bg-[#008BCF] transition-colors"
             >
               Explore Support
             </Link>
@@ -208,7 +208,7 @@ const CloudSecurity: React.FC = () => {
             </p>
             <Link
               to="/contact?service=cloud-partnerships"
-              className="inline-block bg-[#00AEEF] text-white px-6 py-3 rounded-lg hover:bg-[#008BCF] transition-colors"
+              className="inline-block bg-[#3a3dc4] text-white px-6 py-3 rounded-lg hover:bg-[#008BCF] transition-colors"
             >
               Partner with Us
             </Link>
@@ -235,7 +235,7 @@ const CloudSecurity: React.FC = () => {
             ].map(resource => (
               <div key={resource.title} className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
                 <img src={resource.img} alt={resource.title} className="w-full h-40 object-cover rounded-lg mb-4" />
-                <h4 className="text-lg font-semibold text-[#00AEEF] mb-2">{resource.title}</h4>
+                <h4 className="text-lg font-semibold text-[#3a3dc4] mb-2">{resource.title}</h4>
                 <p className="text-gray-600 text-sm">{resource.text}</p>
               </div>
             ))}

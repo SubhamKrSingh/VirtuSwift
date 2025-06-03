@@ -48,7 +48,7 @@ const AwsMigration: React.FC = () => {
               </p>
               <Link
                 to="/contact"
-                className="inline-block bg-[#00AEEF] text-white px-6 py-3 rounded-lg hover:bg-[#008BCF] transition-colors"
+                className="inline-block bg-[#3a3dc4] text-white px-6 py-3 rounded-lg hover:bg-[#008BCF] transition-colors"
               >
                 Learn More
               </Link>
@@ -65,20 +65,20 @@ const AwsMigration: React.FC = () => {
       case 'Capabilities':
         return (
           <div className="mb-12">
-            <h3 className="text-xl font-semibold text-[#00AEEF] mb-2">CAPABILITIES</h3>
+            <h3 className="text-xl font-semibold text-[#3a3dc4] mb-2">CAPABILITIES</h3>
             <h2 className="text-3xl font-bold mb-4 text-gray-800">Transform Your Cloud Strategy with VirtuSwift</h2>
             <div className="space-y-8">
               <div className="flex flex-col md:flex-row gap-6">
                 <div className="md:w-1/3 bg-white p-6 rounded-lg shadow-md">
-                  <h4 className="text-lg font-semibold text-[#00AEEF]">Migration Accelerator</h4>
+                  <h4 className="text-lg font-semibold text-[#3a3dc4]">Migration Accelerator</h4>
                   <p className="text-gray-600">Fast-track your migration with automated tools and real-time progress tracking.</p>
                 </div>
                 <div className="md:w-1/3 bg-white p-6 rounded-lg shadow-md">
-                  <h4 className="text-lg font-semibold text-[#00AEEF]">Cloud Insights Dashboard</h4>
+                  <h4 className="text-lg font-semibold text-[#3a3dc4]">Cloud Insights Dashboard</h4>
                   <p className="text-gray-600">Monitor performance, costs, and security across your AWS environment.</p>
                 </div>
                 <div className="md:w-1/3 bg-white p-6 rounded-lg shadow-md">
-                  <h4 className="text-lg font-semibold text-[#00AEEF]">Managed Migration Services</h4>
+                  <h4 className="text-lg font-semibold text-[#3a3dc4]">Managed Migration Services</h4>
                   <p className="text-gray-600">End-to-end support to ensure a smooth and secure cloud transition.</p>
                 </div>
               </div>
@@ -99,7 +99,7 @@ const AwsMigration: React.FC = () => {
                 { icon: faHandshake, title: "Strategic Partnerships", text: "Collaborate with AWS for innovative cloud solutions." },
               ].map(benefit => (
                 <div key={benefit.title} className="bg-gray-50 p-6 rounded-lg shadow-sm text-center">
-                  <FontAwesomeIcon icon={benefit.icon} className="text-3xl text-[#00AEEF] mb-4" />
+                  <FontAwesomeIcon icon={benefit.icon} className="text-3xl text-[#3a3dc4] mb-4" />
                   <h4 className="font-bold text-lg mb-2 text-gray-700">{benefit.title}</h4>
                   <p className="text-gray-600 text-sm">{benefit.text}</p>
                 </div>
@@ -157,7 +157,7 @@ const AwsMigration: React.FC = () => {
               <button
                 key={tab}
                 className={`py-3 px-4 text-sm font-medium border-b-2 transition-colors duration-300 
-                  ${activeTab === tab ? 'border-[#00AEEF] text-[#00AEEF]' : 'border-transparent text-gray-400 hover:text-white'}`}
+                  ${activeTab === tab ? 'border-[#3a3dc4] text-[#3a3dc4]' : 'border-transparent text-gray-400 hover:text-white'}`}
                 onClick={() => setActiveTab(tab)}
               >
                 {tab}
@@ -183,7 +183,7 @@ const AwsMigration: React.FC = () => {
             </p>
             <Link
               to="/contact"
-              className="inline-block bg-[#00AEEF] text-white px-6 py-3 rounded-lg hover:bg-[#008BCF] transition-colors"
+              className="inline-block bg-[#3a3dc4] text-white px-6 py-3 rounded-lg hover:bg-[#008BCF] transition-colors"
             >
               Explore Support
             </Link>
@@ -206,7 +206,7 @@ const AwsMigration: React.FC = () => {
             </p>
             <Link
               to="/contact"
-              className="inline-block bg-[#00AEEF] text-white px-6 py-3 rounded-lg hover:bg-[#008BCF] transition-colors"
+              className="inline-block bg-[#3a3dc4] text-white px-6 py-3 rounded-lg hover:bg-[#008BCF] transition-colors"
             >
               Partner with Us
             </Link>
@@ -233,7 +233,7 @@ const AwsMigration: React.FC = () => {
             ].map(resource => (
               <div key={resource.title} className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
                 <img src={resource.img} alt={resource.title} className="w-full h-40 object-cover rounded-lg mb-4" />
-                <h4 className="text-lg font-semibold text-[#00AEEF] mb-2">{resource.title}</h4>
+                <h4 className="text-lg font-semibold text-[#3a3dc4] mb-2">{resource.title}</h4>
                 <p className="text-gray-600 text-sm">{resource.text}</p>
               </div>
             ))}
