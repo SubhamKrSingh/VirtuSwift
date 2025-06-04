@@ -23,6 +23,29 @@ const Navbar: React.FC = () => {
   const [caseStudiesOpen, setCaseStudiesOpen] = useState(false);
   const [servicesLeft, setServicesLeft] = useState(0);
   const servicesBtnRef = useRef<HTMLButtonElement>(null);
+  const servicesDropdownRef = useRef<HTMLDivElement>(null);
+  const industriesDropdownRef = useRef<HTMLDivElement>(null);
+  const caseStudiesDropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (servicesOpen && servicesDropdownRef.current && !servicesDropdownRef.current.contains(event.target as Node) && 
+          servicesBtnRef.current && !servicesBtnRef.current.contains(event.target as Node)) {
+        setServicesOpen(false);
+      }
+      if (industriesOpen && industriesDropdownRef.current && !industriesDropdownRef.current.contains(event.target as Node)) {
+        setIndustriesOpen(false);
+      }
+      if (caseStudiesOpen && caseStudiesDropdownRef.current && !caseStudiesDropdownRef.current.contains(event.target as Node)) {
+        setCaseStudiesOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [servicesOpen, industriesOpen, caseStudiesOpen]);
 
   useEffect(() => {
     if (servicesOpen || industriesOpen || caseStudiesOpen) {
@@ -44,7 +67,7 @@ const Navbar: React.FC = () => {
     e.preventDefault(); 
     setServicesOpen((prev) => {
       if (!prev) {
-    setIndustriesOpen(false);
+        setIndustriesOpen(false);
         setCaseStudiesOpen(false);
       }
       return !prev;
@@ -55,7 +78,7 @@ const Navbar: React.FC = () => {
     e.preventDefault();
     setIndustriesOpen((prev) => {
       if (!prev) {
-    setServicesOpen(false);
+        setServicesOpen(false);
         setCaseStudiesOpen(false);
       }
       return !prev;
@@ -64,7 +87,7 @@ const Navbar: React.FC = () => {
 
   const navLinkClass = "text-gray-700 hover:text-[#3a3dc4] px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200";
   const dropdownLinkClass = "block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#f05a28] transition-colors duration-200";
-  const dropdownButtonClass = "inline-flex items-center text-gray-700 hover:text-[#3a3dc4] px-4 py-2 text-sm font-medium transition-colors duration-200";
+  const dropdownButtonClass = "inline-flex items-center text-gray-700 hover:text-[#3a3dc4] px-4 py-2 text-sm font-medium transition-colors duration-200 border-b-2 border-transparent hover:border-[#3a3dc4]";
 
   return (
     <>
@@ -83,30 +106,30 @@ const Navbar: React.FC = () => {
           </span>
         </div>
       </div>
-    <nav className="bg-white shadow-lg sticky top-0 z-50">
+      <nav className="bg-white shadow-lg sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div className="flex justify-between h-16">
-          <div className="flex items-center">
+          <div className="flex justify-between h-16">
+            <div className="flex items-center">
               <Link to="/" className="flex-shrink-0 flex items-center mr-6" style={{ marginLeft: '-32px' }}>
                 <img src="/logo.png" alt="VirtuSwift Logo" className="h-16 w-auto" />
-            </Link>
-          </div>
+              </Link>
+            </div>
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex md:items-center md:space-x-4">
-            <Link to="/" className={navLinkClass}>Home</Link>
-            <Link to="/about" className={navLinkClass}>About Us</Link>
-            
-            {/* Services Dropdown */}
+            {/* Desktop Menu */}
+            <div className="hidden md:flex md:items-center md:space-x-4">
+              <Link to="/" className={navLinkClass}>Home</Link>
+              <Link to="/about" className={navLinkClass}>About Us</Link>
+              
+              {/* Services Dropdown */}
               <div className="inline-block text-left">
-                <button ref={servicesBtnRef} onClick={toggleServices} className={dropdownButtonClass}>
-                <span>Services</span>
-                <svg className={`ml-2 h-4 w-4 transition-transform duration-200 ${servicesOpen ? 'transform rotate-180' : ''}`} viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
-                </svg>
-              </button>
-              {servicesOpen && (
-                  <div className="absolute top-full w-[750px] rounded-lg shadow-2xl bg-white ring-1 ring-black ring-opacity-5 flex z-50 animate-fade-in border-t" style={{ left: servicesLeft, borderTopColor: '#e5e7eb' }}>
+                <button ref={servicesBtnRef} onClick={toggleServices} className={`${dropdownButtonClass} ${servicesOpen ? 'border-[#3a3dc4] text-[#3a3dc4]' : ''}`}>
+                  <span>Services</span>
+                  <svg className={`ml-2 h-4 w-4 transition-transform duration-200 ${servicesOpen ? 'transform rotate-180' : ''}`} viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                  </svg>
+                </button>
+                {servicesOpen && (
+                  <div ref={servicesDropdownRef} className="absolute top-full w-[750px] shadow-2xl bg-white ring-1 ring-black ring-opacity-5 flex z-50 animate-fade-in border-t-2 border-[#3a3dc4]" style={{ left: `calc(${servicesLeft}px - 250px)` }}>
                     {/* Sidebar */}
                     <div className="w-1/3 bg-[#E8E9F5] p-6 flex flex-col items-start border-r border-gray-200 min-h-[300px]">
                       <h3 className="text-xl font-bold text-[#121927] mb-2">Our Services</h3>
@@ -118,122 +141,101 @@ const Navbar: React.FC = () => {
                         <Link to="/services/technology" className="text-[#121927] hover:underline text-base">By Technology</Link>
                       </div>
                     </div>
-                    {/* Main Mega Menu Content: Only original services */}
+                    {/* Main Mega Menu Content: Reorganized services */}
                     <div className="w-2/3 grid grid-cols-2 gap-x-8 gap-y-2 p-6">
-                      <Link to="/services/aws-migration" className="flex items-start gap-3 mb-3 group">
-                        <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] group transition-colors duration-200">
-                          <FontAwesomeIcon icon={faCloud} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
-                        </span>
-                        <span>
-                          <span className="font-semibold text-[#2563eb] group-hover:text-[#f05a28] group-hover:underline">AWS Migration</span>
-                          <div className="text-xs text-gray-500">Seamless transition to AWS cloud</div>
-                        </span>
-                      </Link>
-                      <Link to="/services/azure" className="flex items-start gap-3 mb-3 group">
-                        <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] group transition-colors duration-200">
-                          <FontAwesomeIcon icon={faCloud} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
-                        </span>
-                        <span>
-                          <span className="font-semibold text-[#2563eb] group-hover:text-[#f05a28] group-hover:underline">Azure Solutions</span>
-                          <div className="text-xs text-gray-500">Empower your business with Azure</div>
-                        </span>
-                      </Link>
-                      <Link to="/services/cloud-security" className="flex items-start gap-3 mb-3 group">
-                        <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] group transition-colors duration-200">
-                          <FontAwesomeIcon icon={faShieldAlt} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
-                        </span>
-                        <span>
-                          <span className="font-semibold text-blue-900 group-hover:underline">Cloud Security</span>
-                          <div className="text-xs text-gray-500">Protect your cloud infrastructure</div>
-                        </span>
-                      </Link>
-                      <Link to="/services/supply-chain" className="flex items-start gap-3 mb-3 group">
-                        <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] group transition-colors duration-200">
-                          <FontAwesomeIcon icon={faTruck} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
-                        </span>
-                        <span>
-                          <span className="font-semibold text-blue-900 group-hover:underline">Supply Chain</span>
-                          <div className="text-xs text-gray-500">Optimize your supply chain operations</div>
-                        </span>
-                      </Link>
-                      <Link to="/services/sap" className="flex items-start gap-3 mb-3 group">
-                        <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] group transition-colors duration-200">
-                          <FontAwesomeIcon icon={faBriefcase} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
-                        </span>
-                        <span>
-                          <span className="font-semibold text-blue-900 group-hover:underline">SAP Services</span>
-                          <div className="text-xs text-gray-500">Expert SAP implementation & support</div>
-                        </span>
-                      </Link>
-                      <Link to="/services/salesforce" className="flex items-start gap-3 mb-3 group">
-                        <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] group transition-colors duration-200">
-                          <FontAwesomeIcon icon={faUserShield} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
-                        </span>
-                        <span>
-                          <span className="font-semibold text-blue-900 group-hover:underline">Salesforce</span>
-                          <div className="text-xs text-gray-500">CRM solutions for business growth</div>
-                        </span>
-                      </Link>
-                      <Link to="/services/pharmaceutical" className="flex items-start gap-3 mb-3 group">
-                        <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] group transition-colors duration-200">
-                          <FontAwesomeIcon icon={faPills} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
-                        </span>
-                        <span>
-                          <span className="font-semibold text-blue-900 group-hover:underline">Pharmaceutical IT</span>
-                          <div className="text-xs text-gray-500">IT solutions for pharma innovation</div>
-                        </span>
-                      </Link>
-                      <Link to="/services/oracle-solutions" className="flex items-start gap-3 mb-3 group">
-                        <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] group transition-colors duration-200">
-                          <FontAwesomeIcon icon={faDatabase} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
-                        </span>
-                        <span>
-                          <span className="font-semibold text-blue-900 group-hover:underline">Oracle Solutions</span>
-                          <div className="text-xs text-gray-500">Robust Oracle enterprise solutions</div>
-                        </span>
-                      </Link>
-                      <Link to="/services/multi-google-cloud" className="flex items-start gap-3 mb-3 group">
-                        <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] group transition-colors duration-200">
-                          <FontAwesomeIcon icon={faGoogle} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
-                        </span>
-                        <span>
-                          <span className="font-semibold text-blue-900 group-hover:underline">Multi-Cloud Google</span>
-                          <div className="text-xs text-gray-500">Integrate Google Cloud with ease</div>
-                        </span>
-                      </Link>
-                      <Link to="/services/microsoft-dynamics" className="flex items-start gap-3 mb-3 group">
-                        <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] group transition-colors duration-200">
-                          <FontAwesomeIcon icon={faMicrosoft} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
-                        </span>
-                        <span>
-                          <span className="font-semibold text-blue-900 group-hover:underline">Microsoft Dynamics</span>
-                          <div className="text-xs text-gray-500">Business apps for productivity</div>
-                        </span>
-                      </Link>
-                      <Link to="/services/ibm-systems" className="flex items-start gap-3 mb-3 group">
-                        <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] group transition-colors duration-200">
-                          <FontAwesomeIcon icon={faServer} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
-                        </span>
-                        <span>
-                          <span className="font-semibold text-blue-900 group-hover:underline">IBM Systems</span>
-                          <div className="text-xs text-gray-500">Enterprise IBM infrastructure</div>
-                        </span>
-                      </Link>
+                      <div>
+                        <h4 className="font-bold text-blue-900 mb-4">Cloud Solutions</h4>
+                        <Link to="/services/aws-migration" className="flex items-start gap-3 mb-3 group">
+                          <span className="bg-[#D3D6E8] p-2 group-hover:bg-[#ffe5d0] group transition-colors duration-200">
+                            <FontAwesomeIcon icon={faCloud} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
+                          </span>
+                          <span>
+                            <span className="font-semibold text-[#2563eb] group-hover:text-[#f05a28] group-hover:underline">AWS Migration</span>
+                            <div className="text-xs text-gray-500">Seamless transition to AWS cloud</div>
+                          </span>
+                        </Link>
+                        <Link to="/services/azure" className="flex items-start gap-3 mb-3 group">
+                          <span className="bg-[#D3D6E8] p-2 group-hover:bg-[#ffe5d0] group transition-colors duration-200">
+                            <FontAwesomeIcon icon={faCloud} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
+                          </span>
+                          <span>
+                            <span className="font-semibold text-[#2563eb] group-hover:text-[#f05a28] group-hover:underline">Azure Solutions</span>
+                            <div className="text-xs text-gray-500">Empower your business with Azure</div>
+                          </span>
+                        </Link>
+                        <Link to="/services/multi-google-cloud" className="flex items-start gap-3 mb-3 group">
+                          <span className="bg-[#D3D6E8] p-2 group-hover:bg-[#ffe5d0] group transition-colors duration-200">
+                            <FontAwesomeIcon icon={faGoogle} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
+                          </span>
+                          <span>
+                            <span className="font-semibold text-[#2563eb] group-hover:text-[#f05a28] group-hover:underline">Multi-Cloud Google</span>
+                            <div className="text-xs text-gray-500">Integrate Google Cloud with ease</div>
+                          </span>
+                        </Link>
+                        <Link to="/services/cloud-security" className="flex items-start gap-3 mb-3 group">
+                          <span className="bg-[#D3D6E8] p-2 group-hover:bg-[#ffe5d0] group transition-colors duration-200">
+                            <FontAwesomeIcon icon={faShieldAlt} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
+                          </span>
+                          <span>
+                            <span className="font-semibold text-[#2563eb] group-hover:text-[#f05a28] group-hover:underline">Cloud Security</span>
+                            <div className="text-xs text-gray-500">Protect your cloud infrastructure</div>
+                          </span>
+                        </Link>
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-blue-900 mb-4">Enterprise Solutions</h4>
+                        <Link to="/services/sap" className="flex items-start gap-3 mb-3 group">
+                          <span className="bg-[#D3D6E8] p-2 group-hover:bg-[#ffe5d0] group transition-colors duration-200">
+                            <FontAwesomeIcon icon={faBriefcase} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
+                          </span>
+                          <span>
+                            <span className="font-semibold text-[#2563eb] group-hover:text-[#f05a28] group-hover:underline">SAP Services</span>
+                            <div className="text-xs text-gray-500">Expert SAP implementation & support</div>
+                          </span>
+                        </Link>
+                        <Link to="/services/salesforce" className="flex items-start gap-3 mb-3 group">
+                          <span className="bg-[#D3D6E8] p-2 group-hover:bg-[#ffe5d0] group transition-colors duration-200">
+                            <FontAwesomeIcon icon={faUserShield} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
+                          </span>
+                          <span>
+                            <span className="font-semibold text-[#2563eb] group-hover:text-[#f05a28] group-hover:underline">Salesforce</span>
+                            <div className="text-xs text-gray-500">CRM solutions for business growth</div>
+                          </span>
+                        </Link>
+                        <Link to="/services/microsoft-dynamics" className="flex items-start gap-3 mb-3 group">
+                          <span className="bg-[#D3D6E8] p-2 group-hover:bg-[#ffe5d0] group transition-colors duration-200">
+                            <FontAwesomeIcon icon={faMicrosoft} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
+                          </span>
+                          <span>
+                            <span className="font-semibold text-[#2563eb] group-hover:text-[#f05a28] group-hover:underline">Microsoft Dynamics</span>
+                            <div className="text-xs text-gray-500">Business apps for productivity</div>
+                          </span>
+                        </Link>
+                        <Link to="/services/oracle-solutions" className="flex items-start gap-3 mb-3 group">
+                          <span className="bg-[#D3D6E8] p-2 group-hover:bg-[#ffe5d0] group transition-colors duration-200">
+                            <FontAwesomeIcon icon={faDatabase} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
+                          </span>
+                          <span>
+                            <span className="font-semibold text-[#2563eb] group-hover:text-[#f05a28] group-hover:underline">Oracle Solutions</span>
+                            <div className="text-xs text-gray-500">Robust Oracle enterprise solutions</div>
+                          </span>
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 )}
               </div>
 
-            {/* Industries Dropdown */}
+              {/* Industries Dropdown */}
               <div className="inline-block text-left">
-              <button onClick={toggleIndustries} className={dropdownButtonClass}>
-                <span>Industries</span>
-                <svg className={`ml-2 h-4 w-4 transition-transform duration-200 ${industriesOpen ? 'transform rotate-180' : ''}`} viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
-                </svg>
-              </button>
-              {industriesOpen && (
-                  <div className="absolute top-full w-[750px] rounded-lg shadow-2xl bg-white ring-1 ring-black ring-opacity-5 flex z-50 animate-fade-in border-t" style={{ left: servicesLeft, borderTopColor: '#e5e7eb' }}>
+                <button onClick={toggleIndustries} className={`${dropdownButtonClass} ${industriesOpen ? 'border-[#3a3dc4] text-[#3a3dc4]' : ''}`}>
+                  <span>Industries</span>
+                  <svg className={`ml-2 h-4 w-4 transition-transform duration-200 ${industriesOpen ? 'transform rotate-180' : ''}`} viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                  </svg>
+                </button>
+                {industriesOpen && (
+                  <div ref={industriesDropdownRef} className="absolute top-full w-[750px] shadow-2xl bg-white ring-1 ring-black ring-opacity-5 flex z-50 animate-fade-in border-t-2 border-[#3a3dc4]" style={{ left: `calc(${servicesLeft}px - 250px)` }}>
                     {/* Sidebar */}
                     <div className="w-1/3 bg-[#E8E9F5] p-6 flex flex-col items-start border-r border-gray-200 min-h-[300px]">
                       <h3 className="text-xl font-bold text-[#121927] mb-2">Industries</h3>
@@ -339,14 +341,14 @@ const Navbar: React.FC = () => {
                     }
                     return !prev;
                   });
-                }} className={dropdownButtonClass}>
+                }} className={`${dropdownButtonClass} ${caseStudiesOpen ? 'border-[#3a3dc4] text-[#3a3dc4]' : ''}`}>
                   <span>Case Studies</span>
                   <svg className={`ml-2 h-4 w-4 transition-transform duration-200 ${caseStudiesOpen ? 'transform rotate-180' : ''}`} viewBox="0 0 20 20" fill="currentColor">
                     <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
                   </svg>
                 </button>
                 {caseStudiesOpen && (
-                  <div className="absolute top-full w-[750px] rounded-lg shadow-2xl bg-white ring-1 ring-black ring-opacity-5 flex z-50 animate-fade-in border-t" style={{ left: servicesLeft, borderTopColor: '#e5e7eb' }}>
+                  <div ref={caseStudiesDropdownRef} className="absolute top-full w-[750px] shadow-2xl bg-white ring-1 ring-black ring-opacity-5 flex z-50 animate-fade-in border-t-2 border-[#3a3dc4]" style={{ left: `calc(${servicesLeft}px - 250px)` }}>
                     {/* Sidebar */}
                     <div className="w-1/3 bg-[#E8E9F5] p-6 flex flex-col items-start border-r border-gray-200 min-h-[300px]">
                       <h3 className="text-xl font-bold text-[#121927] mb-2">Case Studies</h3>
@@ -443,27 +445,27 @@ const Navbar: React.FC = () => {
               </div>
 
               <Link to="/contact" className={"ml-2 bg-blue-600 text-white font-semibold rounded-lg px-6 py-2 transition-colors duration-200 hover:bg-blue-700"}>Contact Us</Link>
-          </div>
+            </div>
 
-          {/* Mobile Menu Button */}
-          <div className="flex items-center md:hidden">
-            <button
-              onClick={toggleMenu}
-              type="button"
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-primary hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary"
-              aria-controls="mobile-menu"
-              aria-expanded={isOpen}
-            >
-              <span className="sr-only">Open main menu</span>
-              {!isOpen ? (
-                <FontAwesomeIcon icon={faBars} className="block h-6 w-6" />
-              ) : (
-                <FontAwesomeIcon icon={faTimes} className="block h-6 w-6" />
-              )}
-            </button>
+            {/* Mobile Menu Button */}
+            <div className="flex items-center md:hidden">
+              <button
+                onClick={toggleMenu}
+                type="button"
+                className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-primary hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary"
+                aria-controls="mobile-menu"
+                aria-expanded={isOpen}
+              >
+                <span className="sr-only">Open main menu</span>
+                {!isOpen ? (
+                  <FontAwesomeIcon icon={faBars} className="block h-6 w-6" />
+                ) : (
+                  <FontAwesomeIcon icon={faTimes} className="block h-6 w-6" />
+                )}
+              </button>
+            </div>
           </div>
         </div>
-      </div>
       </nav>
 
       {/* Mobile Menu */}
