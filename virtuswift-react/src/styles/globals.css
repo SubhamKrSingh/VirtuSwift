@@ -66,8 +66,14 @@
 }
 
 @keyframes slideInLeft {
-  from { transform: translateX(-100%) scale(0.95); opacity: 0; }
-  to { transform: translateX(0) scale(1); opacity: 1; }
+  0% { 
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  100% { 
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes slideOutLeft {
@@ -78,5 +84,23 @@
 @keyframes slideOutRight {
   from { transform: translateX(0) scale(1); opacity: 1; }
   to { transform: translateX(100%) scale(0.95); opacity: 0; }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Add new animation classes */
+.animate-slide-in-left {
+  animation: slideInLeft 1s ease-out forwards;
+}
+
+.animate-slide-in-left-delay-1 {
+  animation: slideInLeft 1.2s ease-out 0.2s forwards;
+}
+
+.animate-slide-in-left-delay-2 {
+  animation: slideInLeft 1.4s ease-out 0.4s forwards;
 }
 

@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VirtuSwift Dynamic Banner</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      overflow-x: hidden;
+    }
+    
+    .banner-container {
+      position: relative;
+      width: 100%;
+      height: 600px;
+      background: linear-gradient(135deg, #d44019 0%, #e04d1d 50%, #f05a28 100%);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+    
+    .content {
+      position: relative;
+      z-index: 10;
+      color: white;
+      padding: 0 60px;
+      max-width: 650px;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      margin-left: 12%;
+      margin-top: -2rem;
+    }
+    
+    .content h1 {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+    
+    .content p {
+      font-size: 1.25rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+      opacity: 0.95;
+      font-weight: 400;
+      max-width: 500px;
+    }
+    
+    .accent-text {
+      color: #ffffff;
+      font-weight: 700;
+    }
+    
+    .buttons {
+      display: flex;
+      gap: 20px;
+      margin-top: 2rem;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 0.875rem;
+    }
+    
+    .btn-primary {
+      background-color: rgba(255, 255, 255, 0.9);
+      color: #f05a28;
+      border: none;
+    }
+    
+    .btn-secondary {
+      background-color: transparent;
+      color: white;
+      border: 2px solid rgba(255, 255, 255, 0.8);
+    }
+    
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+    
+    .btn-primary:hover {
+      background-color: white;
+      color: #e04d1d;
+    }
+    
+    .btn-secondary:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-color: white;
+    }
+    
+    .animation-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+    
+    .service-tags {
+      position: absolute;
+      bottom: 40px;
+      right: 60px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 15px;
+      max-width: 500px;
+      z-index: 10;
+    }
+    
+    .tag {
+      padding: 8px 16px;
+      background: rgba(255, 255, 255, 0.15);
+      border-left: 3px solid rgba(255, 255, 255, 0.8);
+      color: white;
+      font-size: 14px;
+      font-weight: 500;
+      border-radius: 3px;
+      animation: fadeInTag 0.5s ease-out forwards;
+      opacity: 0;
+      backdrop-filter: blur(10px);
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes slideInLeft {
+      from { 
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to { 
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    @keyframes fadeInTag {
+      from { opacity: 0; transform: translateX(20px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    
+    @media (max-width: 768px) {
+      .content {
+        padding: 40px 20px;
+      }
+      
+      .content h1 {
+        font-size: 2.5rem;
+      }
+      
+      .buttons {
+        flex-direction: column;
+        gap: 10px;
+      }
+      
+      .service-tags {
+        right: 20px;
+        left: 20px;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="banner-container">
+    <!-- Canvas for animation -->
+    <canvas id="animationCanvas" class="animation-container"></canvas>
+    
+    <!-- Content overlay -->
+    <div class="content">
+      <h1>Cloud Solutions with <span class="accent-text">Virtuous</span> Speed</h1>
+      <p>Where Virtuous excellence meets Swift delivery. Our cloud services empower your business with unmatched scalability, efficiency, and security.</p>
+      <div class="buttons">
+        <a href="/services/cloud-security" class="btn btn-primary">Explore Cloud Solutions</a>
+        <a href="/contact" class="btn btn-secondary">Schedule a Consultation</a>
+      </div>
+    </div>
+    
+    <!-- Service tags -->
+    <div class="service-tags">
+      <div class="tag" style="animation-delay: 0.2s">AWS Migration</div>
+      <div class="tag" style="animation-delay: 0.4s">Azure Solutions</div>
+      <div class="tag" style="animation-delay: 0.6s">Multi-Cloud Google</div>
+      <div class="tag" style="animation-delay: 0.8s">Cloud Security</div>
+    </div>
+  </div>
+
+  <script>
+    // Banner Animation
+    document.addEventListener('DOMContentLoaded', function() {
+      const canvas = document.getElementById('animationCanvas');
+      const ctx = canvas.getContext('2d');
+      
+      // Set canvas to full banner size
+      function resizeCanvas() {
+        canvas.width = canvas.parentElement.offsetWidth;
+        canvas.height = canvas.parentElement.offsetHeight;
+      }
+      
+      // Call resize on load and window resize
+      resizeCanvas();
+      window.addEventListener('resize', resizeCanvas);
+      
+      // Color scheme - Blue elements on orange background
+      const BLUE = '#3a3dc4';
+      const LIGHT_BLUE = '#5658d0';
+      const DARK_BLUE = '#2a2d94';
+      const CYAN = '#00bcd4';
+      
+      // Grid of connected nodes
+      class Node {
+        constructor(x, y) {
+          this.x = x;
+          this.y = y;
+          this.size = 2 + Math.random() * 3;
+          this.speedX = (Math.random() - 0.5) * 0.7;
+          this.speedY = (Math.random() - 0.5) * 0.7;
+          this.lastX = x;
+          this.lastY = y;
+          this.color = Math.random() > 0.3 ? BLUE : Math.random() > 0.5 ? LIGHT_BLUE : CYAN;
+          this.glowing = Math.random() > 0.6;
+          this.glowIntensity = 0;
+          this.glowDirection = 0.02;
+        }
+        
+        update() {
+          // Save last position for trails
+          this.lastX = this.x;
+          this.lastY = this.y;
+          
+          // Move node
+          this.x += this.speedX;
+          this.y += this.speedY;
+          
+          // Bounce off edges with some padding
+          const padding = 50;
+          if (this.x < padding || this.x > canvas.width - padding) {
+            this.speedX *= -1;
+            this.x = this.x < padding ? padding : canvas.width - padding;
+          }
+          
+          if (this.y < padding || this.y > canvas.height - padding) {
+            this.speedY *= -1;
+            this.y = this.y < padding ? padding : canvas.height - padding;
+          }
+          
+          // Add subtle drift
+          this.speedX += (Math.random() - 0.5) * 0.03;
+          this.speedY += (Math.random() - 0.5) * 0.03;
+          
+          // Cap speed
+          const maxSpeed = 0.8;
+          this.speedX = Math.max(-maxSpeed, Math.min(maxSpeed, this.speedX));
+          this.speedY = Math.max(-maxSpeed, Math.min(maxSpeed, this.speedY));
+          
+          // Update glow effect
+          if (this.glowing) {
+            this.glowIntensity += this.glowDirection;
+            if (this.glowIntensity > 1 || this.glowIntensity < 0) {
+              this.glowDirection *= -1;
+            }
+          }
+        }
+        
+        draw() {
+          // Draw glow
+          if (this.glowing) {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size * 3, 0, Math.PI * 2);
+            const glowColor = this.color === BLUE ? LIGHT_BLUE : this.color === LIGHT_BLUE ? CYAN : LIGHT_BLUE;
+            ctx.fillStyle = `rgba(${hexToRgb(glowColor)}, ${this.glowIntensity * 0.2})`;
+            ctx.fill();
+          }
+          
+          // Draw node
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fillStyle = this.color;
+          ctx.fill();
+        }
+      }
+      
+      // Convert hex color to RGB
+      function hexToRgb(hex) {
+        hex = hex.replace('#', '');
+        const r = parseInt(hex.substring(0, 2), 16);
+        const g = parseInt(hex.substring(2, 4), 16);
+        const b = parseInt(hex.substring(4, 6), 16);
+        return `${r}, ${g}, ${b}`;
+      }
+      
+      // Create network of nodes
+      const nodeCount = 45;
+      const nodes = [];
+      const connectionDistance = 140;
+      
+      for (let i = 0; i < nodeCount; i++) {
+        // Create nodes throughout the canvas
+        const x = Math.random() * canvas.width;
+        const y = Math.random() * canvas.height;
+        nodes.push(new Node(x, y));
+      }
+      
+      // Digital circuit paths that move across screen
+      class CircuitPath {
+        constructor() {
+          this.reset();
+        }
+        
+        reset() {
+          this.pathPoints = [];
+          this.direction = Math.random() > 0.5 ? 'horizontal' : 'vertical';
+          
+          if (this.direction === 'horizontal') {
+            const y = Math.random() * canvas.height;
+            this.startX = -50;
+            this.startY = y;
+            
+            // Create zigzag path points
+            let currentX = this.startX;
+            while (currentX < canvas.width + 100) {
+              this.pathPoints.push({ 
+                x: currentX, 
+                y: y + (Math.random() - 0.5) * 100
+              });
+              currentX += 30 + Math.random() * 60;
+            }
+          } else {
+            const x = Math.random() * canvas.width;
+            this.startX = x;
+            this.startY = -50;
+            
+            // Create zigzag path points
+            let currentY = this.startY;
+            while (currentY < canvas.height + 100) {
+              this.pathPoints.push({ 
+                x: x + (Math.random() - 0.5) * 100, 
+                y: currentY
+              });
+              currentY += 30 + Math.random() * 60;
+            }
+          }
+          
+          this.progress = 0;
+          this.speed = 0.005 + Math.random() * 0.008;
+          this.color = Math.random() > 0.4 ? BLUE : Math.random() > 0.5 ? LIGHT_BLUE : CYAN;
+          this.lineWidth = 1 + Math.random() * 1.5;
+          this.active = true;
+        }
+        
+        update() {
+          this.progress += this.speed;
+          if (this.progress >= 1) {
+            this.active = false;
+          }
+        }
+        
+        draw() {
+          const visiblePoints = Math.floor(this.pathPoints.length * this.progress);
+          
+          if (visiblePoints <= 1) return;
+          
+          ctx.beginPath();
+          ctx.moveTo(this.pathPoints[0].x, this.pathPoints[0].y);
+          
+          for (let i = 1; i < visiblePoints; i++) {
+            ctx.lineTo(this.pathPoints[i].x, this.pathPoints[i].y);
+          }
+          
+          ctx.strokeStyle = this.color;
+          ctx.lineWidth = this.lineWidth;
+          ctx.stroke();
+          
+          // Draw pulse dots along the path
+          const pulsePoint = Math.floor(visiblePoints * 0.8);
+          if (pulsePoint > 0 && pulsePoint < this.pathPoints.length) {
+            const point = this.pathPoints[pulsePoint];
+            ctx.beginPath();
+            ctx.arc(point.x, point.y, 3 + Math.sin(Date.now() * 0.01) * 2, 0, Math.PI * 2);
+            ctx.fillStyle = this.color === BLUE ? LIGHT_BLUE : this.color === LIGHT_BLUE ? CYAN : LIGHT_BLUE;
+            ctx.fill();
+          }
+        }
+      }
+      
+      // Create circuit paths
+      const circuitPaths = [];
+      const maxCircuitPaths = 6;
+      
+      function addCircuitPath() {
+        if (circuitPaths.length < maxCircuitPaths) {
+          circuitPaths.push(new CircuitPath());
+        }
+      }
+      
+      // Add initial circuit paths
+      for (let i = 0; i < 3; i++) {
+        addCircuitPath();
+      }
+      
+      // Add new path occasionally
+      setInterval(() => {
+        if (Math.random() > 0.5) {
+          addCircuitPath();
+        }
+      }, 2000);
+      
+      // Draw logo shape component
+      function drawLogoShape(x, y, scale, rotation) {
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.rotate(rotation);
+        ctx.scale(scale, scale);
+        
+        // Draw VirtuSwift-inspired shape in blue tones
+        ctx.beginPath();
+        ctx.moveTo(-30, -20);
+        ctx.lineTo(0, 20);
+        ctx.lineTo(30, -20);
+        ctx.closePath();
+        ctx.fillStyle = BLUE;
+        ctx.fill();
+        
+        ctx.beginPath();
+        ctx.moveTo(0, -20);
+        ctx.lineTo(30, 20);
+        ctx.lineTo(60, -20);
+        ctx.closePath();
+        ctx.fillStyle = LIGHT_BLUE;
+        ctx.fill();
+        
+        ctx.restore();
+      }
+      
+      // Floating logo shapes
+      const logoShapes = [];
+      const shapesCount = 12;
+      
+      for (let i = 0; i < shapesCount; i++) {
+        logoShapes.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          scale: 0.15 + Math.random() * 0.35,
+          speedX: (Math.random() - 0.5) * 0.5,
+          speedY: (Math.random() - 0.5) * 0.5,
+          rotation: Math.random() * Math.PI * 2,
+          rotationSpeed: (Math.random() - 0.5) * 0.01,
+          opacity: 0.15 + Math.random() * 0.25
+        });
+      }
+      
+      // Update logo shapes
+      function updateLogoShapes() {
+        for (let shape of logoShapes) {
+          shape.x += shape.speedX;
+          shape.y += shape.speedY;
+          shape.rotation += shape.rotationSpeed;
+          
+          // Wrap around edges
+          if (shape.x < -100) shape.x = canvas.width + 100;
+          if (shape.x > canvas.width + 100) shape.x = -100;
+          if (shape.y < -100) shape.y = canvas.height + 100;
+          if (shape.y > canvas.height + 100) shape.y = -100;
+        }
+      }
+      
+      // Draw logo shapes
+      function drawLogoShapes() {
+        for (let shape of logoShapes) {
+          ctx.globalAlpha = shape.opacity;
+          drawLogoShape(shape.x, shape.y, shape.scale, shape.rotation);
+        }
+        ctx.globalAlpha = 1;
+      }
+      
+      // Animation loop
+      function animate() {
+        // Create orange background gradient to match CSS
+        const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+        gradient.addColorStop(0, '#d44019');
+        gradient.addColorStop(0.5, '#e04d1d');
+        gradient.addColorStop(1, '#f05a28');
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        // Draw logo shapes in background
+        drawLogoShapes();
+        
+        // Draw connections between nodes first (behind nodes)
+        for (let i = 0; i < nodes.length; i++) {
+          for (let j = i + 1; j < nodes.length; j++) {
+            const dx = nodes[i].x - nodes[j].x;
+            const dy = nodes[i].y - nodes[j].y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            
+            if (distance < connectionDistance) {
+              const opacity = (1 - distance / connectionDistance) * 0.25;
+              ctx.beginPath();
+              ctx.moveTo(nodes[i].x, nodes[i].y);
+              ctx.lineTo(nodes[j].x, nodes[j].y);
+              
+              // Use blue tones for connections
+              let connectionColor = LIGHT_BLUE;
+              if (nodes[i].color === CYAN || nodes[j].color === CYAN) {
+                connectionColor = CYAN;
+              }
+              
+              ctx.strokeStyle = `rgba(${hexToRgb(connectionColor)}, ${opacity})`;
+              ctx.lineWidth = 1;
+              ctx.stroke();
+            }
+          }
+        }
+        
+        // Update and draw circuit paths
+        for (let i = circuitPaths.length - 1; i >= 0; i--) {
+          circuitPaths[i].update();
+          circuitPaths[i].draw();
+          
+          // Remove inactive paths
+          if (!circuitPaths[i].active) {
+            circuitPaths.splice(i, 1);
+          }
+        }
+        
+        // Update and draw nodes
+        for (let node of nodes) {
+          node.update();
+          node.draw();
+        }
+        
+        // Update logo shapes
+        updateLogoShapes();
+        
+        requestAnimationFrame(animate);
+      }
+      
+      // Start animation
+      animate();
+    });
+  </script>
+</body>
+</html> 

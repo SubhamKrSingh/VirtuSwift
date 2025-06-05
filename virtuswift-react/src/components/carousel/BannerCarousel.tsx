@@ -12,6 +12,7 @@ interface BannerData {
   secondaryButtonText?: string;
   secondaryButtonLink?: string;
   tags?: string[];
+  htmlFile?: string;
 }
 
 interface BannerCarouselProps {
@@ -60,7 +61,7 @@ const BannerCarousel: React.FC<BannerCarouselProps> = ({ banners }) => {
       if (!isPaused) {
         transition('next');
       }
-    }, 5000); // Changed to 5 seconds for more dynamic feel
+    }, 5000);
   }, [transition, isPaused]);
 
   // Initialize auto-scroll
@@ -82,6 +83,36 @@ const BannerCarousel: React.FC<BannerCarouselProps> = ({ banners }) => {
     setIsPaused(false);
   };
 
+  const renderBanner = (banner: BannerData) => {
+    if (banner.type === 'html' && banner.htmlFile) {
+      return (
+        <iframe
+          src={banner.htmlFile}
+          style={{
+            width: '100%',
+            height: '100%',
+            border: 'none',
+            position: 'absolute',
+            top: 0,
+            left: 0
+          }}
+          title={banner.title}
+        />
+      );
+    }
+    return (
+      <Banner
+        title={banner.title}
+        description={banner.subtitle || ''}
+        primaryButtonText={banner.primaryButtonText || ''}
+        primaryButtonLink={banner.primaryButtonLink || ''}
+        secondaryButtonText={banner.secondaryButtonText || ''}
+        secondaryButtonLink={banner.secondaryButtonLink || ''}
+        tags={banner.tags || []}
+      />
+    );
+  };
+
   return (
     <div 
       className="relative h-[600px] overflow-hidden bg-[#1c1c38]"
@@ -101,21 +132,12 @@ const BannerCarousel: React.FC<BannerCarouselProps> = ({ banners }) => {
             background: 'linear-gradient(45deg, rgba(58, 61, 196, 0.1), rgba(240, 90, 40, 0.1))'
           }}
         >
-          <Banner
-            key={`prev-${banners[previousBannerIndex].id}`}
-            title={banners[previousBannerIndex].title}
-            description={banners[previousBannerIndex].description || banners[previousBannerIndex].subtitle || ''}
-            primaryButtonText={banners[previousBannerIndex].primaryButtonText || ''}
-            primaryButtonLink={banners[previousBannerIndex].primaryButtonLink || ''}
-            secondaryButtonText={banners[previousBannerIndex].secondaryButtonText || ''}
-            secondaryButtonLink={banners[previousBannerIndex].secondaryButtonLink || ''}
-            tags={banners[previousBannerIndex].tags || []}
-          />
+          {renderBanner(banners[previousBannerIndex])}
         </div>
       )}
 
       {/* Current banner */}
-      <div 
+      <div
         className={`absolute inset-0 transform transition-all duration-700 ease-in-out ${
           isTransitioning
             ? direction === 'next'
@@ -128,16 +150,7 @@ const BannerCarousel: React.FC<BannerCarouselProps> = ({ banners }) => {
           background: 'linear-gradient(45deg, rgba(58, 61, 196, 0.1), rgba(240, 90, 40, 0.1))'
         }}
       >
-        <Banner
-          key={`current-${banners[currentBannerIndex].id}`}
-          title={banners[currentBannerIndex].title}
-          description={banners[currentBannerIndex].description || banners[currentBannerIndex].subtitle || ''}
-          primaryButtonText={banners[currentBannerIndex].primaryButtonText || ''}
-          primaryButtonLink={banners[currentBannerIndex].primaryButtonLink || ''}
-          secondaryButtonText={banners[currentBannerIndex].secondaryButtonText || ''}
-          secondaryButtonLink={banners[currentBannerIndex].secondaryButtonLink || ''}
-          tags={banners[currentBannerIndex].tags || []}
-        />
+        {renderBanner(banners[currentBannerIndex])}
       </div>
 
       {/* Navigation buttons with enhanced hover effects */}
@@ -177,7 +190,6 @@ const BannerCarousel: React.FC<BannerCarouselProps> = ({ banners }) => {
             onClick={() => {
               if (!isTransitioning && index !== currentBannerIndex) {
                 transition(index > currentBannerIndex ? 'next' : 'prev', index);
-                // Restart auto-scroll after manual navigation
                 startAutoScroll();
               }
             }}

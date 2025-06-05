@@ -97,6 +97,7 @@ interface BannerData {
   secondaryButtonText?: string;
   secondaryButtonLink?: string;
   tags?: string[];
+  htmlFile?: string;
 }
 
 const homeBanners: BannerData[] = [
@@ -113,14 +114,15 @@ const homeBanners: BannerData[] = [
   },
   {
     id: 'banner2',
-    type: 'standard',
+    type: 'html',
     title: 'Cloud Solutions with <span class="accent-text">Virtuous</span> Speed',
     subtitle: 'Where Virtuous excellence meets Swift delivery. Our cloud services empower your business with unmatched scalability, efficiency, and security.',
     primaryButtonText: 'Explore Cloud Solutions',
     primaryButtonLink: '/services/cloud-security',
     secondaryButtonText: 'Schedule a Consultation',
     secondaryButtonLink: '/contact',
-    tags: ['AWS Migration', 'Azure Solutions', 'Multi-Cloud Google', 'Cloud Security']
+    tags: ['AWS Migration', 'Azure Solutions', 'Multi-Cloud Google', 'Cloud Security'],
+    htmlFile: '/orange-banner.html'
   },
   {
     id: 'banner3',

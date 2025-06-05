@@ -450,10 +450,25 @@ const Banner: React.FC<BannerProps> = ({
           <div className="max-w-2xl text-white">
             <h1 
               className="text-5xl font-bold mb-6"
+              style={{ 
+                animation: 'slideInLeft 0.5s ease-out forwards'
+              }}
               dangerouslySetInnerHTML={{ __html: title }}
             />
-            <p className="text-xl mb-8 opacity-90">{description}</p>
-            <div className="flex flex-wrap gap-4">
+            <p 
+              className="text-xl mb-8 opacity-90" 
+              style={{ 
+                animation: 'slideInLeft 0.6s ease-out forwards'
+              }}
+            >
+              {description}
+            </p>
+            <div 
+              className="flex flex-wrap gap-4" 
+              style={{ 
+                animation: 'slideInLeft 0.7s ease-out forwards'
+              }}
+            >
               <a
                 href={primaryButtonLink}
                 className="bg-[#f05a28] text-white px-8 py-3 rounded-lg hover:bg-[#e04d1d] transition duration-300"
