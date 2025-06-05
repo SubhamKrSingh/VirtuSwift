@@ -93,7 +93,7 @@ const Navbar: React.FC = () => {
 
   const navLinkClass = "text-gray-700 hover:text-[#3a3dc4] px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200";
   const dropdownLinkClass = "block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#f05a28] transition-colors duration-200";
-  const dropdownButtonClass = "inline-flex items-center text-gray-700 hover:text-[#3a3dc4] px-4 py-2 text-sm font-medium transition-colors duration-200 border-b-2 border-transparent hover:border-[#3a3dc4]";
+  const dropdownButtonClass = "inline-flex items-center text-gray-700 hover:text-[#3a3dc4] px-4 py-2 text-sm font-medium transition-colors duration-200 border-b-2 border-transparent hover:border-[#3a3dc4] focus:outline-none";
 
   return (
     <>
@@ -128,14 +128,14 @@ const Navbar: React.FC = () => {
               
               {/* Services Dropdown */}
               <div className="inline-block text-left">
-                <button ref={servicesBtnRef} onMouseEnter={() => { setServicesOpen(true); setIndustriesOpen(false); setCaseStudiesOpen(false); }} className={`${dropdownButtonClass} ${servicesOpen ? 'border-[#3a3dc4] text-[#3a3dc4]' : ''}`}>
+                <button ref={servicesBtnRef} onMouseEnter={() => { setServicesOpen(true); setIndustriesOpen(false); setCaseStudiesOpen(false); }} className={`${dropdownButtonClass} ${servicesOpen ? 'border-b-8 border-[#3a3dc4] text-[#3a3dc4]' : ''}`}>
                   <span>Services</span>
                   <svg className={`ml-2 h-4 w-4 transition-transform duration-200 ${servicesOpen ? 'transform rotate-180' : ''}`} viewBox="0 0 20 20" fill="currentColor">
                     <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
                   </svg>
                 </button>
                 {servicesOpen && (
-                  <div ref={servicesDropdownRef} onMouseLeave={() => setServicesOpen(false)} className="absolute top-full left-1/2 transform -translate-x-1/2 w-[1200px] h-[400px] shadow-2xl bg-white ring-1 ring-black ring-opacity-5 flex z-50 animate-fade-in border-t-2 border-[#3a3dc4]">
+                  <div ref={servicesDropdownRef} onMouseLeave={() => setServicesOpen(false)} className={`absolute top-full left-1/2 transform -translate-x-1/2 w-[1200px] h-[400px] shadow-2xl bg-white ring-1 ring-black ring-opacity-5 flex z-50 animate-fade-in border-t-2 border-[#3a3dc4]`}>
                     {/* Sidebar */}
                     <div className="w-1/4 bg-[#E8E9F5] p-6 flex flex-col items-start border-r border-gray-200 min-h-[300px]">
                       <h3 className="text-xl font-bold text-[#121927] mb-2">Our Services</h3>
@@ -274,14 +274,14 @@ const Navbar: React.FC = () => {
 
               {/* Industries Dropdown */}
               <div className="inline-block text-left">
-                <button onMouseEnter={() => { setIndustriesOpen(true); setServicesOpen(false); setCaseStudiesOpen(false); }} className={`${dropdownButtonClass} ${industriesOpen ? 'border-[#3a3dc4] text-[#3a3dc4]' : ''}`}>
+                <button onMouseEnter={() => { setIndustriesOpen(true); setServicesOpen(false); setCaseStudiesOpen(false); }} className={`${dropdownButtonClass} ${industriesOpen ? 'border-b-8 border-[#3a3dc4] text-[#3a3dc4]' : ''}`}>
                   <span>Industries</span>
                   <svg className={`ml-2 h-4 w-4 transition-transform duration-200 ${industriesOpen ? 'transform rotate-180' : ''}`} viewBox="0 0 20 20" fill="currentColor">
                     <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
                   </svg>
                 </button>
                 {industriesOpen && (
-                  <div ref={industriesDropdownRef} onMouseLeave={() => setIndustriesOpen(false)} className="absolute top-full left-1/2 transform -translate-x-1/2 w-[1200px] h-[400px] shadow-2xl bg-white ring-1 ring-black ring-opacity-5 flex z-50 animate-fade-in border-t-2 border-[#3a3dc4]">
+                  <div ref={industriesDropdownRef} onMouseLeave={() => setIndustriesOpen(false)} className={`absolute top-full left-1/2 transform -translate-x-1/2 w-[1200px] h-[400px] shadow-2xl bg-white ring-1 ring-black ring-opacity-5 flex z-50 animate-fade-in border-t-2 border-[#3a3dc4]`}>
                     {/* Sidebar */}
                     <div className="w-1/4 bg-[#E8E9F5] p-6 flex flex-col items-start border-r border-gray-200 min-h-[300px]">
                       <h3 className="text-xl font-bold text-[#121927] mb-2">Industries</h3>
@@ -419,14 +419,14 @@ const Navbar: React.FC = () => {
 
               {/* Case Studies Dropdown */}
               <div className="inline-block text-left">
-                <button onMouseEnter={() => { setCaseStudiesOpen(true); setServicesOpen(false); setIndustriesOpen(false); }} className={`${dropdownButtonClass} ${caseStudiesOpen ? 'border-[#3a3dc4] text-[#3a3dc4]' : ''}`}>
+                <button onMouseEnter={() => { setCaseStudiesOpen(true); setServicesOpen(false); setIndustriesOpen(false); }} className={`${dropdownButtonClass} ${caseStudiesOpen ? 'border-b-8 border-[#3a3dc4] text-[#3a3dc4]' : ''}`}>
                   <span>Case Studies</span>
                   <svg className={`ml-2 h-4 w-4 transition-transform duration-200 ${caseStudiesOpen ? 'transform rotate-180' : ''}`} viewBox="0 0 20 20" fill="currentColor">
                     <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
                   </svg>
                 </button>
                 {caseStudiesOpen && (
-                  <div ref={caseStudiesDropdownRef} onMouseLeave={() => setCaseStudiesOpen(false)} className="absolute top-full left-1/2 transform -translate-x-1/2 w-[1200px] h-[400px] shadow-2xl bg-white ring-1 ring-black ring-opacity-5 flex z-50 animate-fade-in border-t-2 border-[#3a3dc4]">
+                  <div ref={caseStudiesDropdownRef} onMouseLeave={() => setCaseStudiesOpen(false)} className={`absolute top-full left-1/2 transform -translate-x-1/2 w-[1200px] h-[400px] shadow-2xl bg-white ring-1 ring-black ring-opacity-5 flex z-50 animate-fade-in border-t-2 border-[#3a3dc4]`}>
                     {/* Sidebar */}
                     <div className="w-1/4 bg-[#E8E9F5] p-6 flex flex-col items-start border-r border-gray-200 min-h-[300px]">
                       <h3 className="text-xl font-bold text-[#121927] mb-2">Case Studies</h3>
