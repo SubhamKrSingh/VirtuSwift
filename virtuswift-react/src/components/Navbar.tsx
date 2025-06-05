@@ -159,7 +159,7 @@ const Navbar: React.FC = () => {
                             <FontAwesomeIcon icon={faCloud} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
                           </span>
                           <span>
-                            <span className="font-semibold text-[#2563eb] group-hover:text-[#f05a28] group-hover:underline">AWS Migration</span>
+                            <span className="font-semibold text-[#2563eb] underline group-hover:text-[#f05a28] group-hover:underline">AWS Migration</span>
                             <div className="text-xs text-gray-500">Seamless transition to AWS cloud</div>
                           </span>
                         </Link>
@@ -171,7 +171,7 @@ const Navbar: React.FC = () => {
                             <FontAwesomeIcon icon={faCloud} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
                           </span>
                           <span>
-                            <span className="font-semibold text-[#2563eb] group-hover:text-[#f05a28] group-hover:underline">Azure Solutions</span>
+                            <span className="font-semibold text-[#2563eb] underline group-hover:text-[#f05a28] group-hover:underline">Azure Solutions</span>
                             <div className="text-xs text-gray-500">Empower your business with Azure</div>
                           </span>
                         </Link>
@@ -183,7 +183,7 @@ const Navbar: React.FC = () => {
                             <FontAwesomeIcon icon={faGoogle} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
                           </span>
                           <span>
-                            <span className="font-semibold text-[#2563eb] group-hover:text-[#f05a28] group-hover:underline">Multi-Cloud Google</span>
+                            <span className="font-semibold text-[#2563eb] underline group-hover:text-[#f05a28] group-hover:underline">Multi-Cloud Google</span>
                             <div className="text-xs text-gray-500">Integrate Google Cloud with ease</div>
                           </span>
                         </Link>
@@ -195,7 +195,7 @@ const Navbar: React.FC = () => {
                             <FontAwesomeIcon icon={faShieldAlt} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
                           </span>
                           <span>
-                            <span className="font-semibold text-[#2563eb] group-hover:text-[#f05a28] group-hover:underline">Cloud Security</span>
+                            <span className="font-semibold text-[#2563eb] underline group-hover:text-[#f05a28] group-hover:underline">Cloud Security</span>
                             <div className="text-xs text-gray-500">Protect your cloud infrastructure</div>
                           </span>
                         </Link>
@@ -212,7 +212,7 @@ const Navbar: React.FC = () => {
                             <FontAwesomeIcon icon={faBriefcase} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
                           </span>
                           <span>
-                            <span className="font-semibold text-[#2563eb] group-hover:text-[#f05a28] group-hover:underline">SAP Services</span>
+                            <span className="font-semibold text-[#2563eb] underline group-hover:text-[#f05a28] group-hover:underline">SAP Services</span>
                             <div className="text-xs text-gray-500">Expert SAP implementation & support</div>
                           </span>
                         </Link>
@@ -224,7 +224,7 @@ const Navbar: React.FC = () => {
                             <FontAwesomeIcon icon={faUserShield} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
                           </span>
                           <span>
-                            <span className="font-semibold text-[#2563eb] group-hover:text-[#f05a28] group-hover:underline">Salesforce</span>
+                            <span className="font-semibold text-[#2563eb] underline group-hover:text-[#f05a28] group-hover:underline">Salesforce</span>
                             <div className="text-xs text-gray-500">CRM solutions for business growth</div>
                           </span>
                         </Link>
@@ -236,7 +236,7 @@ const Navbar: React.FC = () => {
                             <FontAwesomeIcon icon={faMicrosoft} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
                           </span>
                           <span>
-                            <span className="font-semibold text-[#2563eb] group-hover:text-[#f05a28] group-hover:underline">Microsoft Dynamics</span>
+                            <span className="font-semibold text-[#2563eb] underline group-hover:text-[#f05a28] group-hover:underline">Microsoft Dynamics</span>
                             <div className="text-xs text-gray-500">Business apps for productivity</div>
                           </span>
                         </Link>
@@ -248,7 +248,7 @@ const Navbar: React.FC = () => {
                             <FontAwesomeIcon icon={faDatabase} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
                           </span>
                           <span>
-                            <span className="font-semibold text-[#2563eb] group-hover:text-[#f05a28] group-hover:underline">Oracle Solutions</span>
+                            <span className="font-semibold text-[#2563eb] underline group-hover:text-[#f05a28] group-hover:underline">Oracle Solutions</span>
                             <div className="text-xs text-gray-500">Robust Oracle enterprise solutions</div>
                           </span>
                         </Link>
@@ -304,7 +304,7 @@ const Navbar: React.FC = () => {
                             <FontAwesomeIcon icon={faHeartbeat} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
                           </span>
                           <span>
-                            <span className="font-semibold text-blue-900 group-hover:underline">Healthcare</span>
+                            <span className="font-semibold text-blue-900 underline group-hover:underline">Healthcare</span>
                             <div className="text-xs text-gray-500">Innovative IT for patient care</div>
                           </span>
                         </Link>
@@ -316,7 +316,7 @@ const Navbar: React.FC = () => {
                             <FontAwesomeIcon icon={faLandmark} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
                           </span>
                           <span>
-                            <span className="font-semibold text-blue-900 group-hover:underline">Financial</span>
+                            <span className="font-semibold text-blue-900 underline group-hover:underline">Financial</span>
                             <div className="text-xs text-gray-500">Secure, compliant solutions</div>
                           </span>
                         </Link>
@@ -328,7 +328,7 @@ const Navbar: React.FC = () => {
                             <FontAwesomeIcon icon={faStore} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
                           </span>
                           <span>
-                            <span className="font-semibold text-blue-900 group-hover:underline">Retail</span>
+                            <span className="font-semibold text-blue-900 underline group-hover:underline">Retail</span>
                             <div className="text-xs text-gray-500">Digital transformation for retail</div>
                           </span>
                         </Link>
@@ -340,7 +340,7 @@ const Navbar: React.FC = () => {
                             <FontAwesomeIcon icon={faIndustry} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
                           </span>
                           <span>
-                            <span className="font-semibold text-blue-900 group-hover:underline">Manufacturing</span>
+                            <span className="font-semibold text-blue-900 underline group-hover:underline">Manufacturing</span>
                             <div className="text-xs text-gray-500">Smart manufacturing solutions</div>
                           </span>
                         </Link>
@@ -357,7 +357,7 @@ const Navbar: React.FC = () => {
                             <FontAwesomeIcon icon={faBolt} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
                           </span>
                           <span>
-                            <span className="font-semibold text-blue-900 group-hover:underline">Utilities</span>
+                            <span className="font-semibold text-blue-900 underline group-hover:underline">Utilities</span>
                             <div className="text-xs text-gray-500">Powering digital utilities</div>
                           </span>
                         </Link>
@@ -369,7 +369,7 @@ const Navbar: React.FC = () => {
                             <FontAwesomeIcon icon={faPills} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
                           </span>
                           <span>
-                            <span className="font-semibold text-blue-900 group-hover:underline">Pharmaceuticals</span>
+                            <span className="font-semibold text-blue-900 underline group-hover:underline">Pharmaceuticals</span>
                             <div className="text-xs text-gray-500">IT for pharma innovation</div>
                           </span>
                         </Link>
@@ -381,7 +381,7 @@ const Navbar: React.FC = () => {
                             <FontAwesomeIcon icon={faUniversity} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
                           </span>
                           <span>
-                            <span className="font-semibold text-blue-900 group-hover:underline">Public Sector</span>
+                            <span className="font-semibold text-blue-900 underline group-hover:underline">Public Sector</span>
                             <div className="text-xs text-gray-500">Modernizing government IT</div>
                           </span>
                         </Link>
@@ -393,7 +393,7 @@ const Navbar: React.FC = () => {
                             <FontAwesomeIcon icon={faTruck} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
                           </span>
                           <span>
-                            <span className="font-semibold text-blue-900 group-hover:underline">Logistics</span>
+                            <span className="font-semibold text-blue-900 underline group-hover:underline">Logistics</span>
                             <div className="text-xs text-gray-500">Efficient supply chain IT</div>
                           </span>
                         </Link>
@@ -453,7 +453,7 @@ const Navbar: React.FC = () => {
                               <FontAwesomeIcon icon={cs.icon} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
                             </span>
                             <span>
-                              <span className="font-semibold text-blue-900 group-hover:underline">{cs.name}</span>
+                              <span className="font-semibold text-blue-900 underline group-hover:underline">{cs.name}</span>
                               <div className="text-xs text-gray-500">{`Explore our success story in the ${cs.name} industry.`}</div>
                             </span>
                           </Link>
@@ -475,7 +475,7 @@ const Navbar: React.FC = () => {
                               <FontAwesomeIcon icon={cs.icon} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
                             </span>
                             <span>
-                              <span className="font-semibold text-blue-900 group-hover:underline">{cs.name}</span>
+                              <span className="font-semibold text-blue-900 underline group-hover:underline">{cs.name}</span>
                               <div className="text-xs text-gray-500">{`Discover how we helped clients in the ${cs.name} sector.`}</div>
                             </span>
                           </Link>

@@ -7,7 +7,7 @@ const WorldMap: React.FC = () => {
         src="./map.png" 
         alt="World Map" 
         className="object-contain"
-        style={{ width: '100vw', maxWidth: '100vw', height: '900px', filter: 'brightness(1) contrast(1)' }}
+        style={{ width: '98%', maxWidth: '1450px', height: '700px', filter: 'brightness(1) contrast(1)' }}
       />
     </div>
   );
