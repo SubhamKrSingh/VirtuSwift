@@ -261,3 +261,43 @@
   background-color: #3a3dc4;
   z-index: 60;
 }
+
+.home-hover {
+  position: relative;
+}
+
+.home-hover::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background-color: #3a3dc4;
+  z-index: 60;
+  display: none;
+}
+
+.home-hover:hover::after {
+  display: block;
+}
+
+.about-hover {
+  position: relative;
+}
+
+.about-hover::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background-color: #3a3dc4;
+  z-index: 60;
+  display: none;
+}
+
+.about-hover:hover::after {
+  display: block;
+}

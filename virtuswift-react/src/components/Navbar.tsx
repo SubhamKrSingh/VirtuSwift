@@ -123,8 +123,8 @@ const Navbar: React.FC = () => {
 
             {/* Desktop Menu */}
             <div className="hidden md:flex md:items-center md:space-x-4">
-              <Link to="/" className={navLinkClass}>Home</Link>
-              <Link to="/about" className={navLinkClass}>About Us</Link>
+              <Link to="/" className={`${navLinkClass} home-hover`}>Home</Link>
+              <Link to="/about" className={`${navLinkClass} about-hover`}>About Us</Link>
               
               {/* Services Dropdown */}
               <div className="inline-block text-left">
