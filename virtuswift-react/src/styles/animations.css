@@ -215,7 +215,7 @@
 
 .case-study-card:hover .industry-icon {
   transform: scale(1.2);
-}
+} 
 
 .industries-active {
   position: relative;

@@ -18,6 +18,9 @@ import SupplyChain from './pages/SupplyChain';
 import SapServices from './pages/SapServices';
 import Salesforce from './pages/Salesforce';
 import Pharmaceutical from './pages/Pharmaceutical';
+import Utilities from './pages/Utilities';
+import PublicSector from './pages/PublicSector';
+import Logistics from './pages/Logistics';
 import OracleSolutions from './pages/OracleSolutions';
 import MultiGoogleCloud from './pages/MultiGoogleCloud';
 import MicrosoftDynamics from './pages/MicrosoftDynamics';
@@ -51,6 +54,10 @@ const App: React.FC = () => {
           <Route path="/industries/financial" element={<Financial />} />
           <Route path="/industries/retail" element={<Retail />} />
           <Route path="/manufacturing" element={<Manufacturing />} />
+          <Route path="/industries/utilities" element={<Utilities />} />
+          <Route path="/industries/pharmaceuticals" element={<Pharmaceutical />} />
+          <Route path="/industries/public-sector" element={<PublicSector />} />
+          <Route path="/industries/logistics" element={<Logistics />} />
           <Route path="/services/supply-chain" element={<SupplyChain />} />
           <Route path="/services/sap" element={<SapServices />} />
           <Route path="/services/salesforce" element={<Salesforce />} />

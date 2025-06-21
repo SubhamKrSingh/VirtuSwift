@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCogs, faSyncAlt, faGraduationCap, faCloud, faShieldAlt, faHandshake, faStore, faShoppingCart, faTags, faTruckFast } from '@fortawesome/free-solid-svg-icons';
+import { faCogs, faSyncAlt, faGraduationCap, faCloud, faShieldAlt, faHandshake, faShoppingCart, faStore, faCreditCard } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
 const sliderImages = [
   {
-    url: 'https://media.licdn.com/dms/image/v2/D5612AQHuOR7hsNnU7w/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1687089476754?e=2147483647&v=beta&t=C6ojpuKequkR-qY6X8He4k9pSfw4WqhvMpnA4EXgKAY',
-    title: 'Transform Retail with VirtuSwift E-commerce Solutions',
-    desc: 'Enhance customer experiences and optimize operations with innovative IT.'
+    url: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8',
+    title: 'Revolutionizing Retail with VirtuSwift IT Solutions',
+    desc: 'Transform customer experiences and streamline operations with innovative technology.'
   },
   {
-    url: 'https://images.unsplash.com/photo-1506765515384-028b60a970df',
+    url: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8',
     title: '',
     desc: ''
   }
@@ -25,8 +25,10 @@ const tabs = [
 const Retail: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [activeTab, setActiveTab] = useState('Overview');
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    setIsVisible(true);
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % sliderImages.length);
     }, 5000);
@@ -36,7 +38,7 @@ const Retail: React.FC = () => {
   return (
     <div className="bg-gray-100 min-h-screen flex flex-col">
       {/* Slider Section */}
-      <div className="relative w-full h-[400px] bg-gray-100 overflow-hidden">
+      <div className={`relative w-full h-[400px] bg-gray-100 overflow-hidden transition-all duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
         <div
           className="slider flex transition-transform duration-500 ease-in-out"
           style={{ transform: `translateX(-${currentSlide * 100}%)` }}
@@ -57,11 +59,11 @@ const Retail: React.FC = () => {
           ))}
         </div>
         <button
-          className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white bg-opacity-50 p-2 rounded-full hover:bg-opacity-75"
+          className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white bg-opacity-50 p-2 rounded-full hover:bg-opacity-75 transition-all duration-300 hover:scale-110"
           onClick={() => setCurrentSlide((prev) => (prev - 1 + sliderImages.length) % sliderImages.length)}
         >❮</button>
         <button
-          className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white bg-opacity-50 p-2 rounded-full hover:bg-opacity-75"
+          className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white bg-opacity-50 p-2 rounded-full hover:bg-opacity-75 transition-all duration-300 hover:scale-110"
           onClick={() => setCurrentSlide((prev) => (prev + 1) % sliderImages.length)}
         >❯</button>
       </div>
@@ -73,7 +75,7 @@ const Retail: React.FC = () => {
             {tabs.map(tab => (
               <button
                 key={tab}
-                className={`tab-link px-4 py-2 text-sm font-medium border-b-2 transition-colors ${activeTab === tab ? 'text-[#00AEEF] border-[#00AEEF]' : 'border-transparent text-white hover:text-[#00AEEF] hover:border-[#00AEEF]'}`}
+                className={`tab-link px-4 py-2 text-sm font-medium border-b-2 transition-all duration-300 hover:scale-105 ${activeTab === tab ? 'text-[#3a3dc4] border-[#3a3dc4]' : 'border-transparent text-white hover:text-[#3a3dc4] hover:border-[#3a3dc4]'}`}
                 onClick={() => setActiveTab(tab)}
               >
                 {tab}
@@ -87,125 +89,148 @@ const Retail: React.FC = () => {
       <div className="container mx-auto px-4 py-8 flex-1">
         {/* Overview Tab */}
         {activeTab === 'Overview' && (
-          <div className="flex flex-col md:flex-row gap-8 mb-12 animate-fade-in">
+          <div className={`flex flex-col md:flex-row gap-8 mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <div className="md:w-1/2">
-              <h2 className="text-3xl font-bold mb-4">Empowering Retail with VirtuSwift IT Innovation</h2>
+              <h2 className="text-3xl font-bold mb-4">Transforming Retail with VirtuSwift IT Expertise</h2>
               <p className="text-gray-600 mb-6">
-                At VirtuSwift, we deliver tailored IT solutions to elevate retail and e-commerce businesses. Our expertise in digital platforms and customer engagement ensures your brand thrives in a competitive market.
+                At VirtuSwift, we deliver tailored IT solutions to revolutionize retail operations. Our expertise in e-commerce platforms, point-of-sale systems, and customer analytics empowers retail businesses to enhance customer experiences and drive sales growth.
               </p>
-              <Link to="/contact?industry=retail" className="inline-block bg-[#00AEEF] text-white px-6 py-2 rounded-lg hover:bg-[#008BCF] transition-colors">Explore Now</Link>
+              <Link to="/contact?industry=retail" className="inline-block bg-[#3a3dc4] text-white px-6 py-2 rounded-lg hover:bg-[#008BCF] transition-all duration-300 hover:scale-105 hover:shadow-lg">Explore Now</Link>
             </div>
             <div className="md:w-1/2">
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiuPTeAWRNYYrzopgXP5iLfY5oZ1invv-VqQ&s" alt="Retail Technology" className="w-full h-64 object-cover rounded-lg" />
+              <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8" alt="Retail IT Technology" className="w-full h-64 object-cover rounded-lg transition-all duration-500 hover:shadow-xl hover:scale-105" />
             </div>
           </div>
         )}
         {/* Capabilities Tab */}
         {activeTab === 'Capabilities' && (
-          <div className="mb-12 animate-fade-in">
-            <h3 className="text-xl font-semibold text-[#00AEEF] mb-2">CAPABILITIES</h3>
+          <div className={`mb-12 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <h3 className="text-xl font-semibold text-[#3a3dc4] mb-2">CAPABILITIES</h3>
             <h2 className="text-3xl font-bold mb-4">Revolutionize Retail with VirtuSwift</h2>
             <div className="space-y-8">
               <div className="flex flex-col md:flex-row gap-6">
-                <div className="md:w-1/3">
-                  <h4 className="text-lg font-semibold text-[#00AEEF]">CustomerSync Portal</h4>
-                  <p className="text-gray-600">Real-time insights into customer behavior and preferences for personalized experiences.</p>
-                </div>
-                <div className="md:w-1/3">
-                  <h4 className="text-lg font-semibold text-[#00AEEF]">Inventory Insights Dashboard</h4>
-                  <p className="text-gray-600">Monitor stock levels and supply chain performance with advanced analytics.</p>
-                </div>
-                <div className="md:w-1/3">
-                  <h4 className="text-lg font-semibold text-[#00AEEF]">E-commerce Integration</h4>
-                  <p className="text-gray-600">Seamlessly connect online stores with payment gateways and CRM systems.</p>
-                </div>
+                {[
+                  {
+                    title: 'E-commerce Platform',
+                    description: 'Scalable online shopping solutions with seamless payment processing and inventory management.'
+                  },
+                  {
+                    title: 'POS System Integration',
+                    description: 'Unified point-of-sale systems connecting online and offline retail operations.'
+                  },
+                  {
+                    title: 'Customer Analytics Dashboard',
+                    description: 'Real-time insights into customer behavior, preferences, and purchasing patterns.'
+                  }
+                ].map((capability, index) => (
+                  <div 
+                    key={capability.title}
+                    className={`md:w-1/3 bg-white p-6 rounded-lg shadow-md transition-all duration-500 hover:shadow-xl hover:scale-105 hover:bg-gray-50 cursor-pointer ${isVisible ? 'animate-fade-in-up' : ''}`}
+                    style={{ 
+                      animationDelay: `${index * 200}ms`,
+                      animationDuration: '0.6s',
+                      animationFillMode: 'forwards'
+                    }}
+                  >
+                    <h4 className="text-lg font-semibold text-[#3a3dc4]">{capability.title}</h4>
+                    <p className="text-gray-600">{capability.description}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         )}
         {/* Benefits Tab */}
         {activeTab === 'Benefits' && (
-          <div className="animate-fade-in">
-            <h2 className="text-3xl font-bold mb-8">A Seamless Retail Experience</h2>
+          <div className={`transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <h2 className="text-3xl font-bold mb-8">A Future-Ready Retail Ecosystem</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="bg-gray-50 p-6 rounded-lg shadow-sm flex flex-col items-center">
-                <FontAwesomeIcon icon={faCogs} className="text-3xl text-[#00AEEF] mb-4" />
-                <h4 className="font-bold text-lg mb-2">Certified Experts</h4>
-                <p className="text-gray-600">Our team is skilled in leading e-commerce platforms and technologies.</p>
-              </div>
-              <div className="bg-gray-50 p-6 rounded-lg shadow-sm flex flex-col items-center">
-                <FontAwesomeIcon icon={faSyncAlt} className="text-3xl text-[#00AEEF] mb-4" />
-                <h4 className="font-bold text-lg mb-2">Proven Results</h4>
-                <p className="text-gray-600">We've empowered retail brands with successful digital transformations.</p>
-              </div>
-              <div className="bg-gray-50 p-6 rounded-lg shadow-sm flex flex-col items-center">
-                <FontAwesomeIcon icon={faGraduationCap} className="text-3xl text-[#00AEEF] mb-4" />
-                <h4 className="font-bold text-lg mb-2">Continuous Learning</h4>
-                <p className="text-gray-600">Our experts stay ahead of retail tech trends and innovations.</p>
-              </div>
-              <div className="bg-gray-50 p-6 rounded-lg shadow-sm flex flex-col items-center">
-                <FontAwesomeIcon icon={faCloud} className="text-3xl text-[#00AEEF] mb-4" />
-                <h4 className="font-bold text-lg mb-2">Scalable Platforms</h4>
-                <p className="text-gray-600">Build e-commerce solutions that grow with your business.</p>
-              </div>
-              <div className="bg-gray-50 p-6 rounded-lg shadow-sm flex flex-col items-center">
-                <FontAwesomeIcon icon={faShieldAlt} className="text-3xl text-[#00AEEF] mb-4" />
-                <h4 className="font-bold text-lg mb-2">Cost Optimization</h4>
-                <p className="text-gray-600">Maximize ROI with efficient IT solutions.</p>
-              </div>
-              <div className="bg-gray-50 p-6 rounded-lg shadow-sm flex flex-col items-center">
-                <FontAwesomeIcon icon={faHandshake} className="text-3xl text-[#00AEEF] mb-4" />
-                <h4 className="font-bold text-lg mb-2">Trusted Partnerships</h4>
-                <p className="text-gray-600">Collaborate with top tech providers for cutting-edge solutions.</p>
-              </div>
+              {[
+                { icon: faCogs, title: "Certified Experts", text: "Our team is trained in advanced retail IT systems and e-commerce technology." },
+                { icon: faSyncAlt, title: "Proven Results", text: "We've enhanced retail operations for global brands and businesses." },
+                { icon: faGraduationCap, title: "Continuous Innovation", text: "Our experts stay ahead of retail IT trends and customer expectations." },
+                { icon: faCloud, title: "Scalable Solutions", text: "Build retail IT systems that grow with your business and customer base." },
+                { icon: faShieldAlt, title: "Data Security", text: "Ensure PCI-compliant solutions for secure payment processing and data protection." },
+                { icon: faHandshake, title: "Strategic Partnerships", text: "Collaborate with top tech providers for innovative retail IT solutions." }
+              ].map((benefit, index) => (
+                <div 
+                  key={benefit.title}
+                  className={`bg-gray-50 p-6 rounded-lg shadow-sm flex flex-col items-center transition-all duration-500 hover:shadow-xl hover:scale-105 hover:bg-white cursor-pointer ${isVisible ? 'animate-fade-in-up' : ''}`}
+                  style={{ 
+                    animationDelay: `${index * 100}ms`,
+                    animationDuration: '0.6s',
+                    animationFillMode: 'forwards'
+                  }}
+                >
+                  <FontAwesomeIcon icon={benefit.icon} className="text-3xl text-[#3a3dc4] mb-4 transition-transform duration-300 hover:scale-110" />
+                  <h4 className="font-bold text-lg mb-2">{benefit.title}</h4>
+                  <p className="text-gray-600 text-center">{benefit.text}</p>
+                </div>
+              ))}
             </div>
             {/* Additional Sections */}
             <div className="space-y-12 mt-12">
-              <div className="flex flex-col md:flex-row gap-8">
+              <div className={`flex flex-col md:flex-row gap-8 transition-all duration-1000 delay-600 hover:shadow-2xl hover:scale-105 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
                 <div className="md:w-1/2">
-                  <h3 className="text-xl font-semibold mb-4">Proactive Support for Retail Success</h3>
+                  <h3 className="text-xl font-semibold mb-4">Proactive Support for Retail Excellence</h3>
                   <p className="text-gray-600 mb-4">
-                    Our comprehensive support system resolves 95% of e-commerce challenges swiftly, backed by continuous training to address emerging retail trends.
+                    Our robust support system resolves 95% of retail IT challenges swiftly, backed by continuous training to address evolving customer needs and market trends.
                   </p>
-                  <Link to="/contact?industry=retail" className="inline-block bg-[#00AEEF] text-white px-6 py-2 rounded-lg hover:bg-[#008BCF] transition-colors">Get Support</Link>
+                  <Link to="/contact?industry=retail" className="inline-block bg-[#3a3dc4] text-white px-6 py-2 rounded-lg hover:bg-[#008BCF] transition-all duration-300 hover:scale-105 hover:shadow-lg">Get Support</Link>
                 </div>
                 <div className="md:w-1/2">
-                  <img src="https://images.unsplash.com/photo-1506765515384-028b60a970df" alt="Retail Support" className="w-full h-64 object-cover rounded-lg" />
+                  <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8" alt="Retail IT Support" className="w-full h-64 object-cover rounded-lg transition-all duration-500 hover:shadow-xl hover:scale-105" />
                 </div>
               </div>
-              <div className="flex flex-col md:flex-row gap-8">
+              <div className={`flex flex-col md:flex-row gap-8 transition-all duration-1000 delay-800 hover:shadow-2xl hover:scale-105 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
                 <div className="md:w-1/2">
-                  <h3 className="text-xl font-semibold mb-4">Strengthened by Industry Partnerships</h3>
+                  <h3 className="text-xl font-semibold mb-4">Empowered by Industry Partnerships</h3>
                   <p className="text-gray-600 mb-4">
-                    Since 2010, VirtuSwift has partnered with leading tech providers to deliver innovative e-commerce and retail solutions, driving business growth.
+                    Since 2010, VirtuSwift has partnered with leading tech providers to deliver innovative retail IT solutions, improving customer experiences and operational efficiency.
                   </p>
-                  <Link to="/contact?industry=retail" className="inline-block bg-[#00AEEF] text-white px-6 py-2 rounded-lg hover:bg-[#008BCF] transition-colors">Collaborate with Us</Link>
+                  <Link to="/contact?industry=retail" className="inline-block bg-[#3a3dc4] text-white px-6 py-2 rounded-lg hover:bg-[#008BCF] transition-all duration-300 hover:scale-105 hover:shadow-lg">Collaborate with Us</Link>
                 </div>
                 <div className="md:w-1/2">
-                  <img src="https://sidgs.com/wp-content/uploads/2023/01/1500-x-914-Understanding-the-Impact-of-Digital-Transformation-in-Retail-and-Commerce.jpg" alt="Industry Partnerships" className="w-full h-64 object-cover rounded-lg" />
+                  <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8" alt="Industry Partnerships" className="w-full h-64 object-cover rounded-lg transition-all duration-500 hover:shadow-xl hover:scale-105" />
                 </div>
               </div>
             </div>
             {/* Related Resources */}
-            <div className="bg-gray-50 py-12 mt-12">
+            <div className={`bg-gray-50 py-12 mt-12 transition-all duration-1000 delay-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               <div className="container mx-auto px-4">
                 <h2 className="text-3xl font-bold mb-8">Related Resources</h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <div className="bg-white p-4 rounded-lg shadow-sm">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT38dIRAugXemCfkFq5aOQO_faZxKlWE_dXDA&s" alt="Resource 1" className="w-full h-40 object-cover rounded-lg mb-4" />
-                    <h4 className="text-lg font-semibold text-[#00AEEF] mb-2">Retail Insights</h4>
-                    <p className="text-gray-600">Learn how VirtuSwift enhances e-commerce with innovative IT solutions.</p>
-                  </div>
-                  <div className="bg-white p-4 rounded-lg shadow-sm">
-                    <img src="https://images.unsplash.com/photo-1506765515384-028b60a970df" alt="Resource 2" className="w-full h-40 object-cover rounded-lg mb-4" />
-                    <h4 className="text-lg font-semibold text-[#00AEEF] mb-2">Webinar Replay</h4>
-                    <p className="text-gray-600">Discover strategies for boosting online sales and customer loyalty.</p>
-                  </div>
-                  <div className="bg-white p-4 rounded-lg shadow-sm">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfF52MfmW1YZljilk5n6fj2mMYEpjh9f0Ibg&s" alt="Resource 3" className="w-full h-40 object-cover rounded-lg mb-4" />
-                    <h4 className="text-lg font-semibold text-[#00AEEF] mb-2">Whitepaper</h4>
-                    <p className="text-gray-600">Why omnichannel retail is essential for modern businesses.</p>
-                  </div>
+                  {[
+                    {
+                      image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8",
+                      title: "Retail IT Insights",
+                      description: "Learn how VirtuSwift enhances retail with innovative IT solutions."
+                    },
+                    {
+                      image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8",
+                      title: "E-commerce Trends",
+                      description: "Stay updated with the latest retail technology trends."
+                    },
+                    {
+                      image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8",
+                      title: "Customer Experience",
+                      description: "Discover how technology improves retail customer experiences."
+                    }
+                  ].map((resource, index) => (
+                    <div 
+                      key={resource.title}
+                      className={`bg-white p-4 rounded-lg shadow-sm transition-all duration-500 hover:shadow-xl hover:scale-105 cursor-pointer ${isVisible ? 'animate-fade-in-up' : ''}`}
+                      style={{ 
+                        animationDelay: `${index * 200}ms`,
+                        animationDuration: '0.6s',
+                        animationFillMode: 'forwards'
+                      }}
+                    >
+                      <img src={resource.image} alt={resource.title} className="w-full h-40 object-cover rounded-lg mb-4 transition-all duration-500 hover:scale-105" />
+                      <h4 className="text-lg font-semibold text-[#3a3dc4] mb-2">{resource.title}</h4>
+                      <p className="text-gray-600">{resource.description}</p>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>

@@ -113,7 +113,21 @@ const Navbar: React.FC = () => {
         </div>
       </div>
       <nav className="bg-white shadow-lg sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div 
+          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative"
+          onMouseEnter={(e) => {
+            // Only close dropdowns if we're not hovering over a dropdown button or dropdown content
+            const target = e.target as HTMLElement;
+            const isDropdownButton = target.closest('button[onMouseEnter]');
+            const isDropdownContent = target.closest('[ref]');
+            
+            if (!isDropdownButton && !isDropdownContent) {
+              setServicesOpen(false);
+              setIndustriesOpen(false);
+              setCaseStudiesOpen(false);
+            }
+          }}
+        >
           <div className="flex justify-between h-16">
             <div className="flex items-center">
               <Link to="/" className="flex-shrink-0 flex items-center mr-6" style={{ marginLeft: '-32px' }}>
@@ -123,8 +137,28 @@ const Navbar: React.FC = () => {
 
             {/* Desktop Menu */}
             <div className="hidden md:flex md:items-center md:space-x-4">
-              <Link to="/" className={`${navLinkClass} home-hover`}>Home</Link>
-              <Link to="/about" className={`${navLinkClass} about-hover`}>About Us</Link>
+              <Link 
+                to="/" 
+                className={`${navLinkClass} home-hover`}
+                onMouseEnter={() => {
+                  setServicesOpen(false);
+                  setIndustriesOpen(false);
+                  setCaseStudiesOpen(false);
+                }}
+              >
+                Home
+              </Link>
+              <Link 
+                to="/about" 
+                className={`${navLinkClass} about-hover`}
+                onMouseEnter={() => {
+                  setServicesOpen(false);
+                  setIndustriesOpen(false);
+                  setCaseStudiesOpen(false);
+                }}
+              >
+                About Us
+              </Link>
               
               {/* Services Dropdown */}
               <div className="inline-block text-left">

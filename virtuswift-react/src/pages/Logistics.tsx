@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCogs, faSyncAlt, faGraduationCap, faCloud, faShieldAlt, faHandshake, faDatabase, faServer, faGlobe } from '@fortawesome/free-solid-svg-icons';
+import { faCogs, faSyncAlt, faGraduationCap, faCloud, faShieldAlt, faHandshake, faTruck, faRoute, faWarehouse } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 const sliderImages = [
   {
-    url: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71',
-    title: 'Revolutionizing ERP Solutions with VirtuSwift Microsoft Dynamics Expertise',
-    desc: 'Transform your business operations with innovative Microsoft Dynamics technology.'
+    url: 'https://images.unsplash.com/photo-1566576912321-d58ddd7a6088',
+    title: 'Streamlining Logistics with VirtuSwift IT Solutions',
+    desc: 'Optimize supply chains and enhance delivery operations with innovative technology.'
   },
   {
-    url: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71',
+    url: 'https://images.unsplash.com/photo-1566576912321-d58ddd7a6088',
     title: '',
     desc: ''
   }
@@ -22,7 +22,7 @@ const tabs = [
   'Benefits'
 ];
 
-const MicrosoftDynamics: React.FC = () => {
+const Logistics: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [activeTab, setActiveTab] = useState('Overview');
   const [isVisible, setIsVisible] = useState(false);
@@ -91,14 +91,14 @@ const MicrosoftDynamics: React.FC = () => {
         {activeTab === 'Overview' && (
           <div className={`flex flex-col md:flex-row gap-8 mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <div className="md:w-1/2">
-              <h2 className="text-3xl font-bold mb-4">Transforming Business Operations with VirtuSwift Microsoft Dynamics Expertise</h2>
+              <h2 className="text-3xl font-bold mb-4">Transforming Logistics with VirtuSwift IT Expertise</h2>
               <p className="text-gray-600 mb-6">
-                At VirtuSwift, we deliver tailored Microsoft Dynamics solutions to revolutionize enterprise resource planning. Our expertise in Dynamics 365 implementation, customization, and integration empowers organizations to enhance operational efficiency and business intelligence.
+                At VirtuSwift, we deliver tailored IT solutions to revolutionize logistics operations. Our expertise in supply chain management, route optimization, and warehouse automation empowers logistics companies to enhance efficiency and customer satisfaction.
               </p>
-              <Link to="/contact?service=dynamics" className="inline-block bg-[#3a3dc4] text-white px-6 py-2 rounded-lg hover:bg-[#008BCF] transition-all duration-300 hover:scale-105 hover:shadow-lg">Explore Now</Link>
+              <Link to="/contact?industry=logistics" className="inline-block bg-[#3a3dc4] text-white px-6 py-2 rounded-lg hover:bg-[#008BCF] transition-all duration-300 hover:scale-105 hover:shadow-lg">Explore Now</Link>
             </div>
             <div className="md:w-1/2">
-              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71" alt="Microsoft Dynamics IT Technology" className="w-full h-64 object-cover rounded-lg transition-all duration-500 hover:shadow-xl hover:scale-105" />
+              <img src="https://images.unsplash.com/photo-1566576912321-d58ddd7a6088" alt="Logistics IT Technology" className="w-full h-64 object-cover rounded-lg transition-all duration-500 hover:shadow-xl hover:scale-105" />
             </div>
           </div>
         )}
@@ -106,21 +106,21 @@ const MicrosoftDynamics: React.FC = () => {
         {activeTab === 'Capabilities' && (
           <div className={`mb-12 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <h3 className="text-xl font-semibold text-[#3a3dc4] mb-2">CAPABILITIES</h3>
-            <h2 className="text-3xl font-bold mb-4">Revolutionize ERP with VirtuSwift</h2>
+            <h2 className="text-3xl font-bold mb-4">Revolutionize Logistics with VirtuSwift</h2>
             <div className="space-y-8">
               <div className="flex flex-col md:flex-row gap-6">
                 {[
                   {
-                    title: 'Dynamics 365 Implementation',
-                    description: 'End-to-end Microsoft Dynamics 365 implementation with best practices and industry expertise.'
+                    title: 'Supply Chain Platform',
+                    description: 'End-to-end visibility and control of logistics operations with real-time tracking.'
                   },
                   {
-                    title: 'Dynamics Customization',
-                    description: 'Tailored Dynamics solutions to meet specific business requirements and workflows.'
+                    title: 'Route Optimization Dashboard',
+                    description: 'AI-powered route planning and delivery optimization for maximum efficiency.'
                   },
                   {
-                    title: 'Dynamics Integration',
-                    description: 'Seamless integration of Dynamics with existing business systems and applications.'
+                    title: 'Warehouse Management System',
+                    description: 'Automated inventory management and warehouse operations optimization.'
                   }
                 ].map((capability, index) => (
                   <div 
@@ -143,15 +143,15 @@ const MicrosoftDynamics: React.FC = () => {
         {/* Benefits Tab */}
         {activeTab === 'Benefits' && (
           <div className={`transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <h2 className="text-3xl font-bold mb-8">A Future-Ready ERP Ecosystem</h2>
+            <h2 className="text-3xl font-bold mb-8">A Future-Ready Logistics Ecosystem</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {[
-                { icon: faCogs, title: "Certified Experts", text: "Our team is trained in advanced Microsoft Dynamics technologies and ERP best practices." },
-                { icon: faSyncAlt, title: "Proven Results", text: "We've successfully implemented Dynamics solutions for global organizations." },
-                { icon: faGraduationCap, title: "Continuous Innovation", text: "Our experts stay ahead of Dynamics technology trends and updates." },
-                { icon: faCloud, title: "Scalable Solutions", text: "Build ERP systems that grow with your business and operational needs." },
-                { icon: faShieldAlt, title: "Data Security", text: "Ensure secure Dynamics implementations with industry-standard security practices." },
-                { icon: faHandshake, title: "Strategic Partnerships", text: "Collaborate with Microsoft and top tech providers for innovative solutions." }
+                { icon: faCogs, title: "Certified Experts", text: "Our team is trained in advanced logistics IT systems and supply chain technology." },
+                { icon: faSyncAlt, title: "Proven Results", text: "We've enhanced logistics operations for global providers." },
+                { icon: faGraduationCap, title: "Continuous Innovation", text: "Our experts stay ahead of logistics IT trends and regulations." },
+                { icon: faCloud, title: "Scalable Solutions", text: "Build logistics IT systems that grow with your organization." },
+                { icon: faShieldAlt, title: "Data Security", text: "Ensure compliant solutions for sensitive logistics data protection." },
+                { icon: faHandshake, title: "Strategic Partnerships", text: "Collaborate with top tech providers for innovative logistics IT solutions." }
               ].map((benefit, index) => (
                 <div 
                   key={benefit.title}
@@ -172,26 +172,26 @@ const MicrosoftDynamics: React.FC = () => {
             <div className="space-y-12 mt-12">
               <div className={`flex flex-col md:flex-row gap-8 transition-all duration-1000 delay-600 hover:shadow-2xl hover:scale-105 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
                 <div className="md:w-1/2">
-                  <h3 className="text-xl font-semibold mb-4">Proactive Support for ERP Excellence</h3>
+                  <h3 className="text-xl font-semibold mb-4">Proactive Support for Logistics Excellence</h3>
                   <p className="text-gray-600 mb-4">
-                    Our robust support system resolves 95% of Dynamics challenges swiftly, backed by continuous training to address evolving business needs and platform updates.
+                    Our robust support system resolves 95% of logistics IT challenges swiftly, backed by continuous training to address evolving supply chain needs.
                   </p>
-                  <Link to="/contact?service=dynamics" className="inline-block bg-[#3a3dc4] text-white px-6 py-2 rounded-lg hover:bg-[#008BCF] transition-all duration-300 hover:scale-105 hover:shadow-lg">Get Support</Link>
+                  <Link to="/contact?industry=logistics" className="inline-block bg-[#3a3dc4] text-white px-6 py-2 rounded-lg hover:bg-[#008BCF] transition-all duration-300 hover:scale-105 hover:shadow-lg">Get Support</Link>
                 </div>
                 <div className="md:w-1/2">
-                  <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71" alt="Microsoft Dynamics IT Support" className="w-full h-64 object-cover rounded-lg transition-all duration-500 hover:shadow-xl hover:scale-105" />
+                  <img src="https://images.unsplash.com/photo-1566576912321-d58ddd7a6088" alt="Logistics IT Support" className="w-full h-64 object-cover rounded-lg transition-all duration-500 hover:shadow-xl hover:scale-105" />
                 </div>
               </div>
               <div className={`flex flex-col md:flex-row gap-8 transition-all duration-1000 delay-800 hover:shadow-2xl hover:scale-105 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
                 <div className="md:w-1/2">
                   <h3 className="text-xl font-semibold mb-4">Empowered by Industry Partnerships</h3>
                   <p className="text-gray-600 mb-4">
-                    Since 2010, VirtuSwift has partnered with Microsoft and leading tech providers to deliver innovative ERP solutions, improving operational efficiency and business intelligence.
+                    Since 2010, VirtuSwift has partnered with leading tech providers to deliver innovative logistics IT solutions, improving operational efficiency and customer satisfaction.
                   </p>
-                  <Link to="/contact?service=dynamics" className="inline-block bg-[#3a3dc4] text-white px-6 py-2 rounded-lg hover:bg-[#008BCF] transition-all duration-300 hover:scale-105 hover:shadow-lg">Collaborate with Us</Link>
+                  <Link to="/contact?industry=logistics" className="inline-block bg-[#3a3dc4] text-white px-6 py-2 rounded-lg hover:bg-[#008BCF] transition-all duration-300 hover:scale-105 hover:shadow-lg">Collaborate with Us</Link>
                 </div>
                 <div className="md:w-1/2">
-                  <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71" alt="Industry Partnerships" className="w-full h-64 object-cover rounded-lg transition-all duration-500 hover:shadow-xl hover:scale-105" />
+                  <img src="https://images.unsplash.com/photo-1566576912321-d58ddd7a6088" alt="Industry Partnerships" className="w-full h-64 object-cover rounded-lg transition-all duration-500 hover:shadow-xl hover:scale-105" />
                 </div>
               </div>
             </div>
@@ -202,19 +202,19 @@ const MicrosoftDynamics: React.FC = () => {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   {[
                     {
-                      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
-                      title: "Dynamics 365 Implementation Insights",
-                      description: "Learn how VirtuSwift enhances business operations with innovative Dynamics solutions."
+                      image: "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088",
+                      title: "Logistics IT Insights",
+                      description: "Learn how VirtuSwift enhances logistics with innovative IT solutions."
                     },
                     {
-                      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
-                      title: "ERP Technology Trends",
-                      description: "Stay updated with the latest Dynamics technology trends and best practices."
+                      image: "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088",
+                      title: "Supply Chain Trends",
+                      description: "Stay updated with the latest logistics technology trends."
                     },
                     {
-                      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
-                      title: "Business Process Optimization",
-                      description: "Discover how Dynamics technology improves operational efficiency and business intelligence."
+                      image: "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088",
+                      title: "Delivery Solutions",
+                      description: "Discover how technology improves logistics operations."
                     }
                   ].map((resource, index) => (
                     <div 
@@ -241,4 +241,4 @@ const MicrosoftDynamics: React.FC = () => {
   );
 };
 
-export default MicrosoftDynamics; 
+export default Logistics; 

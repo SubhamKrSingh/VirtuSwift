@@ -1,164 +1,81 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShieldAlt, faLock, faGraduationCap, faCloud, faCheckCircle, faHandshake } from '@fortawesome/free-solid-svg-icons';
+import { faCogs, faSyncAlt, faGraduationCap, faCloud, faShieldAlt, faHandshake, faDatabase, faServer, faGlobe } from '@fortawesome/free-solid-svg-icons';
+
+const sliderImages = [
+  {
+    url: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71',
+    title: 'Revolutionizing Cloud Security with VirtuSwift IT Expertise',
+    desc: 'Transform your security posture with innovative cloud security technology and consulting.'
+  },
+  {
+    url: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71',
+    title: '',
+    desc: ''
+  }
+];
+
+const tabs = [
+  'Overview',
+  'Capabilities',
+  'Benefits'
+];
 
 const CloudSecurity: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [activeTab, setActiveTab] = useState('Overview');
-
-  const slides = [
-    {
-      image: 'https://f.hubspotusercontent10.net/hubfs/6764014/Imported_Blog_Media/Cloud-security-as-a-service-header.jpg',
-      title: 'Secure Your Multi-Cloud with VirtuSwift',
-      subtitle: 'Leverage Google Cloud\'s advanced security alongside AWS and Azure for robust protection.'
-    },
-    {
-      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmYxpbgGA282I2ys8_IQVOdbL5p6y71obqMW5TZtUhbBQlsKAzZB7WUg_VjU_Ssz_V8T0&usqp=CAU',
-      title: 'Comprehensive Cloud Security Solutions',
-      subtitle: 'Protect your assets across all cloud platforms with our expert services.'
-    },
-  ];
-
-  const nextSlide = useCallback(() => {
-    setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
-  }, [slides.length]);
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
-  };
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const slideInterval = setInterval(nextSlide, 5000);
-    return () => clearInterval(slideInterval);
-  }, [nextSlide]);
-
-  const renderTabContent = () => {
-    switch (activeTab) {
-      case 'Overview':
-        return (
-          <div className="flex flex-col md:flex-row gap-8 mb-12 items-center">
-            <div className="md:w-1/2">
-              <h2 className="text-3xl font-bold mb-4 text-gray-800">
-                Unleashing Cloud Security Excellence with Google Cloud
-              </h2>
-              <p className="text-gray-600 mb-6">
-                At VirtuSwift, we deliver multi-cloud security solutions with Google Cloud's advanced tools
-                at the core, integrating AWS and Azure to ensure robust protection, compliance, and
-                resilience for your business.
-              </p>
-              <Link
-                to="/contact?service=cloud-security" // Example of passing context via query param
-                className="inline-block bg-[#3a3dc4] text-white px-6 py-3 rounded-lg hover:bg-[#008BCF] transition-colors"
-              >
-                Learn More
-              </Link>
-            </div>
-            <div className="md:w-1/2">
-              <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbPR3dd_DXTIBpkejUuE6OE5XuZNrNmy0RiQ&s"
-                alt="Cloud Security Technology"
-                className="w-full h-auto object-cover rounded-lg shadow-lg"
-              />
-            </div>
-          </div>
-        );
-      case 'Capabilities':
-        return (
-          <div className="mb-12">
-            <h3 className="text-xl font-semibold text-[#3a3dc4] mb-2">CAPABILITIES</h3>
-            <h2 className="text-3xl font-bold mb-4 text-gray-800">Secure Your Multi-Cloud Environment</h2>
-            <div className="space-y-8">
-              <div className="flex flex-col md:flex-row gap-6">
-                <div className="md:w-1/3 bg-white p-6 rounded-lg shadow-md">
-                  <h4 className="text-lg font-semibold text-[#3a3dc4]">Security Monitoring</h4>
-                  <p className="text-gray-600">Real-time threat detection across Google Cloud, AWS, and Azure using Google Cloud Security Command Center.</p>
-                </div>
-                <div className="md:w-1/3 bg-white p-6 rounded-lg shadow-md">
-                  <h4 className="text-lg font-semibold text-[#3a3dc4]">Identity & Access Management</h4>
-                  <p className="text-gray-600">Unified IAM with Google Cloud Identity and BeyondCorp for secure multi-cloud access control.</p>
-                </div>
-                <div className="md:w-1/3 bg-white p-6 rounded-lg shadow-md">
-                  <h4 className="text-lg font-semibold text-[#3a3dc4]">Compliance Management</h4>
-                  <p className="text-gray-600">Ensure compliance with Google Cloud's Assured Workloads and multi-cloud auditing tools.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        );
-      case 'Benefits':
-        return (
-          <div>
-            <h2 className="text-3xl font-bold mb-8 text-gray-800 text-center">A Secure Multi-Cloud Journey with Google Cloud</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {[ 
-                { icon: faShieldAlt, title: "Certified Security Experts", text: "Our Google Cloud-certified security team ensures multi-cloud protection." },
-                { icon: faLock, title: "Proven Security Success", text: "Delivered secure multi-cloud solutions across diverse industries." },
-                { icon: faGraduationCap, title: "Continuous Learning", text: "Our team stays updated with the latest cloud security innovations." },
-                { icon: faCloud, title: "Unified Security Framework", text: "Integrate security across clouds with Google Cloud's robust tools." },
-                { icon: faCheckCircle, title: "Compliance Assurance", text: "Meet regulatory requirements with multi-cloud compliance solutions." },
-                { icon: faHandshake, title: "Strategic Security Partnerships", text: "Collaborate with Google and cloud leaders for cutting-edge security." },
-              ].map(benefit => (
-                <div key={benefit.title} className="bg-gray-50 p-6 rounded-lg shadow-sm text-center">
-                  <FontAwesomeIcon icon={benefit.icon} className="text-3xl text-[#3a3dc4] mb-4" />
-                  <h4 className="font-bold text-lg mb-2 text-gray-700">{benefit.title}</h4>
-                  <p className="text-gray-600 text-sm">{benefit.text}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        );
-      default:
-        return null;
-    }
-  };
+    setIsVisible(true);
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % sliderImages.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-    <div className="bg-gray-100">
+    <div className="bg-gray-100 min-h-screen flex flex-col">
       {/* Slider Section */}
-      <section className="relative w-full h-[400px] overflow-hidden">
+      <div className={`relative w-full h-[400px] bg-gray-100 overflow-hidden transition-all duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
         <div
-          className="flex transition-transform duration-700 ease-in-out"
+          className="slider flex transition-transform duration-500 ease-in-out"
           style={{ transform: `translateX(-${currentSlide * 100}%)` }}
         >
-          {slides.map((slide, index) => (
+          {sliderImages.map((slide, idx) => (
             <div
-              key={index}
-              className="min-w-full h-[400px] bg-cover bg-center relative"
-              style={{ backgroundImage: `url(${slide.image})` }}
+              key={idx}
+              className="slide min-w-full h-[400px] bg-cover bg-center relative"
+              style={{ backgroundImage: `url('${slide.url}')` }}
             >
-              <div className="absolute inset-0 bg-black bg-opacity-60 flex items-center justify-start px-10 md:px-20">
-                <div className="text-white max-w-2xl">
-                  <h1 className="text-3xl md:text-4xl font-bold mb-4">{slide.title}</h1>
-                  <p className="text-lg md:text-xl">{slide.subtitle}</p>
+              <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-start px-10">
+                <div className="text-white">
+                  {slide.title && <h1 className="text-4xl font-bold mb-4">{slide.title}</h1>}
+                  {slide.desc && <p className="text-lg">{slide.desc}</p>}
                 </div>
               </div>
             </div>
           ))}
         </div>
         <button
-          className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white bg-opacity-50 p-3 rounded-full hover:bg-opacity-75 transition-opacity text-gray-700"
-          onClick={prevSlide}
-        >
-          ❮
-        </button>
+          className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white bg-opacity-50 p-2 rounded-full hover:bg-opacity-75 transition-all duration-300 hover:scale-110"
+          onClick={() => setCurrentSlide((prev) => (prev - 1 + sliderImages.length) % sliderImages.length)}
+        >❮</button>
         <button
-          className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white bg-opacity-50 p-3 rounded-full hover:bg-opacity-75 transition-opacity text-gray-700"
-          onClick={nextSlide}
-        >
-          ❯
-        </button>
-      </section>
+          className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white bg-opacity-50 p-2 rounded-full hover:bg-opacity-75 transition-all duration-300 hover:scale-110"
+          onClick={() => setCurrentSlide((prev) => (prev + 1) % sliderImages.length)}
+        >❯</button>
+      </div>
 
       {/* Tab Navigation */}
       <div className="bg-[#121927] text-white">
-        <div className="container mx-auto px-4">
-          <div className="flex justify-center md:justify-start space-x-4 md:space-x-8 overflow-x-auto">
-            {['Overview', 'Capabilities', 'Benefits'].map(tab => (
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex justify-start space-x-8 overflow-x-auto">
+            {tabs.map(tab => (
               <button
                 key={tab}
-                className={`py-3 px-4 text-sm font-medium border-b-2 transition-colors duration-300 
-                  ${activeTab === tab ? 'border-[#3a3dc4] text-[#3a3dc4]' : 'border-transparent text-gray-400 hover:text-white'}`}
+                className={`tab-link px-4 py-2 text-sm font-medium border-b-2 transition-all duration-300 hover:scale-105 ${activeTab === tab ? 'text-[#3a3dc4] border-[#3a3dc4]' : 'border-transparent text-white hover:text-[#3a3dc4] hover:border-[#3a3dc4]'}`}
                 onClick={() => setActiveTab(tab)}
               >
                 {tab}
@@ -169,80 +86,157 @@ const CloudSecurity: React.FC = () => {
       </div>
 
       {/* Tab Content */}
-      <div className="container mx-auto px-4 py-8">
-        {renderTabContent()}
-      </div>
-
-      {/* Additional Sections */}
-      <div className="container mx-auto px-4 py-8 space-y-12">
-        <div className="flex flex-col md:flex-row gap-8 items-center bg-white p-8 rounded-lg shadow-lg">
-          <div className="md:w-1/2">
-            <h3 className="text-2xl font-semibold mb-4 text-gray-800">Proactive Cloud Security Support</h3>
-            <p className="text-gray-600 mb-4">
-              Our comprehensive security knowledge base, powered by Google Cloud, covers 95% of
-              multi-cloud security threats, with documented solutions for rapid mitigation across Google
-              Cloud, AWS, and Azure.
-            </p>
-            <Link
-              to="/contact?service=cloud-security-support"
-              className="inline-block bg-[#3a3dc4] text-white px-6 py-3 rounded-lg hover:bg-[#008BCF] transition-colors"
-            >
-              Explore Support
-            </Link>
+      <div className="container mx-auto px-4 py-8 flex-1">
+        {/* Overview Tab */}
+        {activeTab === 'Overview' && (
+          <div className={`flex flex-col md:flex-row gap-8 mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <div className="md:w-1/2">
+              <h2 className="text-3xl font-bold mb-4">Transforming Security Posture with VirtuSwift Cloud Security Expertise</h2>
+              <p className="text-gray-600 mb-6">
+                At VirtuSwift, we deliver tailored cloud security solutions to revolutionize your security infrastructure. Our expertise in cloud security implementation, threat detection, and compliance management empowers organizations to enhance protection and reduce risks.
+              </p>
+              <Link to="/contact?service=cloudsecurity" className="inline-block bg-[#3a3dc4] text-white px-6 py-2 rounded-lg hover:bg-[#008BCF] transition-all duration-300 hover:scale-105 hover:shadow-lg">Explore Now</Link>
+            </div>
+            <div className="md:w-1/2">
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71" alt="Cloud Security IT Technology" className="w-full h-64 object-cover rounded-lg transition-all duration-500 hover:shadow-xl hover:scale-105" />
+            </div>
           </div>
-          <div className="md:w-1/2">
-            <img
-              src="https://ifacet-bucket-2.s3.ap-south-1.amazonaws.com/wp-content/uploads/2023/08/17124538/Cloud-Security.webp"
-              alt="Proactive Security Support"
-              className="w-full h-auto object-cover rounded-lg shadow-md"
-            />
-          </div>
-        </div>
-
-        <div className="flex flex-col md:flex-row-reverse gap-8 items-center bg-white p-8 rounded-lg shadow-lg">
-          <div className="md:w-1/2">
-            <h3 className="text-2xl font-semibold mb-4 text-gray-800">Strength Through Google Cloud Security Partnerships</h3>
-            <p className="text-gray-600 mb-4">
-              Since 2010, VirtuSwift has excelled in multi-cloud security, leveraging Google Cloud
-              partnerships to deliver robust protection alongside AWS and Azure integrations.
-            </p>
-            <Link
-              to="/contact?service=cloud-partnerships"
-              className="inline-block bg-[#3a3dc4] text-white px-6 py-3 rounded-lg hover:bg-[#008BCF] transition-colors"
-            >
-              Partner with Us
-            </Link>
-          </div>
-          <div className="md:w-1/2">
-            <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRN_N-W9JAt4uDwwTIKd8N5YQH66YQeXY0FA&s"
-              alt="Security Partnerships"
-              className="w-full h-auto object-cover rounded-lg shadow-md"
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* Related Resources */}
-      <div className="bg-gray-200 py-12">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8 text-center text-gray-800">Related Security Resources</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[ 
-              { img: 'https://media.licdn.com/dms/image/v2/C4D12AQGtLEz86DxOPg/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1576839377580?e=2147483647&v=beta&t=nuYQV595xrTohK7SnNSGkxWHmPY6lk7k5bDC4XvU7tE', title: 'Security Thought Leadership', text: 'Discover how VirtuSwift secures multi-cloud environments with Google Cloud.' },
-              { img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgVb3hYivYCUEP9spV6XmLkaZ64qZ4xTi13eGo3vcKIj6euB3i7cHHwb3NSiLTORbgjds&usqp=CAU', title: 'Security Event Replay', text: 'Learn how to enhance multi-cloud security with Google Cloud tools.' },
-              { img: 'https://books.forbes.com/wp-content/uploads/2023/08/thought-leader-speaker.png', title: 'Compliance Guide', text: 'Ensure compliance in multi-cloud setups with Google Cloud.' }
-            ].map(resource => (
-              <div key={resource.title} className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-                <img src={resource.img} alt={resource.title} className="w-full h-40 object-cover rounded-lg mb-4" />
-                <h4 className="text-lg font-semibold text-[#3a3dc4] mb-2">{resource.title}</h4>
-                <p className="text-gray-600 text-sm">{resource.text}</p>
+        )}
+        {/* Capabilities Tab */}
+        {activeTab === 'Capabilities' && (
+          <div className={`mb-12 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <h3 className="text-xl font-semibold text-[#3a3dc4] mb-2">CAPABILITIES</h3>
+            <h2 className="text-3xl font-bold mb-4">Revolutionize Security with VirtuSwift</h2>
+            <div className="space-y-8">
+              <div className="flex flex-col md:flex-row gap-6">
+                {[
+                  {
+                    title: 'Cloud Security Implementation',
+                    description: 'Comprehensive cloud security solutions with advanced threat detection and prevention.'
+                  },
+                  {
+                    title: 'Security Compliance Management',
+                    description: 'Ensure adherence to security standards and regulatory requirements across cloud environments.'
+                  },
+                  {
+                    title: 'Threat Detection & Response',
+                    description: 'Real-time threat monitoring and automated response systems for proactive security.'
+                  }
+                ].map((capability, index) => (
+                  <div 
+                    key={capability.title}
+                    className={`md:w-1/3 bg-white p-6 rounded-lg shadow-md transition-all duration-500 hover:shadow-xl hover:scale-105 hover:bg-gray-50 cursor-pointer ${isVisible ? 'animate-fade-in-up' : ''}`}
+                    style={{ 
+                      animationDelay: `${index * 200}ms`,
+                      animationDuration: '0.6s',
+                      animationFillMode: 'forwards'
+                    }}
+                  >
+                    <h4 className="text-lg font-semibold text-[#3a3dc4]">{capability.title}</h4>
+                    <p className="text-gray-600">{capability.description}</p>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
-        </div>
+        )}
+        {/* Benefits Tab */}
+        {activeTab === 'Benefits' && (
+          <div className={`transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <h2 className="text-3xl font-bold mb-8">A Future-Ready Security Ecosystem</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {[
+                { icon: faCogs, title: "Certified Experts", text: "Our team is trained in advanced cloud security technologies and best practices." },
+                { icon: faSyncAlt, title: "Proven Results", text: "We've successfully implemented security solutions for global organizations." },
+                { icon: faGraduationCap, title: "Continuous Innovation", text: "Our experts stay ahead of security threats and technology trends." },
+                { icon: faCloud, title: "Scalable Security", text: "Build security systems that grow with your business and threat landscape." },
+                { icon: faShieldAlt, title: "Advanced Protection", text: "Ensure comprehensive security with industry-standard protection practices." },
+                { icon: faHandshake, title: "Strategic Partnerships", text: "Collaborate with top security providers for innovative solutions." }
+              ].map((benefit, index) => (
+                <div 
+                  key={benefit.title}
+                  className={`bg-gray-50 p-6 rounded-lg shadow-sm flex flex-col items-center transition-all duration-500 hover:shadow-xl hover:scale-105 hover:bg-white cursor-pointer ${isVisible ? 'animate-fade-in-up' : ''}`}
+                  style={{ 
+                    animationDelay: `${index * 100}ms`,
+                    animationDuration: '0.6s',
+                    animationFillMode: 'forwards'
+                  }}
+                >
+                  <FontAwesomeIcon icon={benefit.icon} className="text-3xl text-[#3a3dc4] mb-4 transition-transform duration-300 hover:scale-110" />
+                  <h4 className="font-bold text-lg mb-2">{benefit.title}</h4>
+                  <p className="text-gray-600 text-center">{benefit.text}</p>
+                </div>
+              ))}
+            </div>
+            {/* Additional Sections */}
+            <div className="space-y-12 mt-12">
+              <div className={`flex flex-col md:flex-row gap-8 transition-all duration-1000 delay-600 hover:shadow-2xl hover:scale-105 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+                <div className="md:w-1/2">
+                  <h3 className="text-xl font-semibold mb-4">Proactive Support for Security Excellence</h3>
+                  <p className="text-gray-600 mb-4">
+                    Our robust support system resolves 95% of security challenges swiftly, backed by continuous training to address evolving threats and security updates.
+                  </p>
+                  <Link to="/contact?service=cloudsecurity" className="inline-block bg-[#3a3dc4] text-white px-6 py-2 rounded-lg hover:bg-[#008BCF] transition-all duration-300 hover:scale-105 hover:shadow-lg">Get Support</Link>
+                </div>
+                <div className="md:w-1/2">
+                  <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71" alt="Cloud Security IT Support" className="w-full h-64 object-cover rounded-lg transition-all duration-500 hover:shadow-xl hover:scale-105" />
+                </div>
+              </div>
+              <div className={`flex flex-col md:flex-row gap-8 transition-all duration-1000 delay-800 hover:shadow-2xl hover:scale-105 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+                <div className="md:w-1/2">
+                  <h3 className="text-xl font-semibold mb-4">Empowered by Industry Partnerships</h3>
+                  <p className="text-gray-600 mb-4">
+                    Since 2010, VirtuSwift has partnered with leading security providers to deliver innovative cloud security solutions, improving threat protection and risk management.
+                  </p>
+                  <Link to="/contact?service=cloudsecurity" className="inline-block bg-[#3a3dc4] text-white px-6 py-2 rounded-lg hover:bg-[#008BCF] transition-all duration-300 hover:scale-105 hover:shadow-lg">Collaborate with Us</Link>
+                </div>
+                <div className="md:w-1/2">
+                  <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71" alt="Industry Partnerships" className="w-full h-64 object-cover rounded-lg transition-all duration-500 hover:shadow-xl hover:scale-105" />
+                </div>
+              </div>
+            </div>
+            {/* Related Resources */}
+            <div className={`bg-gray-50 py-12 mt-12 transition-all duration-1000 delay-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+              <div className="container mx-auto px-4">
+                <h2 className="text-3xl font-bold mb-8">Related Resources</h2>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  {[
+                    {
+                      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
+                      title: "Cloud Security Implementation Insights",
+                      description: "Learn how VirtuSwift enhances security posture with innovative cloud security solutions."
+                    },
+                    {
+                      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
+                      title: "Security Technology Trends",
+                      description: "Stay updated with the latest cloud security technology trends and best practices."
+                    },
+                    {
+                      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
+                      title: "Threat Protection & Compliance",
+                      description: "Discover how cloud security technology improves threat protection and compliance management."
+                    }
+                  ].map((resource, index) => (
+                    <div 
+                      key={resource.title}
+                      className={`bg-white p-4 rounded-lg shadow-sm transition-all duration-500 hover:shadow-xl hover:scale-105 cursor-pointer ${isVisible ? 'animate-fade-in-up' : ''}`}
+                      style={{ 
+                        animationDelay: `${index * 200}ms`,
+                        animationDuration: '0.6s',
+                        animationFillMode: 'forwards'
+                      }}
+                    >
+                      <img src={resource.image} alt={resource.title} className="w-full h-40 object-cover rounded-lg mb-4 transition-all duration-500 hover:scale-105" />
+                      <h4 className="text-lg font-semibold text-[#3a3dc4] mb-2">{resource.title}</h4>
+                      <p className="text-gray-600">{resource.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
-
     </div>
   );
 };

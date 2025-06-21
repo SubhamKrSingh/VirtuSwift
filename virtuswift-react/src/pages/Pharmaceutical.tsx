@@ -1,178 +1,81 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCogs, faSyncAlt, faGraduationCap, faCloud, faShieldAlt, faHandshake, faCommentDots, faPaperPlane, faFlask, faFileMedical, faClinicMedical } from '@fortawesome/free-solid-svg-icons';
+import { faCogs, faSyncAlt, faGraduationCap, faCloud, faShieldAlt, faHandshake, faPills, faFlask, faMicroscope } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
+
+const sliderImages = [
+  {
+    url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgrAGkUPYLFxJDyFaXgbYnTFexTgLTZ8Fq9gKeAoZQFKjtsDugjR8cQa5bKwKxJHA0NbQ&usqp=CAU',
+    title: 'Accelerate Innovation with VirtuSwift Pharmaceutical Solutions',
+    desc: 'Unlock enterprise-grade performance with reliability and collaboration.'
+  },
+  {
+    url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQR1MZRNol6n0OsSCirx1y4WN9RpCkqzooJpA&s',
+    title: '',
+    desc: ''
+  }
+];
+
+const tabs = [
+  'Overview',
+  'Capabilities',
+  'Benefits'
+];
 
 const Pharmaceutical: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [activeTab, setActiveTab] = useState('Overview');
-  const [isChatOpen, setIsChatOpen] = useState(false);
-  const [chatMessages, setChatMessages] = useState<Array<{ type: 'user' | 'bot'; text: string }>>([]);
-  const [chatInput, setChatInput] = useState('');
-
-  const slides = [
-    {
-      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDwjiejWcMLZ-L-docGrTDXq1AZRMDDsYggg&s',
-      title: 'Innovate Pharmaceuticals with VirtuSwift IT Solutions',
-      subtitle: 'Accelerate drug development and ensure compliance with advanced technology.'
-    },
-    {
-      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbnNXvGSg7N2iin7PY9_l4a73ZbqTwMpChQA&s',
-      title: 'Future-Proofing Pharmaceutical Excellence',
-      subtitle: 'Leverage cutting-edge IT for breakthroughs in pharmaceutical research and development.'
-    },
-  ];
-
-  const nextSlide = useCallback(() => {
-    setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
-  }, [slides.length]);
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
-  };
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const slideInterval = setInterval(nextSlide, 5000);
-    return () => clearInterval(slideInterval);
-  }, [nextSlide]);
-
-  const handleSendMessage = () => {
-    if (chatInput.trim()) {
-      setChatMessages([...chatMessages, { type: 'user', text: chatInput.trim() }]);
-      setChatInput('');
-      setTimeout(() => {
-        setChatMessages(prevMessages => [...prevMessages, { type: 'bot', text: 'Thank you for your message. Our team will get back to you shortly.' }]);
-      }, 1000);
-    }
-  };
-
-  const renderTabContent = () => {
-    switch (activeTab) {
-      case 'Overview':
-        return (
-          <div className="flex flex-col md:flex-row gap-8 mb-12 items-center">
-            <div className="md:w-1/2">
-              <h2 className="text-3xl font-bold mb-4 text-gray-800">
-                Transforming Pharmaceuticals with VirtuSwift IT Expertise
-              </h2>
-              <p className="text-gray-600 mb-6">
-                At VirtuSwift, we deliver tailored IT solutions to advance pharmaceutical innovation.
-                Our expertise in drug development analytics, regulatory compliance, and clinical trial
-                management empowers companies to accelerate research and ensure quality.
-              </p>
-              <Link
-                to="/contact?service=pharmaceutical"
-                className="inline-block bg-primary text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
-              >
-                Explore Now
-              </Link>
-            </div>
-            <div className="md:w-1/2">
-              <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsIeHfKkebf_2Yqm7OJFuRgz-3QJCJqWoPTw&s"
-                alt="Pharmaceutical IT Technology"
-                className="w-full h-auto max-h-80 object-cover rounded-lg shadow-lg"
-              />
-            </div>
-          </div>
-        );
-      case 'Capabilities':
-        return (
-          <div className="mb-12">
-            <h3 className="text-xl font-semibold text-primary mb-2">CAPABILITIES</h3>
-            <h2 className="text-3xl font-bold mb-6 text-gray-800">Revolutionize Pharmaceuticals with VirtuSwift</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="bg-white p-6 rounded-lg shadow-md">
-                 <FontAwesomeIcon icon={faFlask} className="text-3xl text-primary mb-3" />
-                <h4 className="text-lg font-semibold text-primary mb-2">PharmaAnalytics Platform</h4>
-                <p className="text-gray-600">Advanced analytics for drug development and clinical trial optimization.</p>
-              </div>
-              <div className="bg-white p-6 rounded-lg shadow-md">
-                <FontAwesomeIcon icon={faFileMedical} className="text-3xl text-primary mb-3" />
-                <h4 className="text-lg font-semibold text-primary mb-2">ReguCompliance Dashboard</h4>
-                <p className="text-gray-600">Streamlined regulatory compliance with automated reporting tools.</p>
-              </div>
-              <div className="bg-white p-6 rounded-lg shadow-md">
-                <FontAwesomeIcon icon={faClinicMedical} className="text-3xl text-primary mb-3" />
-                <h4 className="text-lg font-semibold text-primary mb-2">TrialSync Solutions</h4>
-                <p className="text-gray-600">Efficient management of clinical trials with real-time data integration.</p>
-              </div>
-            </div>
-          </div>
-        );
-      case 'Benefits':
-        return (
-          <div>
-            <h2 className="text-3xl font-bold mb-8 text-gray-800 text-center">A Future-Ready Pharmaceutical Ecosystem</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {[
-                { icon: faCogs, title: "Certified Experts", text: "Our team is trained in advanced pharmaceutical IT and compliance standards." },
-                { icon: faSyncAlt, title: "Proven Results", text: "We've accelerated innovation for global pharmaceutical companies." },
-                { icon: faGraduationCap, title: "Continuous Innovation", text: "Our experts stay ahead of pharmaceutical IT trends and regulations." },
-                { icon: faCloud, title: "Scalable Solutions", text: "Build pharma IT systems that grow with your organization." },
-                { icon: faShieldAlt, title: "Data Security", text: "Ensure compliance with secure, GMP-compliant solutions." },
-                { icon: faHandshake, title: "Strategic Partnerships", text: "Collaborate with top tech providers for innovative pharma IT solutions." },
-              ].map(benefit => (
-                <div key={benefit.title} className="bg-gray-50 p-6 rounded-lg shadow-sm text-center">
-                  <FontAwesomeIcon icon={benefit.icon} className="text-3xl text-primary mb-4" />
-                  <h4 className="font-bold text-lg mb-2 text-gray-700">{benefit.title}</h4>
-                  <p className="text-gray-600 text-sm">{benefit.text}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        );
-      default:
-        return null;
-    }
-  };
+    setIsVisible(true);
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % sliderImages.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-    <div className="bg-gray-100">
+    <div className="bg-gray-100 min-h-screen flex flex-col">
       {/* Slider Section */}
-      <section className="relative w-full h-[400px] overflow-hidden">
+      <div className={`relative w-full h-[400px] bg-gray-100 overflow-hidden transition-all duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
         <div
-          className="flex transition-transform duration-700 ease-in-out"
+          className="slider flex transition-transform duration-500 ease-in-out"
           style={{ transform: `translateX(-${currentSlide * 100}%)` }}
         >
-          {slides.map((slide, index) => (
+          {sliderImages.map((slide, idx) => (
             <div
-              key={index}
-              className="min-w-full h-[400px] bg-cover bg-center relative"
-              style={{ backgroundImage: `url(${slide.image})` }}
+              key={idx}
+              className="slide min-w-full h-[400px] bg-cover bg-center relative"
+              style={{ backgroundImage: `url('${slide.url}')` }}
             >
-              <div className="absolute inset-0 bg-black bg-opacity-60 flex items-center justify-start px-10 md:px-20">
-                <div className="text-white max-w-2xl">
-                  <h1 className="text-3xl md:text-4xl font-bold mb-4">{slide.title}</h1>
-                  <p className="text-lg md:text-xl">{slide.subtitle}</p>
+              <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-start px-10">
+                <div className="text-white">
+                  {slide.title && <h1 className="text-4xl font-bold mb-4">{slide.title}</h1>}
+                  {slide.desc && <p className="text-lg">{slide.desc}</p>}
                 </div>
               </div>
             </div>
           ))}
         </div>
         <button
-          className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white bg-opacity-50 p-3 rounded-full hover:bg-opacity-75 transition-opacity text-gray-700"
-          onClick={prevSlide}
-        >
-          ❮
-        </button>
+          className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white bg-opacity-50 p-2 rounded-full hover:bg-opacity-75 transition-all duration-300 hover:scale-110"
+          onClick={() => setCurrentSlide((prev) => (prev - 1 + sliderImages.length) % sliderImages.length)}
+        >❮</button>
         <button
-          className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white bg-opacity-50 p-3 rounded-full hover:bg-opacity-75 transition-opacity text-gray-700"
-          onClick={nextSlide}
-        >
-          ❯
-        </button>
-      </section>
+          className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white bg-opacity-50 p-2 rounded-full hover:bg-opacity-75 transition-all duration-300 hover:scale-110"
+          onClick={() => setCurrentSlide((prev) => (prev + 1) % sliderImages.length)}
+        >❯</button>
+      </div>
 
       {/* Tab Navigation */}
       <div className="bg-[#121927] text-white">
-        <div className="container mx-auto px-4">
-          <div className="flex justify-center md:justify-start space-x-4 md:space-x-8 overflow-x-auto">
-            {['Overview', 'Capabilities', 'Benefits'].map(tab => (
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex justify-start space-x-8 overflow-x-auto">
+            {tabs.map(tab => (
               <button
                 key={tab}
-                className={`py-3 px-4 text-sm font-medium border-b-2 transition-colors duration-300 
-                  ${activeTab === tab ? 'border-primary text-primary' : 'border-transparent text-gray-400 hover:text-white hover:border-primary'}`}
+                className={`tab-link px-4 py-2 text-sm font-medium border-b-2 transition-all duration-300 hover:scale-105 ${activeTab === tab ? 'text-[#3a3dc4] border-[#3a3dc4]' : 'border-transparent text-white hover:text-[#3a3dc4] hover:border-[#3a3dc4]'}`}
                 onClick={() => setActiveTab(tab)}
               >
                 {tab}
@@ -183,116 +86,153 @@ const Pharmaceutical: React.FC = () => {
       </div>
 
       {/* Tab Content */}
-      <div className="container mx-auto px-4 py-12">
-        {renderTabContent()}
-      </div>
-
-      {/* Additional Sections */}
-      <div className="container mx-auto px-4 py-8 space-y-12">
-        <div className="flex flex-col md:flex-row gap-8 items-center bg-white p-8 rounded-lg shadow-lg">
-          <div className="md:w-1/2">
-            <h3 className="text-2xl font-semibold mb-4 text-gray-800">Proactive Support for Pharmaceutical Innovation</h3>
-            <p className="text-gray-600 mb-4">
-              Our robust support system resolves 95% of pharma IT challenges swiftly, backed by continuous
-              training to address evolving industry regulations.
-            </p>
-            <Link
-              to="/contact?service=pharma-support"
-              className="inline-block bg-primary text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
-            >
-              Get Support
-            </Link>
-          </div>
-          <div className="md:w-1/2">
-            <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNGrV5hyf8AoceMsaQfmbPxv0jSd0dgP2uFKuNTgqgeeMn8aF7Qx6wLdmojML52PhBf-o&usqp=CAU"
-              alt="Pharma IT Support"
-              className="w-full h-auto max-h-80 object-cover rounded-lg shadow-md"
-            />
-          </div>
-        </div>
-
-        <div className="flex flex-col md:flex-row-reverse gap-8 items-center bg-white p-8 rounded-lg shadow-lg">
-          <div className="md:w-1/2">
-            <h3 className="text-2xl font-semibold mb-4 text-gray-800">Empowered by Industry Partnerships</h3>
-            <p className="text-gray-600 mb-4">
-              Since 2010, VirtuSwift has partnered with leading tech providers to deliver innovative
-              pharmaceutical IT solutions, enhancing drug development and compliance.
-            </p>
-            <Link
-              to="/contact?service=pharma-partners"
-              className="inline-block bg-primary text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
-            >
-              Collaborate with Us
-            </Link>
-          </div>
-          <div className="md:w-1/2">
-            <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQg3R2X2ymGJv8PWVzgySDFo405_d9e_Vh0Aw&s"
-              alt="Industry Partnerships"
-              className="w-full h-auto max-h-80 object-cover rounded-lg shadow-md"
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* Related Resources */}
-      <div className="bg-gray-200 py-12">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8 text-center text-gray-800">Related Resources</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              { img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTJMUUxvdkfTla4AeToOp70QaEyMv322WKyIx9HIRhlTqOrnnWfRVTP4KWPTq5PqeuZlE&usqp=CAU', title: 'Pharma IT Insights', text: 'Learn how VirtuSwift accelerates drug development with innovative IT solutions.' },
-              { img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThJF7PNXtXi6CaQ_1MqTrG_KiURpkMjeHAEg&s', title: 'Webinar Replay', text: 'Discover strategies for streamlining clinical trials and compliance.' },
-              { img: 'https://kms-healthcare.com/wp-content/uploads/2022/01/22.png', title: 'Whitepaper', text: 'Why data analytics are critical for modern pharmaceutical innovation.' }
-            ].map(resource => (
-              <div key={resource.title} className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-                <img src={resource.img} alt={resource.title} className="w-full h-40 object-cover rounded-lg mb-4" />
-                <h4 className="text-lg font-semibold text-primary mb-2">{resource.title}</h4>
-                <p className="text-gray-600 text-sm">{resource.text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Chat Widget */}
-      <div className="fixed bottom-5 right-5 z-50">
-        <button 
-          onClick={() => setIsChatOpen(!isChatOpen)} 
-          className="bg-gradient-to-r from-purple-600 to-pink-600 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-lg hover:scale-105 transition-transform duration-300"
-          aria-label="Toggle chat"
-        >
-          <FontAwesomeIcon icon={faCommentDots} size="2x" />
-        </button>
-        {isChatOpen && (
-          <div className="absolute bottom-20 right-0 w-80 bg-white rounded-lg shadow-xl overflow-hidden animate-slidein">
-            <div className="bg-gradient-to-r from-purple-600 to-pink-600 p-4 flex justify-between items-center">
-              <h3 className="text-white font-semibold text-lg">VirtuSwift Support</h3>
-              <button onClick={() => setIsChatOpen(false)} className="text-white hover:text-gray-200 text-2xl">&times;</button>
+      <div className="container mx-auto px-4 py-8 flex-1">
+        {/* Overview Tab */}
+        {activeTab === 'Overview' && (
+          <div className={`flex flex-col md:flex-row gap-8 mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <div className="md:w-1/2">
+              <h2 className="text-3xl font-bold mb-4">Transforming Pharmaceutical with VirtuSwift IT Expertise</h2>
+              <p className="text-gray-600 mb-6">
+                At VirtuSwift, we deliver tailored IT solutions to revolutionize pharmaceutical operations. Our expertise in drug development, regulatory compliance, and clinical trial management empowers pharmaceutical companies to enhance research efficiency and patient outcomes.
+              </p>
+              <Link to="/contact?industry=pharmaceutical" className="inline-block bg-[#3a3dc4] text-white px-6 py-2 rounded-lg hover:bg-[#008BCF] transition-all duration-300 hover:scale-105 hover:shadow-lg">Explore Now</Link>
             </div>
-            <div className="h-80 p-4 overflow-y-auto bg-gray-50">
-              {chatMessages.map((msg, index) => (
-                <div key={index} className={`mb-3 max-w-[80%] clear-both ${msg.type === 'user' ? 'ml-auto' : 'mr-auto'}`}>
-                  <div className={`p-3 rounded-xl ${msg.type === 'user' ? 'bg-primary text-white rounded-br-none' : 'bg-gray-200 text-gray-800 rounded-bl-none'}`}>
-                    {msg.text}
+            <div className="md:w-1/2">
+              <img src="https://images.pexels.com/photos/3184296/pexels-photo-3184296.jpeg" alt="Pharmaceutical IT Technology" className="w-full h-64 object-cover rounded-lg transition-all duration-500 hover:shadow-xl hover:scale-105" />
+            </div>
+          </div>
+        )}
+        {/* Capabilities Tab */}
+        {activeTab === 'Capabilities' && (
+          <div className={`mb-12 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <h3 className="text-xl font-semibold text-[#3a3dc4] mb-2">CAPABILITIES</h3>
+            <h2 className="text-3xl font-bold mb-4">Revolutionize Pharmaceutical with VirtuSwift</h2>
+            <div className="space-y-8">
+              <div className="flex flex-col md:flex-row gap-6">
+                {[
+                  {
+                    title: 'PharmaSync Portal',
+                    description: 'Real-time insights into your pharmaceutical projects with seamless collaboration tools.'
+                  },
+                  {
+                    title: 'Cloud Insights Dashboard',
+                    description: 'Full visibility into your pharmaceutical cloud infrastructure performance and costs.'
+                  },
+                  {
+                    title: 'Managed Infrastructure',
+                    description: 'Optimize your pharmaceutical environment with our expert-managed services.'
+                  }
+                ].map((capability, index) => (
+                  <div 
+                    key={capability.title}
+                    className={`md:w-1/3 bg-white p-6 rounded-lg shadow-md transition-all duration-500 hover:shadow-xl hover:scale-105 hover:bg-gray-50 cursor-pointer ${isVisible ? 'animate-fade-in-up' : ''}`}
+                    style={{ 
+                      animationDelay: `${index * 200}ms`,
+                      animationDuration: '0.6s',
+                      animationFillMode: 'forwards'
+                    }}
+                  >
+                    <h4 className="text-lg font-semibold text-[#3a3dc4]">{capability.title}</h4>
+                    <p className="text-gray-600">{capability.description}</p>
                   </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+        {/* Benefits Tab */}
+        {activeTab === 'Benefits' && (
+          <div className={`transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <h2 className="text-3xl font-bold mb-8">A Future-Ready Pharmaceutical Ecosystem</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {[
+                { icon: faCogs, title: "Certified Experts", text: "Our team is trained in advanced pharmaceutical IT systems and compliance." },
+                { icon: faSyncAlt, title: "Proven Results", text: "We've enhanced pharmaceutical operations for global providers." },
+                { icon: faGraduationCap, title: "Continuous Innovation", text: "Our experts stay ahead of pharmaceutical IT trends and regulations." },
+                { icon: faCloud, title: "Scalable Solutions", text: "Build pharmaceutical IT systems that grow with your organization." },
+                { icon: faShieldAlt, title: "Data Security", text: "Ensure compliant solutions for sensitive pharmaceutical data protection." },
+                { icon: faHandshake, title: "Strategic Partnerships", text: "Collaborate with top tech providers for innovative pharmaceutical IT solutions." }
+              ].map((benefit, index) => (
+                <div 
+                  key={benefit.title}
+                  className={`bg-gray-50 p-6 rounded-lg shadow-sm flex flex-col items-center transition-all duration-500 hover:shadow-xl hover:scale-105 hover:bg-white cursor-pointer ${isVisible ? 'animate-fade-in-up' : ''}`}
+                  style={{ 
+                    animationDelay: `${index * 100}ms`,
+                    animationDuration: '0.6s',
+                    animationFillMode: 'forwards'
+                  }}
+                >
+                  <FontAwesomeIcon icon={benefit.icon} className="text-3xl text-[#3a3dc4] mb-4 transition-transform duration-300 hover:scale-110" />
+                  <h4 className="font-bold text-lg mb-2">{benefit.title}</h4>
+                  <p className="text-gray-600 text-center">{benefit.text}</p>
                 </div>
               ))}
-               {chatMessages.length === 0 && <div className="text-center text-gray-500 pt-10">How can we help you today?</div>}
             </div>
-            <div className="p-3 border-t flex">
-              <input 
-                type="text" 
-                value={chatInput}
-                onChange={(e) => setChatInput(e.target.value)}
-                onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
-                placeholder="Type your message..." 
-                className="flex-grow border rounded-full py-2 px-4 mr-2 focus:outline-none focus:ring-2 focus:ring-primary"
-              />
-              <button onClick={handleSendMessage} className="bg-accent text-white rounded-full p-3 w-12 h-12 flex items-center justify-center hover:bg-orange-700">
-                <FontAwesomeIcon icon={faPaperPlane} />
-              </button>
+            {/* Additional Sections */}
+            <div className="space-y-12 mt-12">
+              <div className={`flex flex-col md:flex-row gap-8 transition-all duration-1000 delay-600 hover:shadow-2xl hover:scale-105 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+                <div className="md:w-1/2">
+                  <h3 className="text-xl font-semibold mb-4">Proactive Support for Pharmaceutical Excellence</h3>
+                  <p className="text-gray-600 mb-4">
+                    Our robust support system resolves 95% of pharmaceutical IT challenges swiftly, backed by continuous training to address evolving research and development needs.
+                  </p>
+                  <Link to="/contact?industry=pharmaceutical" className="inline-block bg-[#3a3dc4] text-white px-6 py-2 rounded-lg hover:bg-[#008BCF] transition-all duration-300 hover:scale-105 hover:shadow-lg">Get Support</Link>
+                </div>
+                <div className="md:w-1/2">
+                  <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f" alt="Pharmaceutical IT Support" className="w-full h-64 object-cover rounded-lg transition-all duration-500 hover:shadow-xl hover:scale-105" />
+                </div>
+              </div>
+              <div className={`flex flex-col md:flex-row gap-8 transition-all duration-1000 delay-800 hover:shadow-2xl hover:scale-105 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+                <div className="md:w-1/2">
+                  <h3 className="text-xl font-semibold mb-4">Empowered by Industry Partnerships</h3>
+                  <p className="text-gray-600 mb-4">
+                    Since 2010, VirtuSwift has partnered with leading tech providers to deliver innovative pharmaceutical IT solutions, improving research efficiency and drug development processes.
+                  </p>
+                  <Link to="/contact?industry=pharmaceutical" className="inline-block bg-[#3a3dc4] text-white px-6 py-2 rounded-lg hover:bg-[#008BCF] transition-all duration-300 hover:scale-105 hover:shadow-lg">Collaborate with Us</Link>
+                </div>
+                <div className="md:w-1/2">
+                  <img src="https://images.pexels.com/photos/3184297/pexels-photo-3184297.jpeg" alt="Industry Partnerships" className="w-full h-64 object-cover rounded-lg transition-all duration-500 hover:shadow-xl hover:scale-105" />
+                </div>
+              </div>
+            </div>
+            {/* Related Resources */}
+            <div className={`bg-gray-50 py-12 mt-12 transition-all duration-1000 delay-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+              <div className="container mx-auto px-4">
+                <h2 className="text-3xl font-bold mb-8">Related Resources</h2>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  {[
+                    {
+                      image: "https://images.unsplash.com/photo-1516321497487-e288fb19713f",
+                      title: "Pharmaceutical IT Insights",
+                      description: "Learn how VirtuSwift enhances pharmaceutical with innovative IT solutions."
+                    },
+                    {
+                      image: "https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg",
+                      title: "Digital Pharma Trends",
+                      description: "Stay updated with the latest pharmaceutical technology trends."
+                    },
+                    {
+                      image: "https://images.pexels.com/photos/3184296/pexels-photo-3184296.jpeg",
+                      title: "Research Solutions",
+                      description: "Discover how technology improves pharmaceutical research outcomes."
+                    }
+                  ].map((resource, index) => (
+                    <div 
+                      key={resource.title}
+                      className={`bg-white p-4 rounded-lg shadow-sm transition-all duration-500 hover:shadow-xl hover:scale-105 cursor-pointer ${isVisible ? 'animate-fade-in-up' : ''}`}
+                      style={{ 
+                        animationDelay: `${index * 200}ms`,
+                        animationDuration: '0.6s',
+                        animationFillMode: 'forwards'
+                      }}
+                    >
+                      <img src={resource.image} alt={resource.title} className="w-full h-40 object-cover rounded-lg mb-4 transition-all duration-500 hover:scale-105" />
+                      <h4 className="text-lg font-semibold text-[#3a3dc4] mb-2">{resource.title}</h4>
+                      <p className="text-gray-600">{resource.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         )}

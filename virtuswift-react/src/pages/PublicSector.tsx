@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCogs, faSyncAlt, faGraduationCap, faCloud, faShieldAlt, faHandshake, faDatabase, faServer, faGlobe } from '@fortawesome/free-solid-svg-icons';
+import { faCogs, faSyncAlt, faGraduationCap, faCloud, faShieldAlt, faHandshake, faBuilding, faUsers, faChartLine } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 const sliderImages = [
   {
-    url: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71',
-    title: 'Revolutionizing ERP Solutions with VirtuSwift Microsoft Dynamics Expertise',
-    desc: 'Transform your business operations with innovative Microsoft Dynamics technology.'
+    url: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab',
+    title: 'Empowering Government with VirtuSwift Public Sector Solutions',
+    desc: 'Transform public services with secure, scalable technology solutions.'
   },
   {
-    url: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71',
+    url: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab',
     title: '',
     desc: ''
   }
@@ -22,7 +22,7 @@ const tabs = [
   'Benefits'
 ];
 
-const MicrosoftDynamics: React.FC = () => {
+const PublicSector: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [activeTab, setActiveTab] = useState('Overview');
   const [isVisible, setIsVisible] = useState(false);
@@ -91,14 +91,14 @@ const MicrosoftDynamics: React.FC = () => {
         {activeTab === 'Overview' && (
           <div className={`flex flex-col md:flex-row gap-8 mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <div className="md:w-1/2">
-              <h2 className="text-3xl font-bold mb-4">Transforming Business Operations with VirtuSwift Microsoft Dynamics Expertise</h2>
+              <h2 className="text-3xl font-bold mb-4">Transforming Public Sector with VirtuSwift IT Expertise</h2>
               <p className="text-gray-600 mb-6">
-                At VirtuSwift, we deliver tailored Microsoft Dynamics solutions to revolutionize enterprise resource planning. Our expertise in Dynamics 365 implementation, customization, and integration empowers organizations to enhance operational efficiency and business intelligence.
+                At VirtuSwift, we deliver tailored IT solutions to revolutionize public sector operations. Our expertise in government systems, citizen services, and secure infrastructure empowers public agencies to enhance service delivery and operational efficiency.
               </p>
-              <Link to="/contact?service=dynamics" className="inline-block bg-[#3a3dc4] text-white px-6 py-2 rounded-lg hover:bg-[#008BCF] transition-all duration-300 hover:scale-105 hover:shadow-lg">Explore Now</Link>
+              <Link to="/contact?industry=publicsector" className="inline-block bg-[#3a3dc4] text-white px-6 py-2 rounded-lg hover:bg-[#008BCF] transition-all duration-300 hover:scale-105 hover:shadow-lg">Explore Now</Link>
             </div>
             <div className="md:w-1/2">
-              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71" alt="Microsoft Dynamics IT Technology" className="w-full h-64 object-cover rounded-lg transition-all duration-500 hover:shadow-xl hover:scale-105" />
+              <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab" alt="Public Sector IT Technology" className="w-full h-64 object-cover rounded-lg transition-all duration-500 hover:shadow-xl hover:scale-105" />
             </div>
           </div>
         )}
@@ -106,21 +106,21 @@ const MicrosoftDynamics: React.FC = () => {
         {activeTab === 'Capabilities' && (
           <div className={`mb-12 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <h3 className="text-xl font-semibold text-[#3a3dc4] mb-2">CAPABILITIES</h3>
-            <h2 className="text-3xl font-bold mb-4">Revolutionize ERP with VirtuSwift</h2>
+            <h2 className="text-3xl font-bold mb-4">Revolutionize Public Sector with VirtuSwift</h2>
             <div className="space-y-8">
               <div className="flex flex-col md:flex-row gap-6">
                 {[
                   {
-                    title: 'Dynamics 365 Implementation',
-                    description: 'End-to-end Microsoft Dynamics 365 implementation with best practices and industry expertise.'
+                    title: 'Government Portal Platform',
+                    description: 'Secure citizen-facing portals with integrated government services and digital workflows.'
                   },
                   {
-                    title: 'Dynamics Customization',
-                    description: 'Tailored Dynamics solutions to meet specific business requirements and workflows.'
+                    title: 'Public Service Dashboard',
+                    description: 'Comprehensive visibility into government operations, performance metrics, and citizen engagement.'
                   },
                   {
-                    title: 'Dynamics Integration',
-                    description: 'Seamless integration of Dynamics with existing business systems and applications.'
+                    title: 'Secure Infrastructure Management',
+                    description: 'FISMA-compliant solutions for government data protection and system security.'
                   }
                 ].map((capability, index) => (
                   <div 
@@ -143,15 +143,15 @@ const MicrosoftDynamics: React.FC = () => {
         {/* Benefits Tab */}
         {activeTab === 'Benefits' && (
           <div className={`transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <h2 className="text-3xl font-bold mb-8">A Future-Ready ERP Ecosystem</h2>
+            <h2 className="text-3xl font-bold mb-8">A Future-Ready Public Sector Ecosystem</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {[
-                { icon: faCogs, title: "Certified Experts", text: "Our team is trained in advanced Microsoft Dynamics technologies and ERP best practices." },
-                { icon: faSyncAlt, title: "Proven Results", text: "We've successfully implemented Dynamics solutions for global organizations." },
-                { icon: faGraduationCap, title: "Continuous Innovation", text: "Our experts stay ahead of Dynamics technology trends and updates." },
-                { icon: faCloud, title: "Scalable Solutions", text: "Build ERP systems that grow with your business and operational needs." },
-                { icon: faShieldAlt, title: "Data Security", text: "Ensure secure Dynamics implementations with industry-standard security practices." },
-                { icon: faHandshake, title: "Strategic Partnerships", text: "Collaborate with Microsoft and top tech providers for innovative solutions." }
+                { icon: faCogs, title: "Certified Experts", text: "Our team is trained in advanced government IT systems and compliance." },
+                { icon: faSyncAlt, title: "Proven Results", text: "We've enhanced public sector operations for government agencies." },
+                { icon: faGraduationCap, title: "Continuous Innovation", text: "Our experts stay ahead of government IT trends and regulations." },
+                { icon: faCloud, title: "Scalable Solutions", text: "Build government IT systems that grow with your organization." },
+                { icon: faShieldAlt, title: "Data Security", text: "Ensure FISMA-compliant solutions for government data protection." },
+                { icon: faHandshake, title: "Strategic Partnerships", text: "Collaborate with top tech providers for innovative government IT solutions." }
               ].map((benefit, index) => (
                 <div 
                   key={benefit.title}
@@ -172,26 +172,26 @@ const MicrosoftDynamics: React.FC = () => {
             <div className="space-y-12 mt-12">
               <div className={`flex flex-col md:flex-row gap-8 transition-all duration-1000 delay-600 hover:shadow-2xl hover:scale-105 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
                 <div className="md:w-1/2">
-                  <h3 className="text-xl font-semibold mb-4">Proactive Support for ERP Excellence</h3>
+                  <h3 className="text-xl font-semibold mb-4">Proactive Support for Public Sector Excellence</h3>
                   <p className="text-gray-600 mb-4">
-                    Our robust support system resolves 95% of Dynamics challenges swiftly, backed by continuous training to address evolving business needs and platform updates.
+                    Our robust support system resolves 95% of government IT challenges swiftly, backed by continuous training to address evolving public service needs.
                   </p>
-                  <Link to="/contact?service=dynamics" className="inline-block bg-[#3a3dc4] text-white px-6 py-2 rounded-lg hover:bg-[#008BCF] transition-all duration-300 hover:scale-105 hover:shadow-lg">Get Support</Link>
+                  <Link to="/contact?industry=publicsector" className="inline-block bg-[#3a3dc4] text-white px-6 py-2 rounded-lg hover:bg-[#008BCF] transition-all duration-300 hover:scale-105 hover:shadow-lg">Get Support</Link>
                 </div>
                 <div className="md:w-1/2">
-                  <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71" alt="Microsoft Dynamics IT Support" className="w-full h-64 object-cover rounded-lg transition-all duration-500 hover:shadow-xl hover:scale-105" />
+                  <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab" alt="Public Sector IT Support" className="w-full h-64 object-cover rounded-lg transition-all duration-500 hover:shadow-xl hover:scale-105" />
                 </div>
               </div>
               <div className={`flex flex-col md:flex-row gap-8 transition-all duration-1000 delay-800 hover:shadow-2xl hover:scale-105 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
                 <div className="md:w-1/2">
                   <h3 className="text-xl font-semibold mb-4">Empowered by Industry Partnerships</h3>
                   <p className="text-gray-600 mb-4">
-                    Since 2010, VirtuSwift has partnered with Microsoft and leading tech providers to deliver innovative ERP solutions, improving operational efficiency and business intelligence.
+                    Since 2010, VirtuSwift has partnered with leading tech providers to deliver innovative government IT solutions, improving citizen services and operational efficiency.
                   </p>
-                  <Link to="/contact?service=dynamics" className="inline-block bg-[#3a3dc4] text-white px-6 py-2 rounded-lg hover:bg-[#008BCF] transition-all duration-300 hover:scale-105 hover:shadow-lg">Collaborate with Us</Link>
+                  <Link to="/contact?industry=publicsector" className="inline-block bg-[#3a3dc4] text-white px-6 py-2 rounded-lg hover:bg-[#008BCF] transition-all duration-300 hover:scale-105 hover:shadow-lg">Collaborate with Us</Link>
                 </div>
                 <div className="md:w-1/2">
-                  <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71" alt="Industry Partnerships" className="w-full h-64 object-cover rounded-lg transition-all duration-500 hover:shadow-xl hover:scale-105" />
+                  <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab" alt="Industry Partnerships" className="w-full h-64 object-cover rounded-lg transition-all duration-500 hover:shadow-xl hover:scale-105" />
                 </div>
               </div>
             </div>
@@ -202,19 +202,19 @@ const MicrosoftDynamics: React.FC = () => {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   {[
                     {
-                      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
-                      title: "Dynamics 365 Implementation Insights",
-                      description: "Learn how VirtuSwift enhances business operations with innovative Dynamics solutions."
+                      image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab",
+                      title: "Public Sector IT Insights",
+                      description: "Learn how VirtuSwift enhances government with innovative IT solutions."
                     },
                     {
-                      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
-                      title: "ERP Technology Trends",
-                      description: "Stay updated with the latest Dynamics technology trends and best practices."
+                      image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab",
+                      title: "Digital Government Trends",
+                      description: "Stay updated with the latest government technology trends."
                     },
                     {
-                      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
-                      title: "Business Process Optimization",
-                      description: "Discover how Dynamics technology improves operational efficiency and business intelligence."
+                      image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab",
+                      title: "Citizen Services",
+                      description: "Discover how technology improves government service delivery."
                     }
                   ].map((resource, index) => (
                     <div 
@@ -241,4 +241,4 @@ const MicrosoftDynamics: React.FC = () => {
   );
 };
 
-export default MicrosoftDynamics; 
+export default PublicSector; 

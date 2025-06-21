@@ -6,6 +6,7 @@ import { faCogs, faSyncAlt, faGraduationCap, faCloud, faShieldAlt, faHandshake }
 const AwsMigration: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [activeTab, setActiveTab] = useState('Overview');
+  const [isVisible, setIsVisible] = useState(false);
 
   const slides = [
     {
@@ -29,6 +30,7 @@ const AwsMigration: React.FC = () => {
   };
 
   useEffect(() => {
+    setIsVisible(true);
     const slideInterval = setInterval(nextSlide, 5000);
     return () => clearInterval(slideInterval);
   }, []);
@@ -37,7 +39,7 @@ const AwsMigration: React.FC = () => {
     switch (activeTab) {
       case 'Overview':
         return (
-          <div className="flex flex-col md:flex-row gap-8 mb-12 items-center">
+          <div className={`flex flex-col md:flex-row gap-8 mb-12 items-center transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <div className="md:w-1/2">
               <h2 className="text-3xl font-bold mb-4 text-gray-800">
                 Streamlined AWS Migration: Expertise, Efficiency, Excellence
@@ -48,7 +50,7 @@ const AwsMigration: React.FC = () => {
               </p>
               <Link
                 to="/contact"
-                className="inline-block bg-[#3a3dc4] text-white px-6 py-3 rounded-lg hover:bg-[#008BCF] transition-colors"
+                className="inline-block bg-[#3a3dc4] text-white px-6 py-3 rounded-lg hover:bg-[#008BCF] transition-all duration-300 hover:scale-105 hover:shadow-lg"
               >
                 Learn More
               </Link>
@@ -57,37 +59,52 @@ const AwsMigration: React.FC = () => {
               <img
                 src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3"
                 alt="AWS Migration Technology"
-                className="w-full h-auto object-cover rounded-lg shadow-lg"
+                className="w-full h-auto object-cover rounded-lg shadow-lg transition-all duration-500 hover:shadow-xl hover:scale-105"
               />
             </div>
           </div>
         );
       case 'Capabilities':
         return (
-          <div className="mb-12">
+          <div className={`mb-12 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <h3 className="text-xl font-semibold text-[#3a3dc4] mb-2">CAPABILITIES</h3>
             <h2 className="text-3xl font-bold mb-4 text-gray-800">Transform Your Cloud Strategy with VirtuSwift</h2>
             <div className="space-y-8">
               <div className="flex flex-col md:flex-row gap-6">
-                <div className="md:w-1/3 bg-white p-6 rounded-lg shadow-md">
-                  <h4 className="text-lg font-semibold text-[#3a3dc4]">Migration Accelerator</h4>
-                  <p className="text-gray-600">Fast-track your migration with automated tools and real-time progress tracking.</p>
-                </div>
-                <div className="md:w-1/3 bg-white p-6 rounded-lg shadow-md">
-                  <h4 className="text-lg font-semibold text-[#3a3dc4]">Cloud Insights Dashboard</h4>
-                  <p className="text-gray-600">Monitor performance, costs, and security across your AWS environment.</p>
-                </div>
-                <div className="md:w-1/3 bg-white p-6 rounded-lg shadow-md">
-                  <h4 className="text-lg font-semibold text-[#3a3dc4]">Managed Migration Services</h4>
-                  <p className="text-gray-600">End-to-end support to ensure a smooth and secure cloud transition.</p>
-                </div>
+                {[
+                  {
+                    title: 'Migration Accelerator',
+                    description: 'Fast-track your migration with automated tools and real-time progress tracking.'
+                  },
+                  {
+                    title: 'Cloud Insights Dashboard',
+                    description: 'Monitor performance, costs, and security across your AWS environment.'
+                  },
+                  {
+                    title: 'Managed Migration Services',
+                    description: 'End-to-end support to ensure a smooth and secure cloud transition.'
+                  }
+                ].map((capability, index) => (
+                  <div 
+                    key={capability.title}
+                    className={`md:w-1/3 bg-white p-6 rounded-lg shadow-md transition-all duration-500 hover:shadow-xl hover:scale-105 hover:bg-gray-50 cursor-pointer ${isVisible ? 'animate-fade-in-up' : ''}`}
+                    style={{ 
+                      animationDelay: `${index * 200}ms`,
+                      animationDuration: '0.6s',
+                      animationFillMode: 'forwards'
+                    }}
+                  >
+                    <h4 className="text-lg font-semibold text-[#3a3dc4]">{capability.title}</h4>
+                    <p className="text-gray-600">{capability.description}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         );
       case 'Benefits':
         return (
-          <div>
+          <div className={`transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <h2 className="text-3xl font-bold mb-8 text-gray-800 text-center">A Seamless AWS Migration Journey</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {[ 
@@ -97,9 +114,17 @@ const AwsMigration: React.FC = () => {
                 { icon: faCloud, title: "Optimized Performance", text: "Enhance scalability and reliability with AWS." },
                 { icon: faShieldAlt, title: "Cost Efficiency", text: "Reduce operational costs with optimized cloud resources." },
                 { icon: faHandshake, title: "Strategic Partnerships", text: "Collaborate with AWS for innovative cloud solutions." },
-              ].map(benefit => (
-                <div key={benefit.title} className="bg-gray-50 p-6 rounded-lg shadow-sm text-center">
-                  <FontAwesomeIcon icon={benefit.icon} className="text-3xl text-[#3a3dc4] mb-4" />
+              ].map((benefit, index) => (
+                <div 
+                  key={benefit.title} 
+                  className={`bg-gray-50 p-6 rounded-lg shadow-sm text-center transition-all duration-500 hover:shadow-xl hover:scale-105 hover:bg-white cursor-pointer ${isVisible ? 'animate-fade-in-up' : ''}`}
+                  style={{ 
+                    animationDelay: `${index * 100}ms`,
+                    animationDuration: '0.6s',
+                    animationFillMode: 'forwards'
+                  }}
+                >
+                  <FontAwesomeIcon icon={benefit.icon} className="text-3xl text-[#3a3dc4] mb-4 transition-transform duration-300 hover:scale-110" />
                   <h4 className="font-bold text-lg mb-2 text-gray-700">{benefit.title}</h4>
                   <p className="text-gray-600 text-sm">{benefit.text}</p>
                 </div>
@@ -136,13 +161,13 @@ const AwsMigration: React.FC = () => {
           ))}
         </div>
         <button
-          className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white bg-opacity-50 p-3 rounded-full hover:bg-opacity-75 transition-opacity text-gray-700"
+          className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white bg-opacity-50 p-3 rounded-full hover:bg-opacity-75 transition-all duration-300 hover:scale-110"
           onClick={prevSlide}
         >
           ❮
         </button>
         <button
-          className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white bg-opacity-50 p-3 rounded-full hover:bg-opacity-75 transition-opacity text-gray-700"
+          className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white bg-opacity-50 p-3 rounded-full hover:bg-opacity-75 transition-all duration-300 hover:scale-110"
           onClick={nextSlide}
         >
           ❯
@@ -156,7 +181,7 @@ const AwsMigration: React.FC = () => {
             {['Overview', 'Capabilities', 'Benefits'].map(tab => (
               <button
                 key={tab}
-                className={`py-3 px-4 text-sm font-medium border-b-2 transition-colors duration-300 
+                className={`py-3 px-4 text-sm font-medium border-b-2 transition-all duration-300 hover:scale-105
                   ${activeTab === tab ? 'border-[#3a3dc4] text-[#3a3dc4]' : 'border-transparent text-gray-400 hover:text-white'}`}
                 onClick={() => setActiveTab(tab)}
               >
@@ -174,7 +199,7 @@ const AwsMigration: React.FC = () => {
 
       {/* Additional Sections */}
       <div className="container mx-auto px-4 py-8 space-y-12">
-        <div className="flex flex-col md:flex-row gap-8 items-center bg-white p-8 rounded-lg shadow-lg">
+        <div className={`flex flex-col md:flex-row gap-8 items-center bg-white p-8 rounded-lg shadow-lg transition-all duration-1000 delay-600 hover:shadow-2xl hover:scale-105 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="md:w-1/2">
             <h3 className="text-2xl font-semibold mb-4 text-gray-800">Proactive AWS Migration Support</h3>
             <p className="text-gray-600 mb-4">
@@ -183,7 +208,7 @@ const AwsMigration: React.FC = () => {
             </p>
             <Link
               to="/contact"
-              className="inline-block bg-[#3a3dc4] text-white px-6 py-3 rounded-lg hover:bg-[#008BCF] transition-colors"
+              className="inline-block bg-[#3a3dc4] text-white px-6 py-3 rounded-lg hover:bg-[#008BCF] transition-all duration-300 hover:scale-105 hover:shadow-lg"
             >
               Explore Support
             </Link>
@@ -192,30 +217,30 @@ const AwsMigration: React.FC = () => {
             <img
               src="https://images.pexels.com/photos/1069798/pexels-photo-1069798.jpeg"
               alt="Proactive Support"
-              className="w-full h-auto object-cover rounded-lg shadow-md"
+              className="w-full h-auto object-cover rounded-lg shadow-md transition-all duration-500 hover:shadow-xl hover:scale-105"
             />
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row-reverse gap-8 items-center bg-white p-8 rounded-lg shadow-lg">
+        <div className={`flex flex-col md:flex-row-reverse gap-8 items-center bg-white p-8 rounded-lg shadow-lg transition-all duration-1000 delay-800 hover:shadow-2xl hover:scale-105 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="md:w-1/2">
-            <h3 className="text-2xl font-semibold mb-4 text-gray-800">Strengthened by AWS Partnerships</h3>
+            <h3 className="text-2xl font-semibold mb-4 text-gray-800">Empowered by AWS Partnerships</h3>
             <p className="text-gray-600 mb-4">
-              Since 2010, VirtuSwift has partnered with AWS to deliver robust migration solutions,
-              optimizing workloads across hybrid and multi-cloud environments.
+              Since 2010, VirtuSwift has partnered with AWS to deliver innovative cloud solutions, improving
+              operational efficiency and driving digital transformation.
             </p>
             <Link
               to="/contact"
-              className="inline-block bg-[#3a3dc4] text-white px-6 py-3 rounded-lg hover:bg-[#008BCF] transition-colors"
+              className="inline-block bg-[#3a3dc4] text-white px-6 py-3 rounded-lg hover:bg-[#008BCF] transition-all duration-300 hover:scale-105 hover:shadow-lg"
             >
               Partner with Us
             </Link>
           </div>
           <div className="md:w-1/2">
             <img
-              src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d"
-              alt="Strategic Partnerships"
-              className="w-full h-auto object-cover rounded-lg shadow-md"
+              src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3"
+              alt="AWS Partnerships"
+              className="w-full h-auto object-cover rounded-lg shadow-md transition-all duration-500 hover:shadow-xl hover:scale-105"
             />
           </div>
         </div>
