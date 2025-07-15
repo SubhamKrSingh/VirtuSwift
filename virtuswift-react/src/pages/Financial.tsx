@@ -1,248 +1,145 @@
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCogs, faSyncAlt, faGraduationCap, faCloud, faShieldAlt, faHandshake, faLandmark, faChartLine, faCoins, faLock, faGlobe } from '@fortawesome/free-solid-svg-icons';
+import { faLandmark, faShieldAlt, faChartLine, faCogs, faCloud, faRobot, faLink, faUsers, faCreditCard, faCheckCircle, faUserShield } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
-const sliderImages = [
+const hero = {
+  url: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f',
+  title: 'Empowering Tomorrow’s Finance, Today',
+  desc: 'VirtuSwift partners with financial institutions to unlock digital innovation, elevate customer trust, and optimize operations—helping you lead confidently in a tech-driven regulatory landscape.'
+};
+
+const subSectors = [
   {
-    url: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f',
-    title: 'Revolutionizing Financial Services with VirtuSwift IT Solutions',
-    desc: 'Transform banking operations and enhance security with innovative technology.'
+    icon: faLandmark,
+    title: 'Banking & Capital Markets',
+    desc: 'Modernize core banking, enable real-time analytics, and meet regulatory obligations—without compromising on performance.',
+    link: '/industries/financial/banking',
+    cta: 'Start Your Banking Transformation →',
   },
   {
-    url: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f',
-    title: '',
-    desc: ''
-  }
+    icon: faShieldAlt,
+    title: 'Insurance',
+    desc: 'Digitize underwriting, claims, and policy admin while improving risk modeling, reporting, and customer self-service.',
+    link: '/industries/financial/insurance',
+    cta: 'Accelerate Your Insurance Transformation →',
+  },
+  {
+    icon: faChartLine,
+    title: 'Investment Management',
+    desc: 'Support portfolio and asset managers with advanced data platforms, ESG reporting, and client transparency tools.',
+    link: '/industries/financial/investment',
+    cta: 'Explore Investment Solutions →',
+  },
+  {
+    icon: faCreditCard,
+    title: 'Payments & Fintech',
+    desc: 'Enable real-time payments, integrate wallet and card systems, and develop scalable APIs for embedded finance.',
+    link: '/industries/financial/payments',
+    cta: 'Schedule a Payments Strategy Call →',
+  },
+  {
+    icon: faLink,
+    title: 'Digital Assets & Blockchain',
+    desc: 'Explore tokenization, smart contracts, and secure digital ledgers. Enterprise-grade blockchain adoption and crypto compliance.',
+    link: '/industries/financial/blockchain',
+    cta: 'Book a Blockchain Strategy Consultation →',
+  },
 ];
 
-const tabs = [
-  'Overview',
-  'Capabilities',
-  'Benefits'
+const benefits = [
+  'Accelerated cloud and core banking modernization',
+  'Secure, compliant architecture by design',
+  'Seamless customer journeys across channels',
+  'Actionable analytics for smarter decisions',
+  'Future-proof platforms for rapid fintech innovation',
 ];
 
-const Financial: React.FC = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [activeTab, setActiveTab] = useState('Overview');
+export default function Financial() {
   const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    setIsVisible(true);
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % sliderImages.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
+  useEffect(() => { setIsVisible(true); }, []);
 
   return (
     <div className="bg-gray-100 min-h-screen flex flex-col">
-      {/* Slider Section */}
+      {/* Hero Section */}
       <div className={`relative w-full h-[400px] bg-gray-100 overflow-hidden transition-all duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-        <div
-          className="slider flex transition-transform duration-500 ease-in-out"
-          style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-        >
-          {sliderImages.map((slide, idx) => (
-            <div
-              key={idx}
-              className="slide min-w-full h-[400px] bg-cover bg-center relative"
-              style={{ backgroundImage: `url('${slide.url}')` }}
-            >
-              <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-start px-10">
-                <div className="text-white">
-                  {slide.title && <h1 className="text-4xl font-bold mb-4">{slide.title}</h1>}
-                  {slide.desc && <p className="text-lg">{slide.desc}</p>}
-                </div>
-              </div>
+        <div className="slide min-w-full h-[400px] bg-cover bg-center relative" style={{ backgroundImage: `url('${hero.url}')` }}>
+          <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-start px-10">
+            <div className="text-white">
+              <h1 className="text-4xl font-bold mb-4">{hero.title}</h1>
+              <p className="text-lg">{hero.desc}</p>
             </div>
-          ))}
+          </div>
         </div>
-        <button
-          className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white bg-opacity-50 p-2 rounded-full hover:bg-opacity-75 transition-all duration-300 hover:scale-110"
-          onClick={() => setCurrentSlide((prev) => (prev - 1 + sliderImages.length) % sliderImages.length)}
-        >❮</button>
-        <button
-          className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white bg-opacity-50 p-2 rounded-full hover:bg-opacity-75 transition-all duration-300 hover:scale-110"
-          onClick={() => setCurrentSlide((prev) => (prev + 1) % sliderImages.length)}
-        >❯</button>
       </div>
 
-      {/* Tab Navigation */}
-      <div className="bg-[#121927] text-white">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex justify-start space-x-8 overflow-x-auto">
-            {tabs.map(tab => (
-              <button
-                key={tab}
-                className={`tab-link px-4 py-2 text-sm font-medium border-b-2 transition-all duration-300 hover:scale-105 ${activeTab === tab ? 'text-[#3a3dc4] border-[#3a3dc4]' : 'border-transparent text-white hover:text-[#3a3dc4] hover:border-[#3a3dc4]'}`}
-                onClick={() => setActiveTab(tab)}
-              >
-                {tab}
-              </button>
+      {/* Industry Landscape */}
+      <div className="container mx-auto px-4 py-8 flex-1">
+        <div className="mb-12">
+          <h3 className="text-xl font-semibold text-[#3a3dc4] mb-2">🌍 Industry Landscape</h3>
+          <p className="text-gray-700 mb-4">The financial sector is undergoing a profound shift—driven by digital-first customers, real-time payments, embedded finance, and rising compliance demands. Whether you're a bank modernizing core systems, a fintech scaling fast, or an insurer transforming customer experiences, VirtuSwift helps you navigate with precision and agility.</p>
+        </div>
+
+        {/* Financial Services Solutions */}
+        <div className="mb-12">
+          <h3 className="text-xl font-semibold text-[#3a3dc4] mb-2">🧭 Our Financial Services Solutions</h3>
+          <p className="text-gray-700 mb-4">We empower financial institutions across every segment to modernize infrastructure, harness data, and drive customer-centric innovation.</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-4">
+            {[
+              { icon: faCloud, title: 'Cloud-native banking transformations' },
+              { icon: faShieldAlt, title: 'AI-powered fraud detection & risk analytics' },
+              { icon: faUserShield, title: 'Regulatory compliance frameworks (Basel III, GDPR, etc.)' },
+              { icon: faRobot, title: 'Intelligent automation (RPA, workflow orchestration)' },
+              { icon: faLink, title: 'API strategy & Open Banking enablement' },
+              { icon: faUsers, title: 'Customer experience modernization & omnichannel platforms' },
+            ].map((item) => (
+              <div key={item.title} className="bg-white p-6 rounded-lg shadow-md flex flex-col items-center text-center transition-all duration-500 hover:shadow-xl hover:scale-105 hover:bg-gray-50 cursor-pointer">
+                <FontAwesomeIcon icon={item.icon} className="text-3xl text-[#3a3dc4] mb-4" />
+                <h4 className="font-bold text-lg mb-2">{item.title}</h4>
+              </div>
             ))}
           </div>
+          <Link to="/contact?industry=financial" className="inline-block bg-[#f05a28] text-white px-8 py-4 rounded-lg font-semibold shadow-lg hover:bg-[#3a3dc4] hover:scale-105 transition text-lg">Let’s Talk Financial Transformation →</Link>
         </div>
-      </div>
 
-      {/* Tab Content */}
-      <div className="container mx-auto px-4 py-8 flex-1">
-        {/* Overview Tab */}
-        {activeTab === 'Overview' && (
-          <div className={`flex flex-col md:flex-row gap-8 mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <div className="md:w-1/2">
-              <h2 className="text-3xl font-bold mb-4">Transforming Financial Services with VirtuSwift IT Expertise</h2>
-              <p className="text-gray-600 mb-6">
-                At VirtuSwift, we deliver tailored IT solutions to revolutionize financial services. Our expertise in fintech platforms, regulatory compliance, and cybersecurity empowers financial institutions to enhance security and customer experiences.
-              </p>
-              <Link to="/contact?industry=financial" className="inline-block bg-[#3a3dc4] text-white px-6 py-2 rounded-lg hover:bg-[#008BCF] transition-all duration-300 hover:scale-105 hover:shadow-lg">Explore Now</Link>
-            </div>
-            <div className="md:w-1/2">
-              <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f" alt="Financial IT Technology" className="w-full h-64 object-cover rounded-lg transition-all duration-500 hover:shadow-xl hover:scale-105" />
-            </div>
+        {/* Sub-Sectors */}
+        <div className="mb-12">
+          <h3 className="text-xl font-semibold text-[#3a3dc4] mb-2">🧩 Sub-Sectors We Serve</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {subSectors.map((sector) => (
+              <div key={sector.title} className="bg-white p-6 rounded-lg shadow-md flex flex-col items-start text-left transition-all duration-500 hover:shadow-xl hover:scale-105 hover:bg-gray-50 cursor-pointer">
+                <FontAwesomeIcon icon={sector.icon} className="text-3xl text-[#3a3dc4] mb-4" />
+                <h4 className="font-bold text-lg mb-2">{sector.title}</h4>
+                <p className="text-gray-600 text-sm mb-4">{sector.desc}</p>
+                <Link to={sector.link} className="inline-block bg-[#3a3dc4] text-white px-4 py-2 rounded-lg hover:bg-[#008BCF] transition-all duration-300 hover:scale-105 hover:shadow-lg text-sm">{sector.cta}</Link>
+              </div>
+            ))}
           </div>
-        )}
+          <Link to="/contact?industry=financial" className="inline-block bg-[#f05a28] text-white px-8 py-4 rounded-lg font-semibold shadow-lg hover:bg-[#3a3dc4] hover:scale-105 transition text-lg mt-8">Explore Solutions for Your Financial Sector →</Link>
+        </div>
 
-        {/* Capabilities Tab */}
-        {activeTab === 'Capabilities' && (
-          <div className={`mb-12 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <h3 className="text-xl font-semibold text-[#3a3dc4] mb-2">CAPABILITIES</h3>
-            <h2 className="text-3xl font-bold mb-4">Revolutionize Financial Services with VirtuSwift</h2>
-            <div className="space-y-8">
-              <div className="flex flex-col md:flex-row gap-6">
-                {[
-                  {
-                    title: 'Fintech Platform Development',
-                    description: 'Secure and scalable financial technology platforms with advanced payment processing.'
-                  },
-                  {
-                    title: 'Regulatory Compliance',
-                    description: 'Ensure adherence to financial regulations and data protection standards.'
-                  },
-                  {
-                    title: 'Cybersecurity Solutions',
-                    description: 'Advanced security measures to protect financial data and prevent fraud.'
-                  }
-                ].map((capability, index) => (
-                  <div 
-                    key={capability.title}
-                    className={`md:w-1/3 bg-white p-6 rounded-lg shadow-md transition-all duration-500 hover:shadow-xl hover:scale-105 hover:bg-gray-50 cursor-pointer ${isVisible ? 'animate-fade-in-up' : ''}`}
-                    style={{ 
-                      animationDelay: `${index * 200}ms`,
-                      animationDuration: '0.6s',
-                      animationFillMode: 'forwards'
-                    }}
-                  >
-                    <h4 className="text-lg font-semibold text-[#3a3dc4]">{capability.title}</h4>
-                    <p className="text-gray-600">{capability.description}</p>
-                  </div>
-                ))}
+        {/* The VirtuSwift Advantage */}
+        <div className="mb-12">
+          <h3 className="text-xl font-semibold text-[#3a3dc4] mb-2">📊 The VirtuSwift Advantage</h3>
+          <p className="text-gray-700 mb-4">We bring deep domain expertise, regulatory insight, and cutting-edge technology to every financial services engagement.</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-4">
+            {benefits.map((b) => (
+              <div key={b} className="bg-white p-6 rounded-lg shadow-md flex flex-col items-center text-center transition-all duration-500 hover:shadow-xl hover:scale-105 hover:bg-gray-50 cursor-pointer">
+                <FontAwesomeIcon icon={faCheckCircle} className="text-3xl text-[#3a3dc4] mb-4" />
+                <h4 className="font-bold text-lg mb-2">{b}</h4>
               </div>
-            </div>
+            ))}
           </div>
-        )}
+          <Link to="/contact?industry=financial" className="inline-block bg-[#f05a28] text-white px-8 py-4 rounded-lg font-semibold shadow-lg hover:bg-[#3a3dc4] hover:scale-105 transition text-lg">Lead Financial Innovation with Confidence →</Link>
+        </div>
 
-        {/* Benefits Tab */}
-        {activeTab === 'Benefits' && (
-          <div className={`transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <h2 className="text-3xl font-bold mb-8">A Future-Ready Financial Ecosystem</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {[
-                { icon: faCogs, title: "Certified Experts", text: "Our team is trained in advanced financial IT systems and fintech technology." },
-                { icon: faSyncAlt, title: "Proven Results", text: "We've enhanced financial operations for global banks and institutions." },
-                { icon: faGraduationCap, title: "Continuous Innovation", text: "Our experts stay ahead of financial IT trends and regulatory changes." },
-                { icon: faCloud, title: "Scalable Solutions", text: "Build financial IT systems that grow with your business and customer base." },
-                { icon: faShieldAlt, title: "Data Security", text: "Ensure PCI-DSS compliant solutions for secure financial transactions." },
-                { icon: faHandshake, title: "Strategic Partnerships", text: "Collaborate with top tech providers for innovative financial solutions." }
-              ].map((benefit, index) => (
-                <div 
-                  key={benefit.title}
-                  className={`bg-gray-50 p-6 rounded-lg shadow-sm flex flex-col items-center transition-all duration-500 hover:shadow-xl hover:scale-105 hover:bg-white cursor-pointer ${isVisible ? 'animate-fade-in-up' : ''}`}
-                  style={{ 
-                    animationDelay: `${index * 100}ms`,
-                    animationDuration: '0.6s',
-                    animationFillMode: 'forwards'
-                  }}
-                >
-                  <FontAwesomeIcon icon={benefit.icon} className="text-3xl text-[#3a3dc4] mb-4 transition-transform duration-300 hover:scale-110" />
-                  <h4 className="font-bold text-lg mb-2">{benefit.title}</h4>
-                  <p className="text-gray-600 text-center">{benefit.text}</p>
-                </div>
-              ))}
-            </div>
-
-            {/* Additional Sections */}
-            <div className="space-y-12 mt-12">
-              <div className={`flex flex-col md:flex-row gap-8 transition-all duration-1000 delay-600 hover:shadow-2xl hover:scale-105 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-                <div className="md:w-1/2">
-                  <h3 className="text-xl font-semibold mb-4">Proactive Support for Financial Excellence</h3>
-                  <p className="text-gray-600 mb-4">
-                    Our robust support system resolves 95% of financial IT challenges swiftly, backed by continuous training to address evolving regulatory requirements and security threats.
-                  </p>
-                  <Link to="/contact?industry=financial" className="inline-block bg-[#3a3dc4] text-white px-6 py-2 rounded-lg hover:bg-[#008BCF] transition-all duration-300 hover:scale-105 hover:shadow-lg">Get Support</Link>
-                </div>
-                <div className="md:w-1/2">
-                  <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f" alt="Financial IT Support" className="w-full h-64 object-cover rounded-lg transition-all duration-500 hover:shadow-xl hover:scale-105" />
-                </div>
-              </div>
-              <div className={`flex flex-col md:flex-row gap-8 transition-all duration-1000 delay-800 hover:shadow-2xl hover:scale-105 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-                <div className="md:w-1/2">
-                  <h3 className="text-xl font-semibold mb-4">Empowered by Industry Partnerships</h3>
-                  <p className="text-gray-600 mb-4">
-                    Since 2010, VirtuSwift has partnered with leading tech providers to deliver innovative financial IT solutions, improving security, compliance, and customer experiences.
-                  </p>
-                  <Link to="/contact?industry=financial" className="inline-block bg-[#3a3dc4] text-white px-6 py-2 rounded-lg hover:bg-[#008BCF] transition-all duration-300 hover:scale-105 hover:shadow-lg">Collaborate with Us</Link>
-                </div>
-                <div className="md:w-1/2">
-                  <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f" alt="Industry Partnerships" className="w-full h-64 object-cover rounded-lg transition-all duration-500 hover:shadow-xl hover:scale-105" />
-                </div>
-              </div>
-            </div>
-
-            {/* Related Resources */}
-            <div className={`bg-gray-50 py-12 mt-12 transition-all duration-1000 delay-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-              <div className="container mx-auto px-4">
-                <h2 className="text-3xl font-bold mb-8">Related Resources</h2>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  {[
-                    {
-                      image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f",
-                      title: "Financial IT Insights",
-                      description: "Learn how VirtuSwift enhances financial services with innovative IT solutions."
-                    },
-                    {
-                      image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f",
-                      title: "Fintech Trends",
-                      description: "Stay updated with the latest financial technology trends."
-                    },
-                    {
-                      image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f",
-                      title: "Security & Compliance",
-                      description: "Discover how technology improves financial security and regulatory compliance."
-                    }
-                  ].map((resource, index) => (
-                    <div 
-                      key={resource.title}
-                      className={`bg-white p-4 rounded-lg shadow-sm transition-all duration-500 hover:shadow-xl hover:scale-105 cursor-pointer ${isVisible ? 'animate-fade-in-up' : ''}`}
-                      style={{ 
-                        animationDelay: `${index * 200}ms`,
-                        animationDuration: '0.6s',
-                        animationFillMode: 'forwards'
-                      }}
-                    >
-                      <img src={resource.image} alt={resource.title} className="w-full h-40 object-cover rounded-lg mb-4 transition-all duration-500 hover:scale-105" />
-                      <h4 className="text-lg font-semibold text-[#3a3dc4] mb-2">{resource.title}</h4>
-                      <p className="text-gray-600">{resource.description}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
+        {/* Final CTA */}
+        <div className="mb-12 text-center">
+          <h3 className="text-xl font-semibold text-[#3a3dc4] mb-2">🌐 Ready to Transform Your Financial Ecosystem?</h3>
+          <p className="text-lg text-gray-700 mb-6">VirtuSwift helps financial organizations embrace innovation while staying secure and compliant. Partner with us to build agile, intelligent, and customer-ready finance platforms.</p>
+          <Link to="/contact?industry=financial" className="inline-block bg-[#f05a28] text-white px-8 py-4 rounded-lg font-semibold shadow-lg hover:bg-[#3a3dc4] hover:scale-105 transition text-lg">Book a Financial Services Strategy Session →</Link>
+        </div>
       </div>
     </div>
   );
-};
-
-export default Financial; 
+} 

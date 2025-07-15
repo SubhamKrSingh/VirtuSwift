@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faTimes, faCloud, faShieldAlt, faBriefcase, faHeartbeat, faUniversity, faStore, faIndustry, faTruck, faUserShield, faPills, faDatabase, faServer, faShoppingCart, faBolt, faMoneyBillTrendUp, faHospital, faLightbulb, faCogs, faChartLine, faComments, faUsers, faUserPlus, faLandmark, faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faTimes, faCloud, faShieldAlt, faBriefcase, faHeartbeat, faUniversity, faStore, faIndustry, faTruck, faUserShield, faPills, faDatabase, faServer, faShoppingCart, faBolt, faMoneyBillTrendUp, faHospital, faLightbulb, faCogs, faChartLine, faComments, faUsers, faUserPlus, faLandmark, faEnvelope, faPhone, faChartBar, faRocket, faHeadset, faProjectDiagram, faCode, faPlaneDeparture, faGlobe, faSeedling, faFlask, faOilCan, faSolarPanel } from '@fortawesome/free-solid-svg-icons';
 import { faGoogle, faMicrosoft } from '@fortawesome/free-brands-svg-icons';
 
 const caseStudies = [
@@ -182,67 +182,92 @@ const Navbar: React.FC = () => {
                       </div>
                     </div>
                     {/* Main Mega Menu Content: Reorganized services */}
-                    <div className="w-1/4 p-6">
-                      <div>
-                        <h4 className="font-bold text-blue-900 mb-4">Cloud Solutions</h4>
-                        <Link to="/services/aws-migration" className="flex items-start gap-3 mb-3 group"
-                          onMouseEnter={() => setHoveredService({ id: 'aws-migration', title: 'AWS Migration', description: 'Seamless transition to AWS cloud infrastructure with minimal downtime.' })}
-                          onMouseLeave={() => setHoveredService(null)}
-                        >
-                          <span className="bg-[#D3D6E8] p-2 group-hover:bg-[#ffe5d0] group transition-colors duration-200">
-                            <FontAwesomeIcon icon={faCloud} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
+                    <div className="w-3/4 p-6">
+                      <div className="grid grid-cols-2 gap-x-8 gap-y-3">
+                        {/* Column 1 */}
+                        <Link to="/services/cloud-strategy-consulting" className="flex items-start gap-3 group">
+                          <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] transition-colors duration-200 flex items-center justify-center">
+                            <FontAwesomeIcon icon={faLightbulb} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
                           </span>
                           <span>
-                            <span className="font-semibold text-[#2563eb] underline group-hover:text-[#f05a28] group-hover:underline">AWS Migration</span>
-                            <div className="text-xs text-gray-500">Seamless transition to AWS cloud</div>
+                            <span className="font-semibold text-[#2563eb] underline group-hover:text-[#f05a28] group-hover:underline">Cloud Strategy & Consulting</span>
+                            <div className="text-xs text-gray-500">Custom cloud strategies for agility</div>
                           </span>
                         </Link>
-                        <Link to="/services/azure" className="flex items-start gap-3 mb-3 group"
-                          onMouseEnter={() => setHoveredService({ id: 'azure', title: 'Azure Solutions', description: 'Empower your business with comprehensive Microsoft Azure cloud services.' })}
-                          onMouseLeave={() => setHoveredService(null)}
-                        >
-                          <span className="bg-[#D3D6E8] p-2 group-hover:bg-[#ffe5d0] group transition-colors duration-200">
-                            <FontAwesomeIcon icon={faCloud} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
+                        <Link to="/services/digital-transformation" className="flex items-start gap-3 group">
+                          <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] transition-colors duration-200 flex items-center justify-center">
+                            <FontAwesomeIcon icon={faRocket} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
                           </span>
                           <span>
-                            <span className="font-semibold text-[#2563eb] underline group-hover:text-[#f05a28] group-hover:underline">Azure Solutions</span>
-                            <div className="text-xs text-gray-500">Empower your business with Azure</div>
+                            <span className="font-semibold text-[#2563eb] underline group-hover:text-[#f05a28] group-hover:underline">Digital Transformation Solutions</span>
+                            <div className="text-xs text-gray-500">Accelerate digital growth with smarter workflows</div>
                           </span>
                         </Link>
-                        <Link to="/services/multi-google-cloud" className="flex items-start gap-3 mb-3 group"
-                          onMouseEnter={() => setHoveredService({ id: 'multi-cloud-google', title: 'Multi-Cloud Google', description: 'Integrate Google Cloud Platform with your existing multi-cloud environment.' })}
-                          onMouseLeave={() => setHoveredService(null)}
-                        >
-                          <span className="bg-[#D3D6E8] p-2 group-hover:bg-[#ffe5d0] group transition-colors duration-200">
-                            <FontAwesomeIcon icon={faGoogle} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
+                        <Link to="/data-analytics-monetization" className="flex items-start gap-3 group">
+                          <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] transition-colors duration-200 flex items-center justify-center">
+                            <FontAwesomeIcon icon={faChartBar} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
                           </span>
                           <span>
-                            <span className="font-semibold text-[#2563eb] underline group-hover:text-[#f05a28] group-hover:underline">Multi-Cloud Google</span>
-                            <div className="text-xs text-gray-500">Integrate Google Cloud with ease</div>
+                            <span className="font-semibold text-[#2563eb] underline group-hover:text-[#f05a28] group-hover:underline">Data Analytics & Monetization</span>
+                            <div className="text-xs text-gray-500">Unlock insights and new revenue streams</div>
                           </span>
                         </Link>
-                        <Link to="/services/cloud-security" className="flex items-start gap-3 mb-3 group"
-                          onMouseEnter={() => setHoveredService({ id: 'cloud-security', title: 'Cloud Security', description: 'Protect your cloud infrastructure and data with robust security solutions.' })}
-                          onMouseLeave={() => setHoveredService(null)}
-                        >
-                          <span className="bg-[#D3D6E8] p-2 group-hover:bg-[#ffe5d0] group transition-colors duration-200">
-                            <FontAwesomeIcon icon={faShieldAlt} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
+                        <Link to="/services/custom-software-development" className="flex items-start gap-3 group">
+                          <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] transition-colors duration-200 flex items-center justify-center">
+                            <FontAwesomeIcon icon={faCode} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
                           </span>
                           <span>
-                            <span className="font-semibold text-[#2563eb] underline group-hover:text-[#f05a28] group-hover:underline">Cloud Security</span>
-                            <div className="text-xs text-gray-500">Protect your cloud infrastructure</div>
+                            <span className="font-semibold text-[#2563eb] underline group-hover:text-[#f05a28] group-hover:underline">Custom Software Development Solutions</span>
+                            <div className="text-xs text-gray-500">Agile. Scalable. Future-Ready software solutions</div>
                           </span>
                         </Link>
-                      </div>
-                    </div>
-                    <div className="w-1/4 p-6">
-                      <div>
-                        <h4 className="font-bold text-blue-900 mb-4">Enterprise Solutions</h4>
-                        <Link to="/services/sap" className="flex items-start gap-3 mb-3 group"
-                          onMouseEnter={() => setHoveredService({ id: 'sap', title: 'SAP Services', description: 'Expert SAP implementation, migration, and managed services.' })}
-                          onMouseLeave={() => setHoveredService(null)}
-                        >
-                          <span className="bg-[#D3D6E8] p-2 group-hover:bg-[#ffe5d0] group transition-colors duration-200">
+                        <Link to="/services/it-staffing-talent-solutions" className="flex items-start gap-3 group">
+                          <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] transition-colors duration-200 flex items-center justify-center">
+                            <FontAwesomeIcon icon={faUserPlus} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
+                          </span>
+                          <span>
+                            <span className="font-semibold text-[#2563eb] underline group-hover:text-[#f05a28] group-hover:underline">IT Staffing & Talent Solutions</span>
+                            <div className="text-xs text-gray-500">Find and scale tech talent fast</div>
+                          </span>
+                        </Link>
+                        <Link to="/services/managed-it-services" className="flex items-start gap-3 group">
+                          <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] transition-colors duration-200 flex items-center justify-center">
+                            <FontAwesomeIcon icon={faServer} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
+                          </span>
+                          <span>
+                            <span className="font-semibold text-[#2563eb] underline group-hover:text-[#f05a28] group-hover:underline">Managed IT Services</span>
+                            <div className="text-xs text-gray-500">End-to-end infrastructure, cloud, and application support</div>
+                          </span>
+                        </Link>
+                        <Link to="/services/devops" className="flex items-start gap-3 group">
+                          <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] transition-colors duration-200 flex items-center justify-center">
+                            <FontAwesomeIcon icon={faCogs} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
+                          </span>
+                          <span>
+                            <span className="font-semibold text-[#2563eb] underline group-hover:text-[#f05a28] group-hover:underline">DevOps Services</span>
+                            <div className="text-xs text-gray-500">Accelerate delivery and reliability with modern DevOps automation and CI/CD.</div>
+                          </span>
+                        </Link>
+                        <Link to="/services/project-management" className="flex items-start gap-3 group">
+                          <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] transition-colors duration-200 flex items-center justify-center">
+                            <FontAwesomeIcon icon={faProjectDiagram} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
+                          </span>
+                          <span>
+                            <span className="font-semibold text-[#2563eb] underline group-hover:text-[#f05a28] group-hover:underline">Project Management Services</span>
+                            <div className="text-xs text-gray-500">Drive your digital projects with confidence</div>
+                          </span>
+                        </Link>
+                        <Link to="/services/metaverse-vr-ar-solutions" className="flex items-start gap-3 group">
+                          <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] transition-colors duration-200 flex items-center justify-center">
+                            <FontAwesomeIcon icon={faHeadset} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
+                          </span>
+                          <span>
+                            <span className="font-semibold text-[#2563eb] underline group-hover:text-[#f05a28] group-hover:underline">Metaverse, VR & AR Solutions</span>
+                            <div className="text-xs text-gray-500">Design immersive digital experiences that connect, engage, and innovate</div>
+                          </span>
+                        </Link>
+                        <Link to="/services/sap" className="flex items-start gap-3 group">
+                          <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] transition-colors duration-200 flex items-center justify-center">
                             <FontAwesomeIcon icon={faBriefcase} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
                           </span>
                           <span>
@@ -250,57 +275,7 @@ const Navbar: React.FC = () => {
                             <div className="text-xs text-gray-500">Expert SAP implementation & support</div>
                           </span>
                         </Link>
-                        <Link to="/services/salesforce" className="flex items-start gap-3 mb-3 group"
-                          onMouseEnter={() => setHoveredService({ id: 'salesforce', title: 'Salesforce', description: 'CRM solutions and consulting to maximize your sales and customer relationships.' })}
-                          onMouseLeave={() => setHoveredService(null)}
-                        >
-                          <span className="bg-[#D3D6E8] p-2 group-hover:bg-[#ffe5d0] group transition-colors duration-200">
-                            <FontAwesomeIcon icon={faUserShield} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
-                          </span>
-                          <span>
-                            <span className="font-semibold text-[#2563eb] underline group-hover:text-[#f05a28] group-hover:underline">Salesforce</span>
-                            <div className="text-xs text-gray-500">CRM solutions for business growth</div>
-                          </span>
-                        </Link>
-                        <Link to="/services/microsoft-dynamics" className="flex items-start gap-3 mb-3 group"
-                          onMouseEnter={() => setHoveredService({ id: 'microsoft-dynamics', title: 'Microsoft Dynamics', description: 'Business applications for finance, sales, service, and operations.' })}
-                          onMouseLeave={() => setHoveredService(null)}
-                        >
-                          <span className="bg-[#D3D6E8] p-2 group-hover:bg-[#ffe5d0] group transition-colors duration-200">
-                            <FontAwesomeIcon icon={faMicrosoft} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
-                          </span>
-                          <span>
-                            <span className="font-semibold text-[#2563eb] underline group-hover:text-[#f05a28] group-hover:underline">Microsoft Dynamics</span>
-                            <div className="text-xs text-gray-500">Business apps for productivity</div>
-                          </span>
-                        </Link>
-                        <Link to="/services/oracle-solutions" className="flex items-start gap-3 mb-3 group"
-                          onMouseEnter={() => setHoveredService({ id: 'oracle-solutions', title: 'Oracle Solutions', description: 'Robust Oracle enterprise solutions for databases, applications, and cloud.' })}
-                          onMouseLeave={() => setHoveredService(null)}
-                        >
-                          <span className="bg-[#D3D6E8] p-2 group-hover:bg-[#ffe5d0] group transition-colors duration-200">
-                            <FontAwesomeIcon icon={faDatabase} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
-                          </span>
-                          <span>
-                            <span className="font-semibold text-[#2563eb] underline group-hover:text-[#f05a28] group-hover:underline">Oracle Solutions</span>
-                            <div className="text-xs text-gray-500">Robust Oracle enterprise solutions</div>
-                          </span>
-                        </Link>
                       </div>
-                    </div>
-                    {/* New Fourth Column for dynamic content */}
-                    <div className="w-1/4 p-6 bg-[#F5F5F5] border-l border-gray-200">
-                      {hoveredService ? (
-                        <div className="animate-fade-in">
-                          <h4 className="font-bold text-blue-900 mb-2">{hoveredService.title}</h4>
-                          <p className="text-sm text-gray-700">{hoveredService.description}</p>
-                        </div>
-                      ) : (
-                        <div className="animate-fade-in">
-                          <h4 className="font-bold text-blue-900 mb-2">About Our Services</h4>
-                          <p className="text-sm text-gray-700">Explore our comprehensive range of IT services designed to accelerate your business transformation. From cloud migration to enterprise solutions, we provide tailored expertise.</p>
-                        </div>
-                      )}
                     </div>
                   </div>
                 )}
@@ -330,16 +305,28 @@ const Navbar: React.FC = () => {
                     <div className="w-1/4 p-6">
                       <div>
                         <h4 className="font-bold text-blue-900 mb-2">Core Industries</h4>
-                        <Link to="/industries/healthcare" className="flex items-start gap-3 mb-3 group"
-                          onMouseEnter={() => setHoveredIndustry({ id: 'healthcare', title: 'Healthcare', description: 'Innovative IT solutions to improve patient care and healthcare operations.' })}
+                        <Link to="/industries/aviation" className="flex items-start gap-3 mb-3 group"
+                          onMouseEnter={() => setHoveredIndustry({ id: 'aviation', title: 'Aviation', description: 'Intelligent, secure, and passenger-centric digital solutions for airlines and airports.' })}
                           onMouseLeave={() => setHoveredIndustry(null)}
                         >
                           <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] group transition-colors duration-200">
-                            <FontAwesomeIcon icon={faHeartbeat} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
+                            <FontAwesomeIcon icon={faPlaneDeparture} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
                           </span>
                           <span>
-                            <span className="font-semibold text-blue-900 underline group-hover:underline">Healthcare</span>
-                            <div className="text-xs text-gray-500">Innovative IT for patient care</div>
+                            <span className="font-semibold text-blue-900 underline group-hover:underline">Aviation</span>
+                            <div className="text-xs text-gray-500">Intelligent, secure, and passenger-centric digital solutions</div>
+                          </span>
+                        </Link>
+                        <Link to="/industries/aerospace-defense" className="flex items-start gap-3 mb-3 group"
+                          onMouseEnter={() => setHoveredIndustry({ id: 'aerospace-defense', title: 'Aerospace & Defense', description: 'Mission-critical, secure, and scalable digital solutions for aerospace and defense organizations.' })}
+                          onMouseLeave={() => setHoveredIndustry(null)}
+                        >
+                          <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] group transition-colors duration-200">
+                            <FontAwesomeIcon icon={faRocket} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
+                          </span>
+                          <span>
+                            <span className="font-semibold text-blue-900 underline group-hover:underline">Aerospace & Defense</span>
+                            <div className="text-xs text-gray-500">Mission-critical, secure, and scalable digital solutions</div>
                           </span>
                         </Link>
                         <Link to="/industries/financial" className="flex items-start gap-3 mb-3 group"
@@ -354,28 +341,28 @@ const Navbar: React.FC = () => {
                             <div className="text-xs text-gray-500">Secure, compliant solutions</div>
                           </span>
                         </Link>
-                        <Link to="/industries/retail" className="flex items-start gap-3 mb-3 group"
-                          onMouseEnter={() => setHoveredIndustry({ id: 'retail', title: 'Retail', description: 'Digital transformation strategies and IT support for the retail sector.' })}
+                        <Link to="/industries/energy" className="flex items-start gap-3 group"
+                          onMouseEnter={() => setHoveredIndustry({ id: 'energy', title: 'Energy & Natural Resources', description: 'Empowering the future of energy, resources, and industrial ecosystems.' })}
                           onMouseLeave={() => setHoveredIndustry(null)}
                         >
                           <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] group transition-colors duration-200">
-                            <FontAwesomeIcon icon={faStore} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
+                            <FontAwesomeIcon icon={faGlobe} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
                           </span>
                           <span>
-                            <span className="font-semibold text-blue-900 underline group-hover:underline">Retail</span>
-                            <div className="text-xs text-gray-500">Digital transformation for retail</div>
+                            <span className="font-semibold text-blue-900 underline group-hover:underline">Energy & Natural Resources</span>
+                            <div className="text-xs text-gray-500">Empowering the future of energy, resources, and industrial ecosystems</div>
                           </span>
                         </Link>
-                        <Link to="/manufacturing" className="flex items-start gap-3 group"
-                          onMouseEnter={() => setHoveredIndustry({ id: 'manufacturing', title: 'Manufacturing', description: 'Smart manufacturing solutions to enhance efficiency and production.' })}
+                        <Link to="/industries/consumer-products" className="flex items-start gap-3 group"
+                          onMouseEnter={() => setHoveredIndustry({ id: 'consumer-products', title: 'Consumer Products', description: 'Innovative IT solutions for consumer goods manufacturers and distributors.' })}
                           onMouseLeave={() => setHoveredIndustry(null)}
                         >
                           <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] group transition-colors duration-200">
-                            <FontAwesomeIcon icon={faIndustry} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
+                            <FontAwesomeIcon icon={faSeedling} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
                           </span>
                           <span>
-                            <span className="font-semibold text-blue-900 underline group-hover:underline">Manufacturing</span>
-                            <div className="text-xs text-gray-500">Smart manufacturing solutions</div>
+                            <span className="font-semibold text-blue-900 underline group-hover:underline">Consumer Products</span>
+                            <div className="text-xs text-gray-500">Innovative IT for consumer goods</div>
                           </span>
                         </Link>
                       </div>
@@ -575,17 +562,16 @@ const Navbar: React.FC = () => {
               </button>
               {servicesOpen && (
                 <div className="pl-4">
-                  <Link to="/services/aws-migration" className={dropdownLinkClass} onClick={toggleMenu}><FontAwesomeIcon icon={faCloud} className="mr-2" />AWS Migration</Link>
-                  <Link to="/services/azure" className={dropdownLinkClass} onClick={toggleMenu}><FontAwesomeIcon icon={faCloud} className="mr-2" />Azure Solutions</Link>
-                  <Link to="/services/cloud-security" className={dropdownLinkClass} onClick={toggleMenu}><FontAwesomeIcon icon={faShieldAlt} className="mr-2" />Cloud Security</Link>
-                  <Link to="/services/supply-chain" className={dropdownLinkClass} onClick={toggleMenu}><FontAwesomeIcon icon={faTruck} className="mr-2" />Supply Chain</Link>
+                  <Link to="/services/cloud-strategy-consulting" className={dropdownLinkClass} onClick={toggleMenu}><FontAwesomeIcon icon={faLightbulb} className="mr-2" />Cloud Strategy & Consulting</Link>
+                  <Link to="/data-analytics-monetization" className={dropdownLinkClass} onClick={toggleMenu}><FontAwesomeIcon icon={faChartBar} className="mr-2" />Data Analytics & Monetization</Link>
+                  <Link to="/services/it-staffing-talent-solutions" className={dropdownLinkClass} onClick={toggleMenu}><FontAwesomeIcon icon={faUserPlus} className="mr-2" />IT Staffing & Talent Solutions</Link>
+                  <Link to="/services/devops" className={dropdownLinkClass} onClick={toggleMenu}><FontAwesomeIcon icon={faCogs} className="mr-2" />DevOps Services</Link>
+                  <Link to="/services/digital-transformation" className={dropdownLinkClass} onClick={toggleMenu}><FontAwesomeIcon icon={faRocket} className="mr-2" />Digital Transformation Solutions</Link>
+                  <Link to="/services/custom-software-development" className={dropdownLinkClass} onClick={toggleMenu}><FontAwesomeIcon icon={faCode} className="mr-2" />Custom Software Development Solutions</Link>
+                  <Link to="/services/managed-it-services" className={dropdownLinkClass} onClick={toggleMenu}><FontAwesomeIcon icon={faServer} className="mr-2" />Managed IT Services</Link>
+                  <Link to="/services/project-management" className={dropdownLinkClass} onClick={toggleMenu}><FontAwesomeIcon icon={faProjectDiagram} className="mr-2" />Project Management Services</Link>
+                  <Link to="/services/metaverse-vr-ar-solutions" className={dropdownLinkClass} onClick={toggleMenu}><FontAwesomeIcon icon={faHeadset} className="mr-2" />Metaverse, VR & AR Solutions</Link>
                   <Link to="/services/sap" className={dropdownLinkClass} onClick={toggleMenu}><FontAwesomeIcon icon={faBriefcase} className="mr-2" />SAP Services</Link>
-                  <Link to="/services/salesforce" className={dropdownLinkClass} onClick={toggleMenu}><FontAwesomeIcon icon={faUserShield} className="mr-2" />Salesforce</Link>
-                  <Link to="/services/pharmaceutical" className={dropdownLinkClass} onClick={toggleMenu}><FontAwesomeIcon icon={faPills} className="mr-2" />Pharmaceutical IT</Link>
-                  <Link to="/services/oracle-solutions" className={dropdownLinkClass} onClick={toggleMenu}><FontAwesomeIcon icon={faDatabase} className="mr-2" />Oracle Solutions</Link>
-                  <Link to="/services/multi-google-cloud" className={dropdownLinkClass} onClick={toggleMenu}><FontAwesomeIcon icon={faGoogle} className="mr-2" />Multi-Cloud Google</Link>
-                  <Link to="/services/microsoft-dynamics" className={dropdownLinkClass} onClick={toggleMenu}><FontAwesomeIcon icon={faMicrosoft} className="mr-2" />Microsoft Dynamics</Link>
-                  <Link to="/services/ibm-systems" className={dropdownLinkClass} onClick={toggleMenu}><FontAwesomeIcon icon={faServer} className="mr-2" />IBM Systems</Link>
                 </div>
               )}
             </div>
@@ -600,10 +586,11 @@ const Navbar: React.FC = () => {
               </button>
               {industriesOpen && (
                 <div className="pl-4">
-                  <Link to="/industries/healthcare" className={dropdownLinkClass} onClick={toggleMenu}>Healthcare</Link>
+                  <Link to="/industries/aviation" className={dropdownLinkClass} onClick={toggleMenu}>Aviation</Link>
+                  <Link to="/industries/aerospace-defense" className={dropdownLinkClass} onClick={toggleMenu}>Aerospace & Defense</Link>
                   <Link to="/industries/financial" className={dropdownLinkClass} onClick={toggleMenu}>Financial</Link>
-                  <Link to="/industries/retail" className={dropdownLinkClass} onClick={toggleMenu}>Retail</Link>
-                  <Link to="/manufacturing" className={dropdownLinkClass} onClick={toggleMenu}>Manufacturing</Link>
+                  <Link to="/industries/energy" className={dropdownLinkClass} onClick={toggleMenu}>Energy & Natural Resources</Link>
+                  <Link to="/industries/consumer-products" className={dropdownLinkClass} onClick={toggleMenu}>Consumer Products</Link>
                 </div>
               )}
             </div>
