@@ -1,56 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCloud, faBolt, faFlask, faSeedling, faIndustry, faTint, faLeaf, faChartLine, faCogs, faDatabase, faTools, faProjectDiagram, faUsers, faCheckCircle, faOilCan, faSolarPanel, faGlobe, faLightbulb, faWater, faTractor, faWarehouse, faChartPie, faClipboardCheck, faRecycle, faChartBar, faSatellite, faBarcode, faBoxOpen, faFileAlt, faMobileAlt, faBrain, faRocket } from '@fortawesome/free-solid-svg-icons';
+import { faCloud, faBolt, faFlask, faSeedling, faIndustry, faTint, faLeaf, faChartLine, faCogs, faDatabase, faTools, faProjectDiagram, faUsers, faCheckCircle, faOilCan, faSolarPanel, faGlobe, faLightbulb, faWater, faTractor, faWarehouse, faChartPie, faClipboardCheck, faRecycle, faChartBar, faSatellite, faBarcode, faBoxOpen, faFileAlt, faMobileAlt, faBrain, faRocket, faShieldAlt, faSyncAlt, faGraduationCap, faHandshake } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
 const sliderImages = [
   {
     url: '/assets/energy.png',
-    title: 'Energy & Natural Resources',
-    desc: 'Empowering the Future of Energy, Resources & Industrial Ecosystems',
-  },
+    title: 'Accelerate Innovation with VirtuSwift Energy & Natural Resources Solutions',
+    desc: 'Unlock enterprise-grade performance with sustainability and efficiency for energy operations.'
+  }
 ];
 
-const subSectors = [
-  {
-    icon: faSeedling,
-    title: 'Agribusiness',
-    desc: 'Digitize Your Agricultural Ecosystem. Smarter farming through IoT-powered field monitoring, crop yield prediction, and supply chain traceability.',
-    link: '/industries/energy/agribusiness',
-    cta: 'Explore Smart Farming Solutions',
-  },
-  {
-    icon: faFlask,
-    title: 'Chemicals',
-    desc: 'Automate and Optimize Chemical Operations. Digitize R&D, manufacturing, and compliance for real-time visibility and safe, scalable production.',
-    link: '/industries/energy/chemicals',
-    cta: 'Transform Chemical Operations',
-  },
-  {
-    icon: faIndustry,
-    title: 'Mining',
-    desc: 'Mine Smarter with Real-Time Intelligence. Monitor equipment health, automate safety, and manage resources efficiently.',
-    link: '/industries/energy/mining',
-    cta: 'Enable Intelligent Mining',
-  },
-  {
-    icon: faOilCan,
-    title: 'Oil & Gas',
-    desc: 'Drive Operational Agility in Oil & Gas. Leverage cloud, analytics, and automation to reduce downtime and optimize production.',
-    link: '/industries/energy/oil-gas',
-    cta: 'Digitize Your Oil & Gas Value Chain',
-  },
-  {
-    icon: faSolarPanel,
-    title: 'Utilities & Renewables',
-    desc: 'Modernize the Grid and Power Sustainable Growth. Manage distributed assets, integrate smart meters, and deliver customer-centric services.',
-    link: '/industries/energy/utilities-renewables',
-    cta: 'Reimagine Utility Operations',
-  },
+const tabs = [
+  'Overview',
+  'Capabilities',
+  'Benefits'
 ];
 
-export default function EnergyAndNaturalResources() {
+const EnergyAndNaturalResources: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [activeTab, setActiveTab] = useState('Overview');
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -84,68 +53,192 @@ export default function EnergyAndNaturalResources() {
             </div>
           ))}
         </div>
+        <button
+          className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white bg-opacity-50 p-2 rounded-full hover:bg-opacity-75 transition-all duration-300 hover:scale-110"
+          onClick={() => setCurrentSlide((prev) => (prev - 1 + sliderImages.length) % sliderImages.length)}
+        >❮</button>
+        <button
+          className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white bg-opacity-50 p-2 rounded-full hover:bg-opacity-75 transition-all duration-300 hover:scale-110"
+          onClick={() => setCurrentSlide((prev) => (prev + 1) % sliderImages.length)}
+        >❯</button>
       </div>
 
-      {/* Main Content */}
-      <div className="container mx-auto px-4 py-8 flex-1">
-        {/* Intro Section */}
-        <div className={`flex flex-col md:flex-row gap-8 mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="md:w-1/2">
-            <h2 className="text-3xl font-bold mb-4">At VirtuSwift, we help energy and resource-driven enterprises modernize their operations, improve sustainability, and accelerate digital outcomes. Whether you're in mining, agribusiness, or renewable energy, our tailored solutions unify data, automate operations, and enable intelligent decisions across the value chain.</h2>
-            <Link to="/contact?industry=energy" className="inline-block bg-[#3a3dc4] text-white px-6 py-2 rounded-lg hover:bg-[#008BCF] transition-all duration-300 hover:scale-105 hover:shadow-lg mt-4">Drive Digital Transformation Across Your Resource Value Chain</Link>
-          </div>
-          <div className="md:w-1/2 flex items-center justify-center">
-            <img src="/assets/energy1.png" alt="Energy & Natural Resources" className="w-full h-64 object-cover rounded-lg transition-all duration-500 hover:shadow-xl hover:scale-105" />
-          </div>
-        </div>
-
-        {/* Why VirtuSwift */}
-        <div className="mb-12">
-          <h3 className="text-xl font-semibold text-[#3a3dc4] mb-2">🔍 Why VirtuSwift?</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-white p-6 rounded-lg shadow-md flex flex-col items-start text-left transition-all duration-500 hover:shadow-xl hover:scale-105 hover:bg-gray-50 cursor-pointer">
-              <FontAwesomeIcon icon={faGlobe} className="text-3xl text-[#3a3dc4] mb-4" />
-              <h4 className="font-bold text-lg mb-2">Industry Knowledge + Advanced Tech</h4>
-              <p className="text-gray-600 text-sm">We combine industry knowledge with advanced technologies—cloud, AI, IoT, and data—to solve complex challenges across upstream, midstream, and downstream operations. Our frameworks are built to scale innovation, optimize productivity, and deliver ESG-aligned growth.</p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-md flex flex-col items-start text-left transition-all duration-500 hover:shadow-xl hover:scale-105 hover:bg-gray-50 cursor-pointer">
-              <FontAwesomeIcon icon={faCogs} className="text-3xl text-[#3a3dc4] mb-4" />
-              <h4 className="font-bold text-lg mb-2">Our Services Include</h4>
-              <ul className="list-disc ml-4 text-sm text-gray-600">
-                <li>Cloud Modernization & Migration</li>
-                <li>Intelligent Asset Monitoring & IoT Integration</li>
-                <li>Predictive Maintenance & Field Operations Digitization</li>
-                <li>Sustainability Data Management & ESG Reporting</li>
-                <li>Data Warehousing, Analytics & Decision Intelligence</li>
-                <li>SAP Enablement for Energy and Resources</li>
-              </ul>
-              <Link to="/contact?industry=energy" className="inline-block bg-[#f05a28] text-white px-6 py-2 rounded-lg font-semibold shadow-lg hover:bg-[#3a3dc4] hover:scale-105 transition text-sm mt-4">Schedule Your Digital Readiness Assessment</Link>
-            </div>
-          </div>
-        </div>
-
-        {/* Sub-Sectors */}
-        <div className="mb-12">
-          <h3 className="text-xl font-semibold text-[#3a3dc4] mb-2">⚡ Industry Sub-Sectors We Serve</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {subSectors.map((sector) => (
-              <div key={sector.title} className="bg-white p-6 rounded-lg shadow-md flex flex-col items-start text-left transition-all duration-500 hover:shadow-xl hover:scale-105 hover:bg-gray-50 cursor-pointer">
-                <FontAwesomeIcon icon={sector.icon} className="text-3xl text-[#3a3dc4] mb-4" />
-                <h4 className="font-bold text-lg mb-2">{sector.title}</h4>
-                <p className="text-gray-600 text-sm mb-4">{sector.desc}</p>
-                <Link to={sector.link} className="inline-block bg-[#3a3dc4] text-white px-4 py-2 rounded-lg hover:bg-[#008BCF] transition-all duration-300 hover:scale-105 hover:shadow-lg text-sm">{sector.cta} →</Link>
-              </div>
+      {/* Tab Navigation */}
+      <div className="bg-[#121927] text-white">
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex justify-start space-x-8 overflow-x-auto">
+            {tabs.map(tab => (
+              <button
+                key={tab}
+                className={`tab-link px-4 py-2 text-sm font-medium border-b-2 transition-all duration-300 hover:scale-105 ${activeTab === tab ? 'text-[#3a3dc4] border-[#3a3dc4]' : 'border-transparent text-white hover:text-[#3a3dc4] hover:border-[#3a3dc4]'}`}
+                onClick={() => setActiveTab(tab)}
+              >
+                {tab}
+              </button>
             ))}
           </div>
         </div>
+      </div>
 
-        {/* Final CTA */}
-        <div className="mb-12 text-center">
-          <h3 className="text-xl font-semibold text-[#3a3dc4] mb-2">💡 Ready to Transform Energy & Resource Operations?</h3>
-          <p className="text-lg text-gray-700 mb-6">Whether you're extracting resources, refining fuel, or managing a farm, VirtuSwift helps you lead with innovation, efficiency, and resilience.</p>
-          <Link to="/contact?industry=energy" className="inline-block bg-[#f05a28] text-white px-8 py-4 rounded-lg font-semibold shadow-lg hover:bg-[#3a3dc4] hover:scale-105 transition text-lg">Talk to an Energy Transformation Expert Today</Link>
-        </div>
+      {/* Tab Content */}
+      <div className="container mx-auto px-4 py-8 flex-1">
+        {/* Overview Tab */}
+        {activeTab === 'Overview' && (
+          <div className={`flex flex-col md:flex-row gap-8 mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <div className="md:w-1/2">
+              <h2 className="text-3xl font-bold mb-4">Transforming Energy & Natural Resources with VirtuSwift IT Expertise</h2>
+              <p className="text-gray-600 mb-6">
+                At VirtuSwift, we deliver tailored IT solutions to revolutionize energy and natural resources operations. Our expertise in sustainability management, resource optimization, and industrial automation empowers organizations to enhance operational efficiency and environmental responsibility.
+              </p>
+              <Link to="/contact?industry=energy" className="inline-block bg-[#3a3dc4] text-white px-6 py-2 rounded-lg hover:bg-[#f05a28] transition-all duration-300 hover:scale-105 hover:shadow-lg">Explore Now</Link>
+            </div>
+            <div className="md:w-1/2">
+              <img src="/assets/energy1.png" alt="Energy & Natural Resources IT Technology" className="w-full h-64 object-cover rounded-lg transition-all duration-500 hover:shadow-xl hover:scale-105" />
+            </div>
+          </div>
+        )}
+        
+        {/* Capabilities Tab */}
+        {activeTab === 'Capabilities' && (
+          <div className={`mb-12 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <h3 className="text-xl font-semibold text-[#3a3dc4] mb-2">CAPABILITIES</h3>
+            <h2 className="text-3xl font-bold mb-4">Revolutionize Energy & Natural Resources with VirtuSwift</h2>
+            <div className="space-y-8">
+              <div className="flex flex-col md:flex-row gap-6">
+                {[
+                  {
+                    title: 'EnergySync Portal',
+                    description: 'Real-time insights into your energy projects with seamless collaboration tools and sustainability tracking.'
+                  },
+                  {
+                    title: 'Cloud Energy Dashboard',
+                    description: 'Full visibility into your energy cloud infrastructure performance, costs, and environmental metrics.'
+                  },
+                  {
+                    title: 'Managed Energy Infrastructure',
+                    description: 'Optimize your energy environment with our expert-managed services and 24/7 monitoring systems.'
+                  }
+                ].map((capability, index) => (
+                  <div 
+                    key={capability.title}
+                    className={`md:w-1/3 bg-white p-6 rounded-lg shadow-md transition-all duration-500 hover:shadow-xl hover:scale-105 hover:bg-gray-50 cursor-pointer ${isVisible ? 'animate-fade-in-up' : ''}`}
+                    style={{ 
+                      animationDelay: `${index * 200}ms`,
+                      animationDuration: '0.6s',
+                      animationFillMode: 'forwards'
+                    }}
+                  >
+                    <h4 className="text-lg font-semibold text-[#3a3dc4]">{capability.title}</h4>
+                    <p className="text-gray-600">{capability.description}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+        
+        {/* Benefits Tab */}
+        {activeTab === 'Benefits' && (
+          <div className={`transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <h2 className="text-3xl font-bold mb-8">A Future-Ready Energy & Natural Resources Ecosystem</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {[
+                { icon: faCogs, title: "Certified Experts", text: "Our team is trained in advanced energy IT systems and sustainability compliance standards." },
+                { icon: faSyncAlt, title: "Proven Results", text: "We've enhanced energy operations for global utilities and resource companies." },
+                { icon: faGraduationCap, title: "Continuous Innovation", text: "Our experts stay ahead of energy technology trends and environmental regulations." },
+                { icon: faCloud, title: "Scalable Solutions", text: "Build energy IT systems that grow with your operations and sustainability goals." },
+                { icon: faShieldAlt, title: "Environmental Security", text: "Ensure compliant solutions for environmental data protection and regulatory reporting." },
+                { icon: faHandshake, title: "Strategic Partnerships", text: "Collaborate with top energy tech providers for innovative sustainability solutions." }
+              ].map((benefit, index) => (
+                <div 
+                  key={benefit.title}
+                  className={`bg-gray-50 p-6 rounded-lg shadow-sm flex flex-col items-center transition-all duration-500 hover:shadow-xl hover:scale-105 hover:bg-white cursor-pointer ${isVisible ? 'animate-fade-in-up' : ''}`}
+                  style={{ 
+                    animationDelay: `${index * 100}ms`,
+                    animationDuration: '0.6s',
+                    animationFillMode: 'forwards'
+                  }}
+                >
+                  <FontAwesomeIcon icon={benefit.icon} className="text-3xl text-[#3a3dc4] mb-4 transition-transform duration-300 hover:scale-110" />
+                  <h4 className="font-bold text-lg mb-2">{benefit.title}</h4>
+                  <p className="text-gray-600 text-center">{benefit.text}</p>
+                </div>
+              ))}
+            </div>
+            
+            {/* Additional Sections */}
+            <div className="space-y-12 mt-12">
+              <div className={`flex flex-col md:flex-row gap-8 transition-all duration-1000 delay-600 hover:shadow-2xl hover:scale-105 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+                <div className="md:w-1/2">
+                  <h3 className="text-xl font-semibold mb-4">Proactive Support for Energy Excellence</h3>
+                  <p className="text-gray-600 mb-4">
+                    Our robust support system resolves 95% of energy IT challenges swiftly, backed by continuous training to address evolving sustainability and operational requirements.
+                  </p>
+                  <Link to="/contact?industry=energy" className="inline-block bg-[#3a3dc4] text-white px-6 py-2 rounded-lg hover:bg-[#f05a28] transition-all duration-300 hover:scale-105 hover:shadow-lg">Get Support</Link>
+                </div>
+                <div className="md:w-1/2">
+                  <img src="/assets/energy.png" alt="Energy IT Support" className="w-full h-64 object-cover rounded-lg transition-all duration-500 hover:shadow-xl hover:scale-105" />
+                </div>
+              </div>
+              
+              <div className={`flex flex-col md:flex-row gap-8 transition-all duration-1000 delay-800 hover:shadow-2xl hover:scale-105 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+                <div className="md:w-1/2">
+                  <h3 className="text-xl font-semibold mb-4">Empowered by Industry Partnerships</h3>
+                  <p className="text-gray-600 mb-4">
+                    Since 2010, VirtuSwift has partnered with leading energy tech providers to deliver innovative IT solutions, improving operational efficiency and environmental sustainability.
+                  </p>
+                  <Link to="/contact?industry=energy" className="inline-block bg-[#3a3dc4] text-white px-6 py-2 rounded-lg hover:bg-[#f05a28] transition-all duration-300 hover:scale-105 hover:shadow-lg">Collaborate with Us</Link>
+                </div>
+                <div className="md:w-1/2">
+                  <img src="/assets/energy1.png" alt="Industry Partnerships" className="w-full h-64 object-cover rounded-lg transition-all duration-500 hover:shadow-xl hover:scale-105" />
+                </div>
+              </div>
+            </div>
+            
+            {/* Related Resources */}
+            <div className={`bg-gray-50 py-12 mt-12 transition-all duration-1000 delay-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+              <div className="container mx-auto px-4">
+                <h2 className="text-3xl font-bold mb-8">Related Resources</h2>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  {[
+                    {
+                      image: "/assets/energy.png",
+                      title: "Energy IT Insights",
+                      description: "Learn how VirtuSwift enhances energy operations with innovative IT solutions."
+                    },
+                    {
+                      image: "/assets/energy1.png",
+                      title: "Sustainability Technology Trends",
+                      description: "Stay updated with the latest energy technology and sustainability trends."
+                    },
+                    {
+                      image: "/assets/energy.png",
+                      title: "Resource Optimization Solutions",
+                      description: "Discover how technology improves resource management and operational outcomes."
+                    }
+                  ].map((resource, index) => (
+                    <div 
+                      key={resource.title}
+                      className={`bg-white p-4 rounded-lg shadow-sm transition-all duration-500 hover:shadow-xl hover:scale-105 cursor-pointer ${isVisible ? 'animate-fade-in-up' : ''}`}
+                      style={{ 
+                        animationDelay: `${index * 200}ms`,
+                        animationDuration: '0.6s',
+                        animationFillMode: 'forwards'
+                      }}
+                    >
+                      <img src={resource.image} alt={resource.title} className="w-full h-40 object-cover rounded-lg mb-4 transition-all duration-500 hover:scale-105" />
+                      <h4 className="text-lg font-semibold text-[#3a3dc4] mb-2">{resource.title}</h4>
+                      <p className="text-gray-600">{resource.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
-} 
+};
+
+export default EnergyAndNaturalResources;

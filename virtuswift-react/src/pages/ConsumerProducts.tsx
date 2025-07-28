@@ -1,18 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCogs, faCloud, faShieldAlt, faChartLine, faLock, faTools, faSyncAlt, faDatabase, faProjectDiagram, faBuilding, faHardHat, faUsers, faCheckCircle, faSitemap, faClipboardCheck, faCubes, faExclamationTriangle, faMobileAlt, faFileAlt, faBoxOpen, faShoppingCart, faBrain, faRocket, faLeaf, faBarcode, faChartPie, faBolt, faStore, faGlobe, faLightbulb } from '@fortawesome/free-solid-svg-icons';
+import { faCogs, faCloud, faShieldAlt, faChartLine, faLock, faTools, faSyncAlt, faDatabase, faProjectDiagram, faBuilding, faHardHat, faUsers, faCheckCircle, faSitemap, faClipboardCheck, faCubes, faExclamationTriangle, faMobileAlt, faFileAlt, faBoxOpen, faShoppingCart, faBrain, faRocket, faLeaf, faBarcode, faChartPie, faBolt, faStore, faGlobe, faLightbulb, faUserShield, faRobot, faLink, faGraduationCap, faHandshake } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
 const sliderImages = [
   {
-    url: '/assets/construction2.png',
-    title: 'Consumer Products',
-    desc: 'Delivering Innovation at the Speed of the Consumer',
-  },
+    url: '/assets/consumer.png',
+    title: 'Accelerate Innovation with VirtuSwift Consumer Products Solutions',
+    desc: 'Unlock enterprise-grade performance with agility and customer focus for consumer brands.'
+  }
 ];
 
-export default function ConsumerProducts() {
+const tabs = [
+  'Overview',
+  'Capabilities',
+  'Benefits'
+];
+
+const ConsumerProducts: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [activeTab, setActiveTab] = useState('Overview');
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -46,84 +53,192 @@ export default function ConsumerProducts() {
             </div>
           ))}
         </div>
+        <button
+          className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white bg-opacity-50 p-2 rounded-full hover:bg-opacity-75 transition-all duration-300 hover:scale-110"
+          onClick={() => setCurrentSlide((prev) => (prev - 1 + sliderImages.length) % sliderImages.length)}
+        >❮</button>
+        <button
+          className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white bg-opacity-50 p-2 rounded-full hover:bg-opacity-75 transition-all duration-300 hover:scale-110"
+          onClick={() => setCurrentSlide((prev) => (prev + 1) % sliderImages.length)}
+        >❯</button>
       </div>
 
-      {/* Main Content */}
+      {/* Tab Navigation */}
+      <div className="bg-[#121927] text-white">
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex justify-start space-x-8 overflow-x-auto">
+            {tabs.map(tab => (
+              <button
+                key={tab}
+                className={`tab-link px-4 py-2 text-sm font-medium border-b-2 transition-all duration-300 hover:scale-105 ${activeTab === tab ? 'text-[#3a3dc4] border-[#3a3dc4]' : 'border-transparent text-white hover:text-[#3a3dc4] hover:border-[#3a3dc4]'}`}
+                onClick={() => setActiveTab(tab)}
+              >
+                {tab}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Tab Content */}
       <div className="container mx-auto px-4 py-8 flex-1">
-        {/* Intro Section */}
-        <div className={`flex flex-col md:flex-row gap-8 mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="md:w-1/2">
-            <h2 className="text-3xl font-bold mb-4">In a world where preferences shift overnight and digital shelves are always open, consumer product companies must move fast, think smarter, and operate lean. VirtuSwift helps brands across FMCG, personal care, home appliances, electronics, and more become agile, data-powered, and experience-driven enterprises.</h2>
+        {/* Overview Tab */}
+        {activeTab === 'Overview' && (
+          <div className={`flex flex-col md:flex-row gap-8 mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <div className="md:w-1/2">
+              <h2 className="text-3xl font-bold mb-4">Transforming Consumer Products with VirtuSwift IT Expertise</h2>
+              <p className="text-gray-600 mb-6">
+                At VirtuSwift, we deliver tailored IT solutions to revolutionize consumer product operations. Our expertise in supply chain optimization, customer experience, and digital commerce empowers brands to enhance market responsiveness and customer satisfaction.
+              </p>
+              <Link to="/contact?industry=consumer-products" className="inline-block bg-[#3a3dc4] text-white px-6 py-2 rounded-lg hover:bg-[#f05a28] transition-all duration-300 hover:scale-105 hover:shadow-lg">Explore Now</Link>
+            </div>
+            <div className="md:w-1/2">
+              <img src="/assets/consumer1.png" alt="Consumer Products IT Technology" className="w-full h-64 object-cover rounded-lg transition-all duration-500 hover:shadow-xl hover:scale-105" />
+            </div>
           </div>
-          <div className="md:w-1/2 flex items-center justify-center">
-            <img src="/assets/construction2.png" alt="Consumer Products" className="w-full h-64 object-cover rounded-lg transition-all duration-500 hover:shadow-xl hover:scale-105" />
-          </div>
-        </div>
+        )}
 
-        {/* Why VirtuSwift */}
-        <div className="mb-12">
-          <h3 className="text-xl font-semibold text-[#3a3dc4] mb-2">🌟 Why VirtuSwift for Consumer Products?</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              { icon: faBoxOpen, title: 'Agile Supply Chain & Distribution', desc: 'From demand forecasting to last-mile tracking, we digitize and optimize your supply chain for real-time responsiveness.' },
-              { icon: faMobileAlt, title: 'Omnichannel Experience Enablement', desc: 'Deliver consistent, personalized experiences across e-commerce, retail, mobile apps, and direct-to-consumer platforms.' },
-              { icon: faBrain, title: 'Data-Driven Consumer Intelligence', desc: 'Understand buying behavior, optimize pricing, and tailor promotions with advanced analytics and AI.' },
-            ].map((item, idx) => (
-              <div key={item.title} className="bg-white p-6 rounded-lg shadow-md flex flex-col items-center text-center transition-all duration-500 hover:shadow-xl hover:scale-105 hover:bg-gray-50 cursor-pointer">
-                <FontAwesomeIcon icon={item.icon} className="text-3xl text-[#3a3dc4] mb-4" />
-                <h4 className="font-bold text-lg mb-2">{item.title}</h4>
-                <p className="text-gray-600 text-sm">{item.desc}</p>
+        {/* Capabilities Tab */}
+        {activeTab === 'Capabilities' && (
+          <div className={`mb-12 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <h3 className="text-xl font-semibold text-[#3a3dc4] mb-2">CAPABILITIES</h3>
+            <h2 className="text-3xl font-bold mb-4">Revolutionize Consumer Products with VirtuSwift</h2>
+            <div className="space-y-8">
+              <div className="flex flex-col md:flex-row gap-6">
+                {[
+                  {
+                    title: 'ConsumerSync Portal',
+                    description: 'Real-time insights into your consumer product projects with seamless collaboration tools and market analytics.'
+                  },
+                  {
+                    title: 'Cloud Commerce Dashboard',
+                    description: 'Full visibility into your consumer product cloud infrastructure performance, costs, and customer metrics.'
+                  },
+                  {
+                    title: 'Managed Consumer Infrastructure',
+                    description: 'Optimize your consumer product environment with our expert-managed services and 24/7 monitoring.'
+                  }
+                ].map((capability, index) => (
+                  <div
+                    key={capability.title}
+                    className={`md:w-1/3 bg-white p-6 rounded-lg shadow-md transition-all duration-500 hover:shadow-xl hover:scale-105 hover:bg-gray-50 cursor-pointer ${isVisible ? 'animate-fade-in-up' : ''}`}
+                    style={{
+                      animationDelay: `${index * 200}ms`,
+                      animationDuration: '0.6s',
+                      animationFillMode: 'forwards'
+                    }}
+                  >
+                    <h4 className="text-lg font-semibold text-[#3a3dc4]">{capability.title}</h4>
+                    <p className="text-gray-600">{capability.description}</p>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
-        </div>
+        )}
 
-        {/* Core Offerings */}
-        <div className="mb-12">
-          <h3 className="text-xl font-semibold text-[#3a3dc4] mb-2">🔧 Our Core Offerings for Consumer Products</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { icon: faCogs, title: 'Digital Supply Chain Transformation', desc: (<ul className="text-left list-disc ml-4 text-sm"><li>Inventory optimization & replenishment automation</li><li>Smart warehousing and logistics orchestration</li><li>Demand sensing and predictive forecasting</li></ul>) },
-              { icon: faShoppingCart, title: 'E-Commerce & D2C Enablement', desc: (<ul className="text-left list-disc ml-4 text-sm"><li>Scalable online store setup and integrations</li><li>Unified commerce platforms (POS, online, mobile)</li><li>Seamless order fulfillment and customer support flows</li></ul>) },
-              { icon: faChartPie, title: 'Consumer Insights & Analytics', desc: (<ul className="text-left list-disc ml-4 text-sm"><li>Social listening and sentiment tracking</li><li>Dynamic pricing engines and promo ROI tracking</li><li>AI-powered churn prediction and personalization</li></ul>) },
-              { icon: faRocket, title: 'Product Lifecycle & Innovation Acceleration', desc: (<ul className="text-left list-disc ml-4 text-sm"><li>PLM systems and digital product twins</li><li>Idea-to-launch tracking and cost modeling</li><li>Quality control and supplier collaboration portals</li></ul>) },
-              { icon: faLeaf, title: 'Sustainable Product Traceability', desc: (<ul className="text-left list-disc ml-4 text-sm"><li>Carbon footprint tracking and compliance mapping</li><li>End-to-end material traceability using blockchain/IoT</li><li>ESG reporting and impact dashboards</li></ul>) },
-            ].map((item, idx) => (
-              <div key={item.title} className="bg-white p-6 rounded-lg shadow-md flex flex-col items-center text-center transition-all duration-500 hover:shadow-xl hover:scale-105 hover:bg-gray-50 cursor-pointer">
-                <FontAwesomeIcon icon={item.icon} className="text-3xl text-[#3a3dc4] mb-4" />
-                <h4 className="font-bold text-lg mb-2">{item.title}</h4>
-                <div className="text-gray-600">{item.desc}</div>
+        {/* Benefits Tab */}
+        {activeTab === 'Benefits' && (
+          <div className={`transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <h2 className="text-3xl font-bold mb-8">A Future-Ready Consumer Products Ecosystem</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {[
+                { icon: faCogs, title: "Certified Experts", text: "Our team is trained in advanced consumer product IT systems and market analytics." },
+                { icon: faSyncAlt, title: "Proven Results", text: "We've enhanced consumer product operations for global brands and retailers." },
+                { icon: faGraduationCap, title: "Continuous Innovation", text: "Our experts stay ahead of consumer technology trends and market demands." },
+                { icon: faCloud, title: "Scalable Solutions", text: "Build consumer product IT systems that grow with your brand and customer base." },
+                { icon: faShieldAlt, title: "Data Security", text: "Ensure compliant solutions for sensitive consumer data protection and privacy." },
+                { icon: faHandshake, title: "Strategic Partnerships", text: "Collaborate with top retail tech providers for innovative consumer solutions." }
+              ].map((benefit, index) => (
+                <div
+                  key={benefit.title}
+                  className={`bg-gray-50 p-6 rounded-lg shadow-sm flex flex-col items-center transition-all duration-500 hover:shadow-xl hover:scale-105 hover:bg-white cursor-pointer ${isVisible ? 'animate-fade-in-up' : ''}`}
+                  style={{
+                    animationDelay: `${index * 100}ms`,
+                    animationDuration: '0.6s',
+                    animationFillMode: 'forwards'
+                  }}
+                >
+                  <FontAwesomeIcon icon={benefit.icon} className="text-3xl text-[#3a3dc4] mb-4 transition-transform duration-300 hover:scale-110" />
+                  <h4 className="font-bold text-lg mb-2">{benefit.title}</h4>
+                  <p className="text-gray-600 text-center">{benefit.text}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* Additional Sections */}
+            <div className="space-y-12 mt-12">
+              <div className={`flex flex-col md:flex-row gap-8 transition-all duration-1000 delay-600 hover:shadow-2xl hover:scale-105 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+                <div className="md:w-1/2">
+                  <h3 className="text-xl font-semibold mb-4">Proactive Support for Consumer Products Excellence</h3>
+                  <p className="text-gray-600 mb-4">
+                    Our robust support system resolves 95% of consumer product IT challenges swiftly, backed by continuous training to address evolving market and customer needs.
+                  </p>
+                  <Link to="/contact?industry=consumer-products" className="inline-block bg-[#3a3dc4] text-white px-6 py-2 rounded-lg hover:bg-[#f05a28] transition-all duration-300 hover:scale-105 hover:shadow-lg">Get Support</Link>
+                </div>
+                <div className="md:w-1/2">
+                  <img src="/assets/consumer2.png" alt="Consumer Products IT Support" className="w-full h-64 object-cover rounded-lg transition-all duration-500 hover:shadow-xl hover:scale-105" />
+                </div>
               </div>
-            ))}
-          </div>
-        </div>
 
-        {/* What You Get Section */}
-        <div className="mb-12">
-          <h3 className="text-xl font-semibold text-[#3a3dc4] mb-2">💼 With VirtuSwift, You Get:</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
-            {[
-              { icon: faRocket, title: 'Faster Product Launches' },
-              { icon: faBoxOpen, title: 'Higher Shelf Availability' },
-              { icon: faUsers, title: 'Increased Brand Loyalty' },
-              { icon: faStore, title: 'Streamlined Retail Operations' },
-              { icon: faChartLine, title: 'Real-Time Market Adaptability' },
-            ].map((item, idx) => (
-              <div key={item.title} className="bg-white p-6 rounded-lg shadow-md flex flex-col items-center text-center transition-all duration-500 hover:shadow-xl hover:scale-105 hover:bg-gray-50 cursor-pointer">
-                <FontAwesomeIcon icon={item.icon} className="text-3xl text-[#3a3dc4] mb-4" />
-                <h4 className="font-bold text-lg mb-2">{item.title}</h4>
+              <div className={`flex flex-col md:flex-row gap-8 transition-all duration-1000 delay-800 hover:shadow-2xl hover:scale-105 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+                <div className="md:w-1/2">
+                  <h3 className="text-xl font-semibold mb-4">Empowered by Industry Partnerships</h3>
+                  <p className="text-gray-600 mb-4">
+                    Since 2010, VirtuSwift has partnered with leading consumer tech providers to deliver innovative IT solutions, improving brand engagement and customer experiences.
+                  </p>
+                  <Link to="/contact?industry=consumer-products" className="inline-block bg-[#3a3dc4] text-white px-6 py-2 rounded-lg hover:bg-[#f05a28] transition-all duration-300 hover:scale-105 hover:shadow-lg">Collaborate with Us</Link>
+                </div>
+                <div className="md:w-1/2">
+                  <img src="/assets/consumer3.png" alt="Industry Partnerships" className="w-full h-64 object-cover rounded-lg transition-all duration-500 hover:shadow-xl hover:scale-105" />
+                </div>
               </div>
-            ))}
-          </div>
-        </div>
+            </div>
 
-        {/* CTA Section */}
-        <div className="mb-12 text-center">
-          <h3 className="text-xl font-semibold text-[#3a3dc4] mb-2">🧭 Ready to Become a Digital-First Consumer Brand?</h3>
-          <p className="text-lg text-gray-700 mb-6">Let VirtuSwift transform your product, customer, and operations ecosystem into a connected powerhouse of performance.</p>
-          <Link to="/contact?industry=consumer-products" className="inline-block bg-[#f05a28] text-white px-8 py-4 rounded-lg font-semibold shadow-lg hover:bg-[#3a3dc4] hover:scale-105 transition text-lg">Request a Consumer Brand Innovation Session →</Link>
-        </div>
+            {/* Related Resources */}
+            <div className={`bg-gray-50 py-12 mt-12 transition-all duration-1000 delay-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+              <div className="container mx-auto px-4">
+                <h2 className="text-3xl font-bold mb-8">Related Resources</h2>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  {[
+                    {
+                      image: "/assets/consumer4.png",
+                      title: "Consumer Products IT Insights",
+                      description: "Learn how VirtuSwift enhances consumer products with innovative IT solutions."
+                    },
+                    {
+                      image: "/assets/construction2.png",
+                      title: "Digital Commerce Trends",
+                      description: "Stay updated with the latest consumer technology and e-commerce trends."
+                    },
+                    {
+                      image: "/assets/consumer5.png",
+                      title: "Brand Experience Solutions",
+                      description: "Discover how technology improves consumer engagement and brand outcomes."
+                    }
+                  ].map((resource, index) => (
+                    <div
+                      key={resource.title}
+                      className={`bg-white p-4 rounded-lg shadow-sm transition-all duration-500 hover:shadow-xl hover:scale-105 cursor-pointer ${isVisible ? 'animate-fade-in-up' : ''}`}
+                      style={{
+                        animationDelay: `${index * 200}ms`,
+                        animationDuration: '0.6s',
+                        animationFillMode: 'forwards'
+                      }}
+                    >
+                      <img src={resource.image} alt={resource.title} className="w-full h-40 object-cover rounded-lg mb-4 transition-all duration-500 hover:scale-105" />
+                      <h4 className="text-lg font-semibold text-[#3a3dc4] mb-2">{resource.title}</h4>
+                      <p className="text-gray-600">{resource.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
-} 
+};
+
+export default ConsumerProducts;

@@ -5,14 +5,9 @@ import { Link } from 'react-router-dom';
 
 const sliderImages = [
   {
-    url: 'https://images.unsplash.com/photo-1566576912321-d58ddd7a6088',
+    url: 'https://images.unsplash.com/photo-1592085198739-ffcad7f36b54',
     title: 'Streamlining Logistics with VirtuSwift IT Solutions',
     desc: 'Optimize supply chains and enhance delivery operations with innovative technology.'
-  },
-  {
-    url: 'https://images.unsplash.com/photo-1566576912321-d58ddd7a6088',
-    title: '',
-    desc: ''
   }
 ];
 
@@ -95,10 +90,10 @@ const Logistics: React.FC = () => {
               <p className="text-gray-600 mb-6">
                 At VirtuSwift, we deliver tailored IT solutions to revolutionize logistics operations. Our expertise in supply chain management, route optimization, and warehouse automation empowers logistics companies to enhance efficiency and customer satisfaction.
               </p>
-              <Link to="/contact?industry=logistics" className="inline-block bg-[#3a3dc4] text-white px-6 py-2 rounded-lg hover:bg-[#008BCF] transition-all duration-300 hover:scale-105 hover:shadow-lg">Explore Now</Link>
+              <Link to="/contact?industry=logistics" className="inline-block bg-[#3a3dc4] text-white px-6 py-2 rounded-lg hover:bg-[#f05a28] transition-all duration-300 hover:scale-105 hover:shadow-lg">Explore Now</Link>
             </div>
             <div className="md:w-1/2">
-              <img src="https://images.unsplash.com/photo-1566576912321-d58ddd7a6088" alt="Logistics IT Technology" className="w-full h-64 object-cover rounded-lg transition-all duration-500 hover:shadow-xl hover:scale-105" />
+              <img src="https://plus.unsplash.com/premium_photo-1675313135522-f2fac35d869a?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Logistics IT Technology" className="w-full h-64 object-cover rounded-lg transition-all duration-500 hover:shadow-xl hover:scale-105" />
             </div>
           </div>
         )}
@@ -176,10 +171,10 @@ const Logistics: React.FC = () => {
                   <p className="text-gray-600 mb-4">
                     Our robust support system resolves 95% of logistics IT challenges swiftly, backed by continuous training to address evolving supply chain needs.
                   </p>
-                  <Link to="/contact?industry=logistics" className="inline-block bg-[#3a3dc4] text-white px-6 py-2 rounded-lg hover:bg-[#008BCF] transition-all duration-300 hover:scale-105 hover:shadow-lg">Get Support</Link>
+                  <Link to="/contact?industry=logistics" className="inline-block bg-[#3a3dc4] text-white px-6 py-2 rounded-lg hover:bg-[#f05a28] transition-all duration-300 hover:scale-105 hover:shadow-lg">Get Support</Link>
                 </div>
                 <div className="md:w-1/2">
-                  <img src="https://images.unsplash.com/photo-1566576912321-d58ddd7a6088" alt="Logistics IT Support" className="w-full h-64 object-cover rounded-lg transition-all duration-500 hover:shadow-xl hover:scale-105" />
+                  <img src="https://plus.unsplash.com/premium_photo-1675313135522-f2fac35d869a?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Logistics IT Support" className="w-full h-64 object-cover rounded-lg transition-all duration-500 hover:shadow-xl hover:scale-105" />
                 </div>
               </div>
               <div className={`flex flex-col md:flex-row gap-8 transition-all duration-1000 delay-800 hover:shadow-2xl hover:scale-105 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
@@ -188,10 +183,10 @@ const Logistics: React.FC = () => {
                   <p className="text-gray-600 mb-4">
                     Since 2010, VirtuSwift has partnered with leading tech providers to deliver innovative logistics IT solutions, improving operational efficiency and customer satisfaction.
                   </p>
-                  <Link to="/contact?industry=logistics" className="inline-block bg-[#3a3dc4] text-white px-6 py-2 rounded-lg hover:bg-[#008BCF] transition-all duration-300 hover:scale-105 hover:shadow-lg">Collaborate with Us</Link>
+                  <Link to="/contact?industry=logistics" className="inline-block bg-[#3a3dc4] text-white px-6 py-2 rounded-lg hover:bg-[#f05a28] transition-all duration-300 hover:scale-105 hover:shadow-lg">Collaborate with Us</Link>
                 </div>
                 <div className="md:w-1/2">
-                  <img src="https://images.unsplash.com/photo-1566576912321-d58ddd7a6088" alt="Industry Partnerships" className="w-full h-64 object-cover rounded-lg transition-all duration-500 hover:shadow-xl hover:scale-105" />
+                  <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec" alt="Industry Partnerships" className="w-full h-64 object-cover rounded-lg transition-all duration-500 hover:shadow-xl hover:scale-105" />
                 </div>
               </div>
             </div>
@@ -202,17 +197,17 @@ const Logistics: React.FC = () => {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   {[
                     {
-                      image: "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088",
+                      image: "https://plus.unsplash.com/premium_photo-1675313135522-f2fac35d869a?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                       title: "Logistics IT Insights",
                       description: "Learn how VirtuSwift enhances logistics with innovative IT solutions."
                     },
                     {
-                      image: "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088",
+                      image: "https://images.unsplash.com/photo-1578575437130-527eed3abbec",
                       title: "Supply Chain Trends",
                       description: "Stay updated with the latest logistics technology trends."
                     },
                     {
-                      image: "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088",
+                      image: "https://images.unsplash.com/photo-1592085198739-ffcad7f36b54",
                       title: "Delivery Solutions",
                       description: "Discover how technology improves logistics operations."
                     }

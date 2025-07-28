@@ -8,11 +8,6 @@ const sliderImages = [
     url: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e',
     title: 'Powering the Future with VirtuSwift Utilities Solutions',
     desc: 'Transform utility operations with smart technology and sustainable innovation.'
-  },
-  {
-    url: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e',
-    title: '',
-    desc: ''
   }
 ];
 
@@ -95,7 +90,7 @@ const Utilities: React.FC = () => {
               <p className="text-gray-600 mb-6">
                 At VirtuSwift, we deliver tailored IT solutions to revolutionize utility operations. Our expertise in smart grid technology, renewable energy systems, and infrastructure management empowers utility companies to enhance efficiency and sustainability.
               </p>
-              <Link to="/contact?industry=utilities" className="inline-block bg-[#3a3dc4] text-white px-6 py-2 rounded-lg hover:bg-[#008BCF] transition-all duration-300 hover:scale-105 hover:shadow-lg">Explore Now</Link>
+              <Link to="/contact?industry=utilities" className="inline-block bg-[#3a3dc4] text-white px-6 py-2 rounded-lg hover:bg-[#f05a28] transition-all duration-300 hover:scale-105 hover:shadow-lg">Explore Now</Link>
             </div>
             <div className="md:w-1/2">
               <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e" alt="Utilities IT Technology" className="w-full h-64 object-cover rounded-lg transition-all duration-500 hover:shadow-xl hover:scale-105" />
@@ -176,7 +171,7 @@ const Utilities: React.FC = () => {
                   <p className="text-gray-600 mb-4">
                     Our robust support system resolves 95% of utility IT challenges swiftly, backed by continuous training to address evolving infrastructure needs.
                   </p>
-                  <Link to="/contact?industry=utilities" className="inline-block bg-[#3a3dc4] text-white px-6 py-2 rounded-lg hover:bg-[#008BCF] transition-all duration-300 hover:scale-105 hover:shadow-lg">Get Support</Link>
+                  <Link to="/contact?industry=utilities" className="inline-block bg-[#3a3dc4] text-white px-6 py-2 rounded-lg hover:bg-[#f05a28] transition-all duration-300 hover:scale-105 hover:shadow-lg">Get Support</Link>
                 </div>
                 <div className="md:w-1/2">
                   <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e" alt="Utilities IT Support" className="w-full h-64 object-cover rounded-lg transition-all duration-500 hover:shadow-xl hover:scale-105" />
@@ -188,10 +183,10 @@ const Utilities: React.FC = () => {
                   <p className="text-gray-600 mb-4">
                     Since 2010, VirtuSwift has partnered with leading tech providers to deliver innovative utility IT solutions, improving operational efficiency and sustainability.
                   </p>
-                  <Link to="/contact?industry=utilities" className="inline-block bg-[#3a3dc4] text-white px-6 py-2 rounded-lg hover:bg-[#008BCF] transition-all duration-300 hover:scale-105 hover:shadow-lg">Collaborate with Us</Link>
+                  <Link to="/contact?industry=utilities" className="inline-block bg-[#3a3dc4] text-white px-6 py-2 rounded-lg hover:bg-[#f05a28] transition-all duration-300 hover:scale-105 hover:shadow-lg">Collaborate with Us</Link>
                 </div>
                 <div className="md:w-1/2">
-                  <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e" alt="Industry Partnerships" className="w-full h-64 object-cover rounded-lg transition-all duration-500 hover:shadow-xl hover:scale-105" />
+                  <img src="https://images.unsplash.com/photo-1413882353314-73389f63b6fd" alt="Industry Partnerships" className="w-full h-64 object-cover rounded-lg transition-all duration-500 hover:shadow-xl hover:scale-105" />
                 </div>
               </div>
             </div>
@@ -207,12 +202,12 @@ const Utilities: React.FC = () => {
                       description: "Learn how VirtuSwift enhances utilities with innovative IT solutions."
                     },
                     {
-                      image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e",
+                      image: "https://images.unsplash.com/photo-1413882353314-73389f63b6fd",
                       title: "Smart Grid Trends",
                       description: "Stay updated with the latest utility technology trends."
                     },
                     {
-                      image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e",
+                      image: "https://plus.unsplash.com/premium_photo-1679673035045-693c6dfccb1b?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                       title: "Energy Solutions",
                       description: "Discover how technology improves utility operations."
                     }

@@ -8,11 +8,6 @@ const sliderImages = [
     url: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab',
     title: 'Empowering Government with VirtuSwift Public Sector Solutions',
     desc: 'Transform public services with secure, scalable technology solutions.'
-  },
-  {
-    url: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab',
-    title: '',
-    desc: ''
   }
 ];
 
@@ -95,7 +90,7 @@ const PublicSector: React.FC = () => {
               <p className="text-gray-600 mb-6">
                 At VirtuSwift, we deliver tailored IT solutions to revolutionize public sector operations. Our expertise in government systems, citizen services, and secure infrastructure empowers public agencies to enhance service delivery and operational efficiency.
               </p>
-              <Link to="/contact?industry=publicsector" className="inline-block bg-[#3a3dc4] text-white px-6 py-2 rounded-lg hover:bg-[#008BCF] transition-all duration-300 hover:scale-105 hover:shadow-lg">Explore Now</Link>
+              <Link to="/contact?industry=publicsector" className="inline-block bg-[#3a3dc4] text-white px-6 py-2 rounded-lg hover:bg-[#f05a28] transition-all duration-300 hover:scale-105 hover:shadow-lg">Explore Now</Link>
             </div>
             <div className="md:w-1/2">
               <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab" alt="Public Sector IT Technology" className="w-full h-64 object-cover rounded-lg transition-all duration-500 hover:shadow-xl hover:scale-105" />
@@ -176,7 +171,7 @@ const PublicSector: React.FC = () => {
                   <p className="text-gray-600 mb-4">
                     Our robust support system resolves 95% of government IT challenges swiftly, backed by continuous training to address evolving public service needs.
                   </p>
-                  <Link to="/contact?industry=publicsector" className="inline-block bg-[#3a3dc4] text-white px-6 py-2 rounded-lg hover:bg-[#008BCF] transition-all duration-300 hover:scale-105 hover:shadow-lg">Get Support</Link>
+                  <Link to="/contact?industry=publicsector" className="inline-block bg-[#3a3dc4] text-white px-6 py-2 rounded-lg hover:bg-[#f05a28] transition-all duration-300 hover:scale-105 hover:shadow-lg">Get Support</Link>
                 </div>
                 <div className="md:w-1/2">
                   <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab" alt="Public Sector IT Support" className="w-full h-64 object-cover rounded-lg transition-all duration-500 hover:shadow-xl hover:scale-105" />
@@ -188,10 +183,10 @@ const PublicSector: React.FC = () => {
                   <p className="text-gray-600 mb-4">
                     Since 2010, VirtuSwift has partnered with leading tech providers to deliver innovative government IT solutions, improving citizen services and operational efficiency.
                   </p>
-                  <Link to="/contact?industry=publicsector" className="inline-block bg-[#3a3dc4] text-white px-6 py-2 rounded-lg hover:bg-[#008BCF] transition-all duration-300 hover:scale-105 hover:shadow-lg">Collaborate with Us</Link>
+                  <Link to="/contact?industry=publicsector" className="inline-block bg-[#3a3dc4] text-white px-6 py-2 rounded-lg hover:bg-[#f05a28] transition-all duration-300 hover:scale-105 hover:shadow-lg">Collaborate with Us</Link>
                 </div>
                 <div className="md:w-1/2">
-                  <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab" alt="Industry Partnerships" className="w-full h-64 object-cover rounded-lg transition-all duration-500 hover:shadow-xl hover:scale-105" />
+                  <img src="https://images.unsplash.com/photo-1449157291145-7efd050a4d0e" alt="Industry Partnerships" className="w-full h-64 object-cover rounded-lg transition-all duration-500 hover:shadow-xl hover:scale-105" />
                 </div>
               </div>
             </div>
@@ -202,7 +197,7 @@ const PublicSector: React.FC = () => {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   {[
                     {
-                      image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab",
+                      image: "https://images.unsplash.com/photo-1554469384-e58fac16e23a?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                       title: "Public Sector IT Insights",
                       description: "Learn how VirtuSwift enhances government with innovative IT solutions."
                     },
@@ -212,7 +207,7 @@ const PublicSector: React.FC = () => {
                       description: "Stay updated with the latest government technology trends."
                     },
                     {
-                      image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab",
+                      image: "https://plus.unsplash.com/premium_photo-1709927273247-1cfb4c2e84bf?q=80&w=793&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                       title: "Citizen Services",
                       description: "Discover how technology improves government service delivery."
                     }

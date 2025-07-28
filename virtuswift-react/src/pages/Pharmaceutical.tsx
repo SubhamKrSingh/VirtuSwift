@@ -8,11 +8,6 @@ const sliderImages = [
     url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgrAGkUPYLFxJDyFaXgbYnTFexTgLTZ8Fq9gKeAoZQFKjtsDugjR8cQa5bKwKxJHA0NbQ&usqp=CAU',
     title: 'Accelerate Innovation with VirtuSwift Pharmaceutical Solutions',
     desc: 'Unlock enterprise-grade performance with reliability and collaboration.'
-  },
-  {
-    url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQR1MZRNol6n0OsSCirx1y4WN9RpCkqzooJpA&s',
-    title: '',
-    desc: ''
   }
 ];
 
@@ -95,7 +90,7 @@ const Pharmaceutical: React.FC = () => {
               <p className="text-gray-600 mb-6">
                 At VirtuSwift, we deliver tailored IT solutions to revolutionize pharmaceutical operations. Our expertise in drug development, regulatory compliance, and clinical trial management empowers pharmaceutical companies to enhance research efficiency and patient outcomes.
               </p>
-              <Link to="/contact?industry=pharmaceutical" className="inline-block bg-[#3a3dc4] text-white px-6 py-2 rounded-lg hover:bg-[#008BCF] transition-all duration-300 hover:scale-105 hover:shadow-lg">Explore Now</Link>
+              <Link to="/contact?industry=pharmaceutical" className="inline-block bg-[#3a3dc4] text-white px-6 py-2 rounded-lg hover:bg-[#f05a28] transition-all duration-300 hover:scale-105 hover:shadow-lg">Explore Now</Link>
             </div>
             <div className="md:w-1/2">
               <img src="https://images.pexels.com/photos/3184296/pexels-photo-3184296.jpeg" alt="Pharmaceutical IT Technology" className="w-full h-64 object-cover rounded-lg transition-all duration-500 hover:shadow-xl hover:scale-105" />
@@ -123,10 +118,10 @@ const Pharmaceutical: React.FC = () => {
                     description: 'Optimize your pharmaceutical environment with our expert-managed services.'
                   }
                 ].map((capability, index) => (
-                  <div 
+                  <div
                     key={capability.title}
                     className={`md:w-1/3 bg-white p-6 rounded-lg shadow-md transition-all duration-500 hover:shadow-xl hover:scale-105 hover:bg-gray-50 cursor-pointer ${isVisible ? 'animate-fade-in-up' : ''}`}
-                    style={{ 
+                    style={{
                       animationDelay: `${index * 200}ms`,
                       animationDuration: '0.6s',
                       animationFillMode: 'forwards'
@@ -153,10 +148,10 @@ const Pharmaceutical: React.FC = () => {
                 { icon: faShieldAlt, title: "Data Security", text: "Ensure compliant solutions for sensitive pharmaceutical data protection." },
                 { icon: faHandshake, title: "Strategic Partnerships", text: "Collaborate with top tech providers for innovative pharmaceutical IT solutions." }
               ].map((benefit, index) => (
-                <div 
+                <div
                   key={benefit.title}
                   className={`bg-gray-50 p-6 rounded-lg shadow-sm flex flex-col items-center transition-all duration-500 hover:shadow-xl hover:scale-105 hover:bg-white cursor-pointer ${isVisible ? 'animate-fade-in-up' : ''}`}
-                  style={{ 
+                  style={{
                     animationDelay: `${index * 100}ms`,
                     animationDuration: '0.6s',
                     animationFillMode: 'forwards'
@@ -176,7 +171,7 @@ const Pharmaceutical: React.FC = () => {
                   <p className="text-gray-600 mb-4">
                     Our robust support system resolves 95% of pharmaceutical IT challenges swiftly, backed by continuous training to address evolving research and development needs.
                   </p>
-                  <Link to="/contact?industry=pharmaceutical" className="inline-block bg-[#3a3dc4] text-white px-6 py-2 rounded-lg hover:bg-[#008BCF] transition-all duration-300 hover:scale-105 hover:shadow-lg">Get Support</Link>
+                  <Link to="/contact?industry=pharmaceutical" className="inline-block bg-[#3a3dc4] text-white px-6 py-2 rounded-lg hover:bg-[#f05a28] transition-all duration-300 hover:scale-105 hover:shadow-lg">Get Support</Link>
                 </div>
                 <div className="md:w-1/2">
                   <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f" alt="Pharmaceutical IT Support" className="w-full h-64 object-cover rounded-lg transition-all duration-500 hover:shadow-xl hover:scale-105" />
@@ -188,7 +183,7 @@ const Pharmaceutical: React.FC = () => {
                   <p className="text-gray-600 mb-4">
                     Since 2010, VirtuSwift has partnered with leading tech providers to deliver innovative pharmaceutical IT solutions, improving research efficiency and drug development processes.
                   </p>
-                  <Link to="/contact?industry=pharmaceutical" className="inline-block bg-[#3a3dc4] text-white px-6 py-2 rounded-lg hover:bg-[#008BCF] transition-all duration-300 hover:scale-105 hover:shadow-lg">Collaborate with Us</Link>
+                  <Link to="/contact?industry=pharmaceutical" className="inline-block bg-[#3a3dc4] text-white px-6 py-2 rounded-lg hover:bg-[#f05a28] transition-all duration-300 hover:scale-105 hover:shadow-lg">Collaborate with Us</Link>
                 </div>
                 <div className="md:w-1/2">
                   <img src="https://images.pexels.com/photos/3184297/pexels-photo-3184297.jpeg" alt="Industry Partnerships" className="w-full h-64 object-cover rounded-lg transition-all duration-500 hover:shadow-xl hover:scale-105" />
@@ -217,10 +212,10 @@ const Pharmaceutical: React.FC = () => {
                       description: "Discover how technology improves pharmaceutical research outcomes."
                     }
                   ].map((resource, index) => (
-                    <div 
+                    <div
                       key={resource.title}
                       className={`bg-white p-4 rounded-lg shadow-sm transition-all duration-500 hover:shadow-xl hover:scale-105 cursor-pointer ${isVisible ? 'animate-fade-in-up' : ''}`}
-                      style={{ 
+                      style={{
                         animationDelay: `${index * 200}ms`,
                         animationDuration: '0.6s',
                         animationFillMode: 'forwards'
