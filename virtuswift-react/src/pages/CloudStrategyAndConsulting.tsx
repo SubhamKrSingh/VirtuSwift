@@ -78,7 +78,7 @@ export default function CloudStrategyAndConsulting() {
         <ul className="space-y-4 mb-8">
           {consultingServices.map((s, i) => (
             <li key={i} className="flex items-start gap-3 text-gray-800 text-base">
-              <FontAwesomeIcon icon={faCheckCircle} className="text-[#008BCF] mt-1 text-xl" />
+              <FontAwesomeIcon icon={faCheckCircle} className="text-[#3a3dc4] mt-1 text-xl" />
               <span>{s}</span>
             </li>
           ))}
@@ -106,7 +106,7 @@ export default function CloudStrategyAndConsulting() {
               <ul className="space-y-4 mb-0">
           {advantageList.map((a, i) => (
             <li key={i} className="flex items-start gap-3 text-gray-800 text-base">
-              <FontAwesomeIcon icon={faCheckCircle} className="text-[#008BCF] mt-1 text-xl" />
+              <FontAwesomeIcon icon={faCheckCircle} className="text-[#3a3dc4] mt-1 text-xl" />
               <span>{a}</span>
             </li>
           ))}

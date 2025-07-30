@@ -58,6 +58,12 @@ const Navbar: React.FC = () => {
     }
   };
 
+  const closeAllDropdowns = () => {
+    setServicesOpen(false);
+    setIndustriesOpen(false);
+    setCaseStudiesOpen(false);
+  };
+
   const toggleServices = (e: React.MouseEvent) => {
     e.preventDefault(); 
     setServicesOpen((prev) => {
@@ -145,6 +151,7 @@ const Navbar: React.FC = () => {
                   setIndustriesOpen(false);
                   setCaseStudiesOpen(false);
                 }}
+                onClick={closeAllDropdowns}
               >
                 Home
               </Link>
@@ -156,6 +163,7 @@ const Navbar: React.FC = () => {
                   setIndustriesOpen(false);
                   setCaseStudiesOpen(false);
                 }}
+                onClick={closeAllDropdowns}
               >
                 About Us
               </Link>
@@ -174,18 +182,18 @@ const Navbar: React.FC = () => {
                     <div className="w-1/4 bg-[#E8E9F5] p-6 flex flex-col items-start border-r border-gray-200 min-h-[300px]">
                       <h3 className="text-xl font-bold text-[#121927] mb-2">Our Services</h3>
                       <p className="text-sm text-[#121927] mb-4">Tailored solutions to meet your unique business requirements.</p>
-                      <Link to="/services" className="bg-[#3a3dc4] hover:bg-[#2f3099] text-white font-semibold px-4 py-2 rounded mb-6 transition">View All Services</Link>
+                      <Link to="/services" className="bg-[#3a3dc4] hover:bg-[#2f3099] text-white font-semibold px-4 py-2 rounded mb-6 transition" onClick={closeAllDropdowns}>View All Services</Link>
                       <div className="flex flex-col gap-2 w-full">
-                        <Link to="/services" className="text-[#121927] hover:underline text-base">All Services</Link>
-                        <Link to="/services/industry" className="text-[#121927] hover:underline text-base">By Industry</Link>
-                        <Link to="/services/technology" className="text-[#121927] hover:underline text-base">By Technology</Link>
+                        <Link to="/services" className="text-[#121927] hover:underline text-base" onClick={closeAllDropdowns}>All Services</Link>
+                        <Link to="/services/industry" className="text-[#121927] hover:underline text-base" onClick={closeAllDropdowns}>By Industry</Link>
+                        <Link to="/services/technology" className="text-[#121927] hover:underline text-base" onClick={closeAllDropdowns}>By Technology</Link>
                       </div>
                     </div>
                     {/* Main Mega Menu Content: Reorganized services */}
                     <div className="w-3/4 p-6">
                       <div className="grid grid-cols-2 gap-x-8 gap-y-3">
                         {/* Column 1 */}
-                        <Link to="/services/cloud-strategy-consulting" className="flex items-start gap-3 group">
+                        <Link to="/services/cloud-strategy-consulting" className="flex items-start gap-3 group" onClick={closeAllDropdowns}>
                           <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] transition-colors duration-200 flex items-center justify-center">
                             <FontAwesomeIcon icon={faLightbulb} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
                           </span>
@@ -194,7 +202,7 @@ const Navbar: React.FC = () => {
                             <div className="text-xs text-gray-500">Custom cloud strategies for agility</div>
                           </span>
                         </Link>
-                        <Link to="/services/digital-transformation" className="flex items-start gap-3 group">
+                        <Link to="/services/digital-transformation" className="flex items-start gap-3 group" onClick={closeAllDropdowns}>
                           <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] transition-colors duration-200 flex items-center justify-center">
                             <FontAwesomeIcon icon={faRocket} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
                           </span>
@@ -203,7 +211,7 @@ const Navbar: React.FC = () => {
                             <div className="text-xs text-gray-500">Accelerate digital growth with smarter workflows</div>
                           </span>
                         </Link>
-                        <Link to="/data-analytics-monetization" className="flex items-start gap-3 group">
+                        <Link to="/data-analytics-monetization" className="flex items-start gap-3 group" onClick={closeAllDropdowns}>
                           <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] transition-colors duration-200 flex items-center justify-center">
                             <FontAwesomeIcon icon={faChartBar} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
                           </span>
@@ -212,7 +220,7 @@ const Navbar: React.FC = () => {
                             <div className="text-xs text-gray-500">Unlock insights and new revenue streams</div>
                           </span>
                         </Link>
-                        <Link to="/services/custom-software-development" className="flex items-start gap-3 group">
+                        <Link to="/services/custom-software-development" className="flex items-start gap-3 group" onClick={closeAllDropdowns}>
                           <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] transition-colors duration-200 flex items-center justify-center">
                             <FontAwesomeIcon icon={faCode} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
                           </span>
@@ -221,7 +229,7 @@ const Navbar: React.FC = () => {
                             <div className="text-xs text-gray-500">Agile. Scalable. Future-Ready software solutions</div>
                           </span>
                         </Link>
-                        <Link to="/services/it-staffing-talent-solutions" className="flex items-start gap-3 group">
+                        <Link to="/services/it-staffing-talent-solutions" className="flex items-start gap-3 group" onClick={closeAllDropdowns}>
                           <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] transition-colors duration-200 flex items-center justify-center">
                             <FontAwesomeIcon icon={faUserPlus} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
                           </span>
@@ -230,7 +238,7 @@ const Navbar: React.FC = () => {
                             <div className="text-xs text-gray-500">Find and scale tech talent fast</div>
                           </span>
                         </Link>
-                        <Link to="/services/managed-it-services" className="flex items-start gap-3 group">
+                        <Link to="/services/managed-it-services" className="flex items-start gap-3 group" onClick={closeAllDropdowns}>
                           <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] transition-colors duration-200 flex items-center justify-center">
                             <FontAwesomeIcon icon={faServer} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
                           </span>
@@ -239,7 +247,7 @@ const Navbar: React.FC = () => {
                             <div className="text-xs text-gray-500">End-to-end infrastructure, cloud, and application support</div>
                           </span>
                         </Link>
-                        <Link to="/services/devops" className="flex items-start gap-3 group">
+                        <Link to="/services/devops" className="flex items-start gap-3 group" onClick={closeAllDropdowns}>
                           <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] transition-colors duration-200 flex items-center justify-center">
                             <FontAwesomeIcon icon={faCogs} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
                           </span>
@@ -248,7 +256,7 @@ const Navbar: React.FC = () => {
                             <div className="text-xs text-gray-500">Accelerate delivery and reliability with modern DevOps automation and CI/CD.</div>
                           </span>
                         </Link>
-                        <Link to="/services/project-management" className="flex items-start gap-3 group">
+                        <Link to="/services/project-management" className="flex items-start gap-3 group" onClick={closeAllDropdowns}>
                           <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] transition-colors duration-200 flex items-center justify-center">
                             <FontAwesomeIcon icon={faProjectDiagram} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
                           </span>
@@ -257,7 +265,7 @@ const Navbar: React.FC = () => {
                             <div className="text-xs text-gray-500">Drive your digital projects with confidence</div>
                           </span>
                         </Link>
-                        <Link to="/services/metaverse-vr-ar-solutions" className="flex items-start gap-3 group">
+                        <Link to="/services/metaverse-vr-ar-solutions" className="flex items-start gap-3 group" onClick={closeAllDropdowns}>
                           <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] transition-colors duration-200 flex items-center justify-center">
                             <FontAwesomeIcon icon={faHeadset} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
                           </span>
@@ -266,7 +274,7 @@ const Navbar: React.FC = () => {
                             <div className="text-xs text-gray-500">Design immersive digital experiences that connect, engage, and innovate</div>
                           </span>
                         </Link>
-                        <Link to="/services/sap" className="flex items-start gap-3 group">
+                        <Link to="/services/sap" className="flex items-start gap-3 group" onClick={closeAllDropdowns}>
                           <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] transition-colors duration-200 flex items-center justify-center">
                             <FontAwesomeIcon icon={faBriefcase} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
                           </span>
@@ -295,10 +303,10 @@ const Navbar: React.FC = () => {
                     <div className="w-1/4 bg-[#E8E9F5] p-6 flex flex-col items-start border-r border-gray-200 min-h-[300px]">
                       <h3 className="text-xl font-bold text-[#121927] mb-2">Industries</h3>
                       <p className="text-sm text-[#121927] mb-4">Expertise across key sectors to drive your business forward.</p>
-                      <Link to="/industries" className="bg-[#3a3dc4] hover:bg-[#2f3099] text-white font-semibold px-4 py-2 rounded mb-6 transition">View All Industries</Link>
+                      <Link to="/industries" className="bg-[#3a3dc4] hover:bg-[#2f3099] text-white font-semibold px-4 py-2 rounded mb-6 transition" onClick={closeAllDropdowns}>View All Industries</Link>
                       <div className="flex flex-col gap-2 w-full">
-                        <Link to="/industries" className="text-[#121927] hover:underline text-base">All Industries</Link>
-                        <Link to="/industries/technology" className="text-[#121927] hover:underline text-base">By Technology</Link>
+                        <Link to="/industries" className="text-[#121927] hover:underline text-base" onClick={closeAllDropdowns}>All Industries</Link>
+                        <Link to="/industries/technology" className="text-[#121927] hover:underline text-base" onClick={closeAllDropdowns}>By Technology</Link>
                       </div>
                     </div>
                     {/* Main Mega Menu Content */}
@@ -308,6 +316,7 @@ const Navbar: React.FC = () => {
                         <Link to="/industries/aviation" className="flex items-start gap-3 mb-3 group"
                           onMouseEnter={() => setHoveredIndustry({ id: 'aviation', title: 'Aviation', description: 'Intelligent, secure, and passenger-centric digital solutions for airlines and airports.' })}
                           onMouseLeave={() => setHoveredIndustry(null)}
+                          onClick={closeAllDropdowns}
                         >
                           <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] group transition-colors duration-200">
                             <FontAwesomeIcon icon={faPlaneDeparture} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
@@ -320,6 +329,7 @@ const Navbar: React.FC = () => {
                         <Link to="/industries/aerospace-defense" className="flex items-start gap-3 mb-3 group"
                           onMouseEnter={() => setHoveredIndustry({ id: 'aerospace-defense', title: 'Aerospace & Defense', description: 'Mission-critical, secure, and scalable digital solutions for aerospace and defense organizations.' })}
                           onMouseLeave={() => setHoveredIndustry(null)}
+                          onClick={closeAllDropdowns}
                         >
                           <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] group transition-colors duration-200">
                             <FontAwesomeIcon icon={faRocket} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
@@ -332,6 +342,7 @@ const Navbar: React.FC = () => {
                         <Link to="/industries/financial" className="flex items-start gap-3 mb-3 group"
                           onMouseEnter={() => setHoveredIndustry({ id: 'financial', title: 'Financial', description: 'Secure, compliant IT solutions for the financial services industry.' })}
                           onMouseLeave={() => setHoveredIndustry(null)}
+                          onClick={closeAllDropdowns}
                         >
                           <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] group transition-colors duration-200">
                             <FontAwesomeIcon icon={faLandmark} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
@@ -344,6 +355,7 @@ const Navbar: React.FC = () => {
                         <Link to="/industries/energy" className="flex items-start gap-3 group"
                           onMouseEnter={() => setHoveredIndustry({ id: 'energy', title: 'Energy & Natural Resources', description: 'Empowering the future of energy, resources, and industrial ecosystems.' })}
                           onMouseLeave={() => setHoveredIndustry(null)}
+                          onClick={closeAllDropdowns}
                         >
                           <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] group transition-colors duration-200">
                             <FontAwesomeIcon icon={faGlobe} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
@@ -356,6 +368,7 @@ const Navbar: React.FC = () => {
                         <Link to="/industries/consumer-products" className="flex items-start gap-3 group"
                           onMouseEnter={() => setHoveredIndustry({ id: 'consumer-products', title: 'Consumer Products', description: 'Innovative IT solutions for consumer goods manufacturers and distributors.' })}
                           onMouseLeave={() => setHoveredIndustry(null)}
+                          onClick={closeAllDropdowns}
                         >
                           <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] group transition-colors duration-200">
                             <FontAwesomeIcon icon={faSeedling} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
@@ -373,6 +386,7 @@ const Navbar: React.FC = () => {
                         <Link to="/industries/utilities" className="flex items-start gap-3 mb-3 group"
                           onMouseEnter={() => setHoveredIndustry({ id: 'utilities', title: 'Utilities', description: 'Powering digital transformation for utility companies with robust IT.' })}
                           onMouseLeave={() => setHoveredIndustry(null)}
+                          onClick={closeAllDropdowns}
                         >
                           <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] group transition-colors duration-200">
                             <FontAwesomeIcon icon={faBolt} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
@@ -385,6 +399,7 @@ const Navbar: React.FC = () => {
                         <Link to="/industries/pharmaceuticals" className="flex items-start gap-3 mb-3 group"
                           onMouseEnter={() => setHoveredIndustry({ id: 'pharmaceuticals', title: 'Pharmaceuticals', description: 'IT solutions and support tailored for the pharmaceutical industry.' })}
                           onMouseLeave={() => setHoveredIndustry(null)}
+                          onClick={closeAllDropdowns}
                         >
                           <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] group transition-colors duration-200">
                             <FontAwesomeIcon icon={faPills} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
@@ -397,6 +412,7 @@ const Navbar: React.FC = () => {
                         <Link to="/industries/public-sector" className="flex items-start gap-3 mb-3 group"
                           onMouseEnter={() => setHoveredIndustry({ id: 'public-sector', title: 'Public Sector', description: 'Modernizing government IT and services for the public sector.' })}
                           onMouseLeave={() => setHoveredIndustry(null)}
+                          onClick={closeAllDropdowns}
                         >
                           <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] group transition-colors duration-200">
                             <FontAwesomeIcon icon={faUniversity} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
@@ -409,6 +425,7 @@ const Navbar: React.FC = () => {
                         <Link to="/industries/logistics" className="flex items-start gap-3 group"
                           onMouseEnter={() => setHoveredIndustry({ id: 'logistics', title: 'Logistics', description: 'Efficient supply chain management and logistics IT solutions.' })}
                           onMouseLeave={() => setHoveredIndustry(null)}
+                          onClick={closeAllDropdowns}
                         >
                           <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] group transition-colors duration-200">
                             <FontAwesomeIcon icon={faTruck} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
@@ -452,10 +469,10 @@ const Navbar: React.FC = () => {
                     <div className="w-1/4 bg-[#E8E9F5] p-6 flex flex-col items-start border-r border-gray-200 min-h-[300px]">
                       <h3 className="text-xl font-bold text-[#121927] mb-2">Case Studies</h3>
                       <p className="text-sm text-[#121927] mb-4">Explore our proven success across industries.</p>
-                      <Link to="/case-studies" className="bg-[#3a3dc4] hover:bg-[#2f3099] text-white font-semibold px-4 py-2 rounded mb-6 transition">View All Case Studies</Link>
+                      <Link to="/case-studies" className="bg-[#3a3dc4] hover:bg-[#2f3099] text-white font-semibold px-4 py-2 rounded mb-6 transition" onClick={closeAllDropdowns}>View All Case Studies</Link>
                       <div className="flex flex-col gap-2 w-full">
-                        <Link to="/case-studies" className="text-[#121927] hover:underline text-base">All Case Studies</Link>
-                        <Link to="/case-studies/industry" className="text-[#121927] hover:underline text-base">By Industry</Link>
+                        <Link to="/case-studies" className="text-[#121927] hover:underline text-base" onClick={closeAllDropdowns}>All Case Studies</Link>
+                        <Link to="/case-studies/industry" className="text-[#121927] hover:underline text-base" onClick={closeAllDropdowns}>By Industry</Link>
                       </div>
                     </div>
                     {/* Main Mega Menu Content */}
@@ -469,6 +486,7 @@ const Navbar: React.FC = () => {
                             className="flex items-start gap-3 mb-3 group"
                             onMouseEnter={() => setHoveredCaseStudy({ id: cs.slug, title: cs.name, description: `Explore our success story in the ${cs.name} industry.` })}
                             onMouseLeave={() => setHoveredCaseStudy(null)}
+                            onClick={closeAllDropdowns}
                           >
                             <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] group transition-colors duration-200">
                               <FontAwesomeIcon icon={cs.icon} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
@@ -491,6 +509,7 @@ const Navbar: React.FC = () => {
                             className="flex items-start gap-3 mb-3 group"
                             onMouseEnter={() => setHoveredCaseStudy({ id: cs.slug, title: cs.name, description: `Discover how we helped clients in the ${cs.name} sector.` })}
                             onMouseLeave={() => setHoveredCaseStudy(null)}
+                            onClick={closeAllDropdowns}
                           >
                             <span className="bg-[#D3D6E8] p-2 rounded group-hover:bg-[#ffe5d0] group transition-colors duration-200">
                               <FontAwesomeIcon icon={cs.icon} className="text-[#3a3dc4] group-hover:text-[#f05a28] transition-colors duration-200" />
@@ -521,7 +540,7 @@ const Navbar: React.FC = () => {
                 )}
               </div>
 
-              <Link to="/contact" className={"ml-2 bg-blue-600 text-white font-semibold rounded-lg px-6 py-2 transition-colors duration-200 hover:bg-blue-700"}>Contact Us</Link>
+              <Link to="/contact" className={"ml-2 bg-blue-600 text-white font-semibold rounded-lg px-6 py-2 transition-colors duration-200 hover:bg-blue-700"} onClick={closeAllDropdowns}>Contact Us</Link>
             </div>
 
             {/* Mobile Menu Button */}

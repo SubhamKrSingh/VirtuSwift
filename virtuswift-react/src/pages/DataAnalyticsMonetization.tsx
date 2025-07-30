@@ -159,7 +159,10 @@ const tabContent = {
   ),
   'Why VirtuSwift?': (
     <div className="transition-all duration-1000 delay-400">
-      <h2 className="text-3xl font-bold mb-8 text-gray-800 text-center">Why Companies Trust VirtuSwift for Analytics</h2>
+      <div className="text-center mb-8">
+        <h3 className="text-2xl font-extrabold text-[#3a3dc4] mb-2 uppercase tracking-widest">WHY VIRTUSWIFT?</h3>
+        <h2 className="text-4xl md:text-5xl font-black mb-4 text-gray-800 leading-tight">Why Companies Trust VirtuSwift for Analytics</h2>
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         {[
           { icon: faChartBar, title: 'Analytics Expertise', text: 'Certified data engineers and analysts deliver robust, scalable solutions.' },
@@ -179,14 +182,14 @@ const tabContent = {
       {/* Benefits List with Checkmarks and Image */}
       <div className="max-w-4xl mx-auto mb-10 flex flex-col md:flex-row items-center gap-8">
         <div className="flex-1 w-full">
-        <ul className="space-y-4">
-          {benefitsList.map((b, i) => (
-            <li key={i} className="flex items-start gap-3 text-gray-800 text-base">
-              <FontAwesomeIcon icon={b.icon} className="text-[#008BCF] mt-1 text-xl" />
-              <span dangerouslySetInnerHTML={{__html: b.text}} />
-            </li>
-          ))}
-        </ul>
+          <ul className="space-y-4">
+            {benefitsList.map((b, i) => (
+              <li key={i} className="flex items-start gap-3 text-gray-800 text-base">
+                <FontAwesomeIcon icon={b.icon} className="text-[#3a3dc4] mt-1 text-xl" />
+                <span dangerouslySetInnerHTML={{ __html: b.text }} />
+              </li>
+            ))}
+          </ul>
         </div>
         <div className="flex-shrink-0 w-full md:w-1/3 flex justify-center">
           <img src="/assets/dataanalytics4.png" alt="VirtuSwift Analytics Trust Illustration" className="max-w-xs w-full h-auto object-contain" />
@@ -194,8 +197,8 @@ const tabContent = {
       </div>
       {/* Testimonial Card */}
       <div className="max-w-2xl mx-auto mb-12">
-        <div className="bg-white rounded-xl shadow-lg p-8 border-l-4 border-[#008BCF] flex items-center gap-4 group-hover:border-[#f05a28]">
-          <FontAwesomeIcon icon={faQuoteLeft} className="text-3xl text-[#008BCF] mr-4" />
+        <div className="bg-white rounded-xl shadow-lg p-8 border-l-4 border-[#3a3dc4] flex items-center gap-4 group-hover:border-[#f05a28]">
+          <FontAwesomeIcon icon={faQuoteLeft} className="text-3xl text-[#3a3dc4] mr-4" />
           <div>
             <p className="text-lg italic text-gray-700 mb-2">“VirtuSwift’s analytics team helped us unlock new revenue streams and optimize our operations. The insights are game-changing.”</p>
             <span className="block text-sm font-semibold text-gray-500">— Chief Data Officer, Leading Retailer</span>
@@ -288,7 +291,10 @@ export default function DataAnalyticsMonetization() {
 
       {/* Process Section */}
       <div className="max-w-4xl mx-auto mb-20">
-        <h2 className="text-2xl font-bold mb-6 text-gray-900 text-center">How VirtuSwift Delivers Data-Driven Success</h2>
+        <div className="text-center mb-6">
+          <h3 className="text-2xl font-extrabold text-[#3a3dc4] mb-2 uppercase tracking-widest">OUR PROCESS</h3>
+          <h2 className="text-4xl md:text-5xl font-black mb-4 text-gray-800 leading-tight">How VirtuSwift Delivers Data-Driven Success</h2>
+        </div>
         <div className="flex flex-col md:flex-row gap-6 mt-6 justify-center">
           {[
             { step: 1, title: 'Discover & Assess', desc: 'We audit your data landscape and identify monetization opportunities.' },
@@ -296,8 +302,8 @@ export default function DataAnalyticsMonetization() {
             { step: 3, title: 'Integrate & Automate', desc: 'Connect data sources, automate pipelines, and embed analytics everywhere.' },
             { step: 4, title: 'Monetize & Optimize', desc: 'Launch new data products, APIs, and dashboards—then optimize for growth.' },
           ].map((s) => (
-            <div key={s.title} className="flex-1 flex flex-col items-center text-center bg-white rounded-lg p-6 shadow border-b-4 border-[#008BCF] mx-2 mb-4 md:mb-0 group transition">
-              <div className="w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-br from-[#3a3dc4] to-[#008BCF] text-white text-2xl font-bold mb-2 group-hover:scale-110 transition">{s.step}</div>
+            <div key={s.title} className="flex-1 flex flex-col items-center text-center bg-white rounded-lg p-6 shadow border-b-4 border-[#3a3dc4] mx-2 mb-4 md:mb-0 group transition">
+              <div className="w-12 h-12 flex items-center justify-center rounded-full bg-[#3a3dc4] text-white text-2xl font-bold mb-2 group-hover:scale-110 transition">{s.step}</div>
               <h4 className="font-semibold text-lg mb-1 text-gray-800">{s.title}</h4>
               <p className="text-gray-600 text-sm">{s.desc}</p>
             </div>
@@ -308,7 +314,10 @@ export default function DataAnalyticsMonetization() {
       {/* Final CTA */}
       <div className="text-center mt-12 pb-12">
         <img src="/assets/dataanalytics3.png" alt="Analytics Journey Illustration" className="mx-auto mb-6 max-w-xs w-full h-auto object-contain" style={{ maxWidth: '450px' }} />
-        <h2 className="text-2xl font-bold mb-4 text-gray-900">Ready to Monetize Your Data?</h2>
+        <div className="mb-4">
+          <h3 className="text-2xl font-extrabold text-[#3a3dc4] mb-2 uppercase tracking-widest text-center">GET STARTED</h3>
+          <h2 className="text-4xl md:text-5xl font-black mb-4 text-gray-800 leading-tight text-center">Ready to Monetize Your Data?</h2>
+        </div>
         <p className="text-lg text-gray-600 mb-6">Let VirtuSwift help you unlock new value, drive innovation, and grow your business with analytics.</p>
         <div className="flex flex-col md:flex-row gap-4 justify-center">
           <Link to="/contact" className="inline-block bg-[#3a3dc4] text-white px-8 py-4 rounded-lg font-semibold shadow-lg hover:bg-[#f05a28] hover:scale-105 transition text-lg">Schedule Your Free Analytics Consultation</Link>

@@ -92,7 +92,8 @@ export default function DevOpsServices() {
             <div className="max-w-6xl mx-auto mb-16 px-4">
               <div className="flex flex-col md:flex-row items-center gap-12">
                 <div className="flex-1 w-full md:pr-8">
-                  <h2 className="text-3xl md:text-4xl font-extrabold mb-4 text-gray-900">Why Choose DevOps with VirtuSwift?</h2>
+                  <h3 className="text-2xl font-extrabold text-[#3a3dc4] mb-2 uppercase tracking-widest">WHY DEVOPS?</h3>
+                  <h2 className="text-4xl md:text-5xl font-black mb-4 text-gray-800 leading-tight">Why Choose DevOps with VirtuSwift?</h2>
                   <p className="text-lg text-gray-700 mb-6">Is your software delivery as fast as your ambition?</p>
                   <p className="text-gray-600 mb-6">DevOps is more than a process—it’s a cultural transformation. At VirtuSwift, we integrate development and operations into one agile engine that drives speed, stability, and continuous innovation.</p>
                   <p className="text-gray-600 mb-6">From startups launching MVPs to enterprises managing multi-cloud systems—we help you deploy confidently and scale intelligently. We don’t just automate steps—we engineer velocity.</p>
@@ -104,7 +105,10 @@ export default function DevOpsServices() {
             </div>
             {/* How DevOps Fuels Business Growth */}
             <div className="max-w-6xl mx-auto mb-16 px-4">
-              <h2 className="text-2xl font-bold mb-6 text-gray-900 text-center">How DevOps Fuels Business Growth</h2>
+              <div className="text-center mb-6">
+                <h3 className="text-2xl font-extrabold text-[#3a3dc4] mb-2 uppercase tracking-widest">BUSINESS GROWTH</h3>
+                <h2 className="text-4xl md:text-5xl font-black mb-4 text-gray-800 leading-tight">How DevOps Fuels Business Growth</h2>
+              </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div className="bg-white rounded-xl p-6 flex flex-col items-center shadow group hover:shadow-lg transition">
                   <FontAwesomeIcon icon={faSync} className="text-4xl mb-2 text-[#3a3dc4]" />
@@ -112,12 +116,12 @@ export default function DevOpsServices() {
                   <p className="text-sm text-gray-600 text-center">Release features and updates faster with CI/CD that’s built for agility.</p>
                 </div>
                 <div className="bg-white rounded-xl p-6 flex flex-col items-center shadow group hover:shadow-lg transition">
-                  <FontAwesomeIcon icon={faCogs} className="text-4xl mb-2 text-[#008BCF]" />
+                  <FontAwesomeIcon icon={faCogs} className="text-4xl mb-2 text-[#3a3dc4]" />
                   <h4 className="font-bold mb-1 text-[#232584] text-lg">Streamlined Operations</h4>
                   <p className="text-sm text-gray-600 text-center">Automate deployments, rollbacks, and infrastructure provisioning.</p>
                 </div>
                 <div className="bg-white rounded-xl p-6 flex flex-col items-center shadow group hover:shadow-lg transition">
-                  <FontAwesomeIcon icon={faChartBar} className="text-4xl mb-2 text-[#f05a28]" />
+                  <FontAwesomeIcon icon={faChartBar} className="text-4xl mb-2 text-[#3a3dc4]" />
                   <h4 className="font-bold mb-1 text-[#232584] text-lg">Faster Time to Market</h4>
                   <p className="text-sm text-gray-600 text-center">Reduce delivery cycles and accelerate go-to-market strategies.</p>
                 </div>
@@ -127,12 +131,12 @@ export default function DevOpsServices() {
                   <p className="text-sm text-gray-600 text-center">Shift security left and integrate compliance from the start.</p>
                 </div>
                 <div className="bg-white rounded-xl p-6 flex flex-col items-center shadow group hover:shadow-lg transition">
-                  <FontAwesomeIcon icon={faServer} className="text-4xl mb-2 text-[#008BCF]" />
+                  <FontAwesomeIcon icon={faServer} className="text-4xl mb-2 text-[#3a3dc4]" />
                   <h4 className="font-bold mb-1 text-[#232584] text-lg">Infrastructure as Code</h4>
                   <p className="text-sm text-gray-600 text-center">Build, test, and manage infrastructure with repeatable IaC modules.</p>
                 </div>
                 <div className="bg-white rounded-xl p-6 flex flex-col items-center shadow group hover:shadow-lg transition">
-                  <FontAwesomeIcon icon={faCloud} className="text-4xl mb-2 text-[#f05a28]" />
+                  <FontAwesomeIcon icon={faCloud} className="text-4xl mb-2 text-[#3a3dc4]" />
                   <h4 className="font-bold mb-1 text-[#232584] text-lg">Scalable Environments</h4>
                   <p className="text-sm text-gray-600 text-center">Deploy across staging, testing, and production with consistent control.</p>
                 </div>
@@ -175,15 +179,16 @@ export default function DevOpsServices() {
             <div className="max-w-6xl mx-auto mb-16 px-4">
               <div className="flex flex-col md:flex-row items-center gap-12 bg-white rounded-xl shadow p-8">
                 <div className="flex-1 w-full md:pr-8">
-                  <h2 className="text-3xl md:text-4xl font-extrabold mb-4 text-gray-900 flex items-center gap-2">Why VirtuSwift for DevOps?</h2>
+                  <h3 className="text-2xl font-extrabold text-[#3a3dc4] mb-2 uppercase tracking-widest">WHY VIRTUSWIFT?</h3>
+                  <h2 className="text-4xl md:text-5xl font-black mb-4 text-gray-800 leading-tight">Why VirtuSwift for DevOps?</h2>
                   <p className="text-lg text-gray-700 mb-6">Because great DevOps isn’t about tools—it’s about orchestration.</p>
                   <p className="text-gray-600 mb-6">VirtuSwift builds DevOps engines that are robust, secure, and tailored for business outcomes. From CI/CD to multi-cloud infrastructure, we make delivery effortless and reliable.</p>
                   <h3 className="text-xl font-bold mb-4 text-[#3a3dc4]">What Sets VirtuSwift Apart</h3>
                   <ul className="space-y-3 mb-6">
                     <li className="flex items-center gap-3 text-gray-800 text-base"><FontAwesomeIcon icon={faRocket} className="text-[#3a3dc4] text-xl" /> Full-Spectrum DevOps Services</li>
-                    <li className="flex items-center gap-3 text-gray-800 text-base"><FontAwesomeIcon icon={faCogs} className="text-[#008BCF] text-xl" /> Flexible Toolchain Expertise</li>
-                    <li className="flex items-center gap-3 text-gray-800 text-base"><FontAwesomeIcon icon={faLock} className="text-[#f05a28] text-xl" /> Shift-Left Security</li>
-                    <li className="flex items-center gap-3 text-gray-800 text-base"><FontAwesomeIcon icon={faCloud} className="text-[#008BCF] text-xl" /> Cloud-Agnostic Delivery</li>
+                    <li className="flex items-center gap-3 text-gray-800 text-base"><FontAwesomeIcon icon={faCogs} className="text-[#3a3dc4] text-xl" /> Flexible Toolchain Expertise</li>
+                    <li className="flex items-center gap-3 text-gray-800 text-base"><FontAwesomeIcon icon={faLock} className="text-[#3a3dc4] text-xl" /> Shift-Left Security</li>
+                    <li className="flex items-center gap-3 text-gray-800 text-base"><FontAwesomeIcon icon={faCloud} className="text-[#3a3dc4] text-xl" /> Cloud-Agnostic Delivery</li>
                     <li className="flex items-center gap-3 text-gray-800 text-base"><FontAwesomeIcon icon={faCheckCircle} className="text-[#3a3dc4] text-xl" /> 24/7 Monitoring & Support</li>
                   </ul>
                 </div>
@@ -194,7 +199,10 @@ export default function DevOpsServices() {
             </div>
             {/* Our DevOps Execution Flow */}
             <div className="max-w-6xl mx-auto mb-16 px-4">
-              <h2 className="text-2xl font-bold mb-6 text-gray-900 text-center">Our DevOps Execution Flow</h2>
+              <div className="text-center mb-6">
+                <h3 className="text-2xl font-extrabold text-[#3a3dc4] mb-2 uppercase tracking-widest">OUR PROCESS</h3>
+                <h2 className="text-4xl md:text-5xl font-black mb-4 text-gray-800 leading-tight">Our DevOps Execution Flow</h2>
+              </div>
               <div className="flex flex-col md:flex-row gap-6 mt-6 justify-center">
                 {[
                   { step: 1, title: 'Audit & Plan', desc: 'We assess your current release and ops workflows to map gaps, risks, and automation opportunities.' },
@@ -202,8 +210,8 @@ export default function DevOpsServices() {
                   { step: 3, title: 'Deploy & Orchestrate', desc: 'We handle seamless rollouts with integrated version control, testing, and rollback logic.' },
                   { step: 4, title: 'Monitor & Optimize', desc: 'We provide performance monitoring, issue detection, and pipeline tuning to keep your DevOps machine in top gear.' },
                 ].map((s) => (
-                  <div key={s.title} className="flex-1 flex flex-col items-center text-center bg-white rounded-lg p-6 shadow border-b-4 border-[#008BCF] mx-2 mb-4 md:mb-0 group transition">
-                    <div className="w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-br from-[#3a3dc4] to-[#008BCF] text-white text-2xl font-bold mb-2 group-hover:scale-110 transition">{s.step}</div>
+                  <div key={s.title} className="flex-1 flex flex-col items-center text-center bg-white rounded-lg p-6 shadow border-b-4 border-[#3a3dc4] mx-2 mb-4 md:mb-0 group transition">
+                    <div className="w-12 h-12 flex items-center justify-center rounded-full bg-[#3a3dc4] text-white text-2xl font-bold mb-2 group-hover:scale-110 transition">{s.step}</div>
                     <h4 className="font-semibold text-lg mb-1 text-gray-800">{s.title}</h4>
                     <p className="text-gray-600 text-sm">{s.desc}</p>
                   </div>
@@ -221,7 +229,10 @@ export default function DevOpsServices() {
             </div>
             {/* Related Services */}
             <div className="max-w-6xl mx-auto mb-16 px-4">
-              <h2 className="text-2xl font-bold mb-6 text-gray-900 text-center">Related Services From VirtuSwift</h2>
+              <div className="text-center mb-6">
+                <h3 className="text-2xl font-extrabold text-[#3a3dc4] mb-2 uppercase tracking-widest">RELATED SERVICES</h3>
+                <h2 className="text-4xl md:text-5xl font-black mb-4 text-gray-800 leading-tight">Related Services From VirtuSwift</h2>
+              </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {[
                   { icon: faRocket, title: 'Digital Transformation Services', desc: 'Bring DevOps into the heart of your enterprise modernization.' },

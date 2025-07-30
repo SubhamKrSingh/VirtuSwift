@@ -61,8 +61,9 @@ export default function ITStaffingTalentSolutions() {
             <div className="max-w-6xl mx-auto mb-16 px-4">
               <div className="flex flex-col md:flex-row items-center gap-12">
                 <div className="flex-1 w-full md:pr-8">
-                  <h2 className="text-3xl md:text-4xl font-extrabold mb-4 text-gray-900">Why IT Staffing Services?</h2>
-                  <p className="text-lg text-gray-700 mb-6">Your people are your advantage.<br/>At VirtuSwift, we understand that the right talent fuels innovation. Whether you're preparing for a product launch, scaling teams during high growth, or need specialized experts to fill short-term gaps, we deliver top-tier tech professionals—when and where you need them.<br/>We don't just recruit—we enable digital velocity through precision hiring.</p>
+                  <h3 className="text-2xl font-extrabold text-[#3a3dc4] mb-2 uppercase tracking-widest">WHAT IS IT STAFFING?</h3>
+                  <h2 className="text-4xl md:text-5xl font-black mb-4 text-gray-800 leading-tight">Why IT Staffing Services?</h2>
+                  <p className="text-lg text-gray-700 mb-6">Your people are your advantage.<br />At VirtuSwift, we understand that the right talent fuels innovation. Whether you're preparing for a product launch, scaling teams during high growth, or need specialized experts to fill short-term gaps, we deliver top-tier tech professionals—when and where you need them.<br />We don't just recruit—we enable digital velocity through precision hiring.</p>
                 </div>
                 <div className="flex-shrink-0 w-full md:w-1/2 flex justify-center md:justify-end">
                   <img src="/assets/itstaff2.png" alt="IT Staffing Banner" className="max-w-2xl w-full h-auto object-cover rounded-xl shadow-lg" />
@@ -71,7 +72,10 @@ export default function ITStaffingTalentSolutions() {
             </div>
             {/* How IT Staffing Fuels Business Growth */}
             <div className="max-w-6xl mx-auto mb-16 px-4">
-              <h2 className="text-2xl font-bold mb-6 text-gray-900 text-center">How IT Staffing Fuels Business Growth</h2>
+              <div className="text-center mb-6">
+                <h3 className="text-2xl font-extrabold text-[#3a3dc4] mb-2 uppercase tracking-widest">BUSINESS GROWTH</h3>
+                <h2 className="text-4xl md:text-5xl font-black mb-4 text-gray-800 leading-tight">How IT Staffing Fuels Business Growth</h2>
+              </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <GrowthCard icon={faSearch} title="Faster Hiring, Better Fit" desc="Access pre-vetted candidates with deep technical skills and strong cultural alignment." />
                 <GrowthCard icon={faSync} title="Scalable Resources" desc="Ramp teams up or down based on project cycles—no long-term overhead." />
@@ -87,7 +91,10 @@ export default function ITStaffingTalentSolutions() {
           <>
             {/* Our IT Staffing & Talent Solutions */}
             <div className="max-w-6xl mx-auto mb-16 px-4">
-              <h2 className="text-2xl font-bold mb-6 text-gray-900 text-center">Our IT Staffing & Talent Solutions</h2>
+              <div className="text-center mb-6">
+                <h3 className="text-2xl font-extrabold text-[#3a3dc4] mb-2 uppercase tracking-widest">OUR SERVICES</h3>
+                <h2 className="text-4xl md:text-5xl font-black mb-4 text-gray-800 leading-tight">Our IT Staffing & Talent Solutions</h2>
+              </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <ServiceButton icon={faUserPlus} title="IT Recruitment and Talent Acquisition" desc="Full-cycle staffing for contract, permanent, and hybrid roles—tailored to your tech stack, timeline, and delivery model." link="/services/it-recruitment-talent-acquisition" />
                 <ServiceButton icon={faCogs} title="Application & Database Management" desc="Staff your application and DB operations with certified professionals. We provide skilled resources for real-time monitoring, performance tuning, and maintenance of mission-critical systems — ensuring stability and uptime." link="/services/application-and-database-management" />
@@ -99,7 +106,10 @@ export default function ITStaffingTalentSolutions() {
             </div>
             {/* 4-Step Talent Delivery Process */}
             <div className="max-w-6xl mx-auto mb-16 px-4">
-              <h2 className="text-2xl font-bold mb-6 text-gray-900 text-center">Our 4-Step Talent Delivery Process</h2>
+              <div className="text-center mb-6">
+                <h3 className="text-2xl font-extrabold text-[#3a3dc4] mb-2 uppercase tracking-widest">OUR PROCESS</h3>
+                <h2 className="text-4xl md:text-5xl font-black mb-4 text-gray-800 leading-tight">Our 4-Step Talent Delivery Process</h2>
+              </div>
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <StepCard step={1} title="Understand & Scope" desc="We align with your project, goals, and cultural values to scope the exact profile you need." />
                 <StepCard step={2} title="Source & Screen" desc="We identify and rigorously test candidates through multi-layered technical screening and soft skill evaluation." />
@@ -115,7 +125,8 @@ export default function ITStaffingTalentSolutions() {
             <div className="max-w-6xl mx-auto mb-16 px-4">
               <div className="flex flex-col md:flex-row items-center gap-12">
                 <div className="flex-1 w-full md:pr-8">
-                  <h2 className="text-3xl md:text-4xl font-extrabold mb-4 text-gray-900">🌟 Why Choose VirtuSwift for IT Staffing?</h2>
+                  <h3 className="text-2xl font-extrabold text-[#3a3dc4] mb-2 uppercase tracking-widest">WHY VIRTUSWIFT?</h3>
+                  <h2 className="text-4xl md:text-5xl font-black mb-4 text-gray-800 leading-tight">Why Choose VirtuSwift for IT Staffing?</h2>
                   <p className="text-lg text-gray-700 mb-6">We combine deep technical recruitment expertise with real-world IT delivery understanding. Our curated candidate pools, flexible models, and proactive support make scaling your team frictionless.</p>
                   <h3 className="text-2xl font-bold text-[#3a3dc4] mb-4">✅ What Sets VirtuSwift Apart</h3>
                   <ul className="space-y-3 mb-6">
@@ -133,7 +144,10 @@ export default function ITStaffingTalentSolutions() {
             </div>
             {/* Final CTA */}
             <div className="text-center mt-16 pb-16">
-              <h2 className="text-3xl font-extrabold mb-4 text-gray-900">📞 Need developers, engineers, or tech specialists to hit your next milestone?</h2>
+              <div className="mb-4">
+                <h3 className="text-2xl font-extrabold text-[#3a3dc4] mb-2 uppercase tracking-widest text-center">GET STARTED</h3>
+                <h2 className="text-4xl md:text-5xl font-black mb-4 text-gray-800 leading-tight text-center">Need developers, engineers, or tech specialists to hit your next milestone?</h2>
+              </div>
               <Link to="/contact?service=it-staffing" className="inline-block bg-[#f05a28] text-white px-10 py-4 rounded-xl font-bold shadow-lg hover:bg-[#3a3dc4] hover:scale-105 transition text-lg mb-4">Digitize Your Success</Link>
               <div className="flex justify-center mt-8">
                 <img src="/assets/itstaff4.png" alt="IT Staffing CTA" className="max-w-2xl w-full h-auto object-cover rounded-xl shadow-lg" style={{ maxHeight: '220px' }} />
@@ -145,7 +159,10 @@ export default function ITStaffingTalentSolutions() {
 
       {/* Explore More Services */}
       <div className="max-w-6xl mx-auto mb-16 px-4">
-        <h2 className="text-2xl font-bold mb-6 text-gray-900 text-center">🔗 Explore More Services We Offer</h2>
+        <div className="text-center mb-6">
+          <h3 className="text-2xl font-extrabold text-[#3a3dc4] mb-2 uppercase tracking-widest">EXPLORE MORE</h3>
+          <h2 className="text-4xl md:text-5xl font-black mb-4 text-gray-800 leading-tight">Explore More Services We Offer</h2>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <ExploreCard icon={faRocket} title="Digital Transformation Solutions" desc="From automation to ERP to legacy modernization, we power total enterprise transformation." link="/services/digital-transformation" />
           <ExploreCard icon={faBrain} title="AI & Machine Learning Development" desc="Access top data scientists and ML engineers to build custom algorithms, analytics, and automation pipelines." link="/services/ai-machine-learning" />
@@ -197,7 +214,7 @@ interface StepCardProps {
 function StepCard({ step, title, desc }: StepCardProps) {
   return (
     <div className="bg-white rounded-xl p-6 flex flex-col items-center shadow group hover:shadow-lg transition">
-      <div className="w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-br from-[#3a3dc4] to-[#008BCF] text-white text-2xl font-bold mb-2 group-hover:scale-110 transition">{step}</div>
+      <div className="w-12 h-12 flex items-center justify-center rounded-full bg-[#3a3dc4] text-white text-2xl font-bold mb-2 group-hover:scale-110 transition">{step}</div>
       <h4 className="font-semibold text-lg mb-1 text-gray-800">{title}</h4>
       <p className="text-gray-600 text-sm text-center">{desc}</p>
     </div>

@@ -70,7 +70,8 @@ export default function DigitalTransformationSolutions() {
             <div className="max-w-6xl mx-auto mb-16 px-4">
               <div className="flex flex-col md:flex-row items-center gap-12">
                 <div className="flex-1 w-full md:pr-8">
-                  <h2 className="text-3xl md:text-4xl font-extrabold mb-4 text-gray-900">What Is Digital Transformation?</h2>
+                  <h3 className="text-2xl font-extrabold text-[#3a3dc4] mb-2 uppercase tracking-widest">WHAT IS DIGITAL TRANSFORMATION?</h3>
+                  <h2 className="text-4xl md:text-5xl font-black mb-4 text-gray-800 leading-tight">What Is Digital Transformation?</h2>
                   <p className="text-lg text-gray-700 mb-6">It’s not a buzzword — it’s a business imperative.</p>
                   <p className="text-gray-600 mb-6">In a hyper-digital era, transformation means survival. VirtuSwift helps organizations modernize legacy systems, automate processes, adopt scalable cloud infrastructure, and reimagine the way they operate.</p>
                   <p className="text-gray-600 mb-6">Whether you’re scaling globally or streamlining operations, our tailored transformation frameworks help you stay ahead of the curve. We don’t just deploy tools — we build future-ready enterprises.</p>
@@ -82,7 +83,10 @@ export default function DigitalTransformationSolutions() {
             </div>
             {/* How Digital Transformation Benefits Your Business */}
             <div className="max-w-6xl mx-auto mb-16 px-4">
-              <h2 className="text-2xl font-bold mb-6 text-gray-900 text-center">How Digital Transformation Benefits Your Business</h2>
+              <div className="text-center mb-6">
+                <h3 className="text-2xl font-extrabold text-[#3a3dc4] mb-2 uppercase tracking-widest">BUSINESS BENEFITS</h3>
+                <h2 className="text-4xl md:text-5xl font-black mb-4 text-gray-800 leading-tight">How Digital Transformation Benefits Your Business</h2>
+              </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div className="bg-white rounded-xl p-6 flex flex-col items-center shadow group hover:shadow-lg transition">
                   <FontAwesomeIcon icon={faRocket} className="text-4xl mb-2 text-[#3a3dc4]" />
@@ -90,12 +94,12 @@ export default function DigitalTransformationSolutions() {
                   <p className="text-sm text-gray-600 text-center">Automate tasks, scale fast, and optimize efficiency across all departments.</p>
                 </div>
                 <div className="bg-white rounded-xl p-6 flex flex-col items-center shadow group hover:shadow-lg transition">
-                  <FontAwesomeIcon icon={faChartLine} className="text-4xl mb-2 text-[#008BCF]" />
+                  <FontAwesomeIcon icon={faChartLine} className="text-4xl mb-2 text-[#3a3dc4]" />
                   <h4 className="font-bold mb-1 text-[#232584] text-lg">Data-Led Strategy</h4>
                   <p className="text-sm text-gray-600 text-center">Use real-time dashboards to make strategic decisions based on facts, not instinct.</p>
                 </div>
                 <div className="bg-white rounded-xl p-6 flex flex-col items-center shadow group hover:shadow-lg transition">
-                  <FontAwesomeIcon icon={faMoneyBillWave} className="text-4xl mb-2 text-[#f05a28]" />
+                  <FontAwesomeIcon icon={faMoneyBillWave} className="text-4xl mb-2 text-[#3a3dc4]" />
                   <h4 className="font-bold mb-1 text-[#232584] text-lg">Lower Costs</h4>
                   <p className="text-sm text-gray-600 text-center">Shift from on-prem to cloud, remove manual redundancies, and boost margins.</p>
                 </div>
@@ -105,17 +109,17 @@ export default function DigitalTransformationSolutions() {
                   <p className="text-sm text-gray-600 text-center">Deliver personalized, cross-platform digital journeys that customers love.</p>
                 </div>
                 <div className="bg-white rounded-xl p-6 flex flex-col items-center shadow group hover:shadow-lg transition">
-                  <FontAwesomeIcon icon={faLock} className="text-4xl mb-2 text-[#008BCF]" />
+                  <FontAwesomeIcon icon={faLock} className="text-4xl mb-2 text-[#3a3dc4]" />
                   <h4 className="font-bold mb-1 text-[#232584] text-lg">Built-In Security</h4>
                   <p className="text-sm text-gray-600 text-center">Embed compliance, identity controls, and real-time threat detection from Day 1.</p>
                 </div>
                 <div className="bg-white rounded-xl p-6 flex flex-col items-center shadow group hover:shadow-lg transition">
-                  <FontAwesomeIcon icon={faCogs} className="text-4xl mb-2 text-[#f05a28]" />
+                  <FontAwesomeIcon icon={faCogs} className="text-4xl mb-2 text-[#3a3dc4]" />
                   <h4 className="font-bold mb-1 text-[#232584] text-lg">Legacy Modernization</h4>
                   <p className="text-sm text-gray-600 text-center">Upgrade or integrate legacy systems for speed, flexibility, and scalability.</p>
                 </div>
                 <div className="bg-white rounded-xl p-6 flex flex-col items-center shadow group hover:shadow-lg transition">
-                  <FontAwesomeIcon icon={faMoneyBillWave} className="text-4xl mb-2 text-[#f05a28]" />
+                  <FontAwesomeIcon icon={faMoneyBillWave} className="text-4xl mb-2 text-[#3a3dc4]" />
                   <h4 className="font-bold mb-1 text-[#232584] text-lg">Data Monetization Strategies</h4>
                   <p className="text-sm text-gray-600 text-center">Turn data into dollars. We help identify untapped data assets, build frameworks to extract value, and implement models that generate new revenue streams from your existing data ecosystem.</p>
                 </div>
@@ -127,7 +131,10 @@ export default function DigitalTransformationSolutions() {
           <>
             {/* Our Core Digital Transformation Services */}
             <div className="max-w-6xl mx-auto mb-16 px-4">
-              <h2 className="text-2xl font-bold mb-6 text-gray-900 text-center">Our Core Digital Transformation Services</h2>
+              <div className="text-center mb-6">
+                <h3 className="text-2xl font-extrabold text-[#3a3dc4] mb-2 uppercase tracking-widest">OUR SERVICES</h3>
+                <h2 className="text-4xl md:text-5xl font-black mb-4 text-gray-800 leading-tight">Our Core Digital Transformation Services</h2>
+              </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {[
                   { icon: faChartLine, title: 'Digital Strategy Development', desc: 'Craft your transformation journey with purpose. We design business-aligned roadmaps that define technology priorities, risks, and ROI milestones.', link: '/services/digital-strategy-development' },
@@ -164,14 +171,15 @@ export default function DigitalTransformationSolutions() {
             <div className="max-w-6xl mx-auto mb-16 px-4">
               <div className="flex flex-col md:flex-row items-center gap-12 bg-white rounded-xl shadow p-8">
                 <div className="flex-1 w-full md:pr-8">
-                  <h2 className="text-3xl md:text-4xl font-extrabold mb-4 text-gray-900 flex items-center gap-2">Why Choose VirtuSwift?</h2>
+                  <h3 className="text-2xl font-extrabold text-[#3a3dc4] mb-2 uppercase tracking-widest">WHY VIRTUSWIFT?</h3>
+                  <h2 className="text-4xl md:text-5xl font-black mb-4 text-gray-800 leading-tight">Why Choose VirtuSwift?</h2>
                   <p className="text-lg text-gray-700 mb-6">Because digital transformation should be engineered, not improvised.</p>
                   <h3 className="text-xl font-bold mb-4 text-[#3a3dc4]">What Sets VirtuSwift Apart</h3>
                   <ul className="space-y-3 mb-6">
                     <li className="flex items-center gap-3 text-gray-800 text-base"><FontAwesomeIcon icon={faChartBar} className="text-[#3a3dc4] text-xl" /> Strategy-Driven Execution</li>
-                    <li className="flex items-center gap-3 text-gray-800 text-base"><FontAwesomeIcon icon={faLightbulb} className="text-[#008BCF] text-xl" /> End-to-End Capabilities</li>
-                    <li className="flex items-center gap-3 text-gray-800 text-base"><FontAwesomeIcon icon={faRocket} className="text-[#f05a28] text-xl" /> Rapid Time to Value</li>
-                    <li className="flex items-center gap-3 text-gray-800 text-base"><FontAwesomeIcon icon={faUsers} className="text-[#008BCF] text-xl" /> Human-Centric Technology</li>
+                    <li className="flex items-center gap-3 text-gray-800 text-base"><FontAwesomeIcon icon={faLightbulb} className="text-[#3a3dc4] text-xl" /> End-to-End Capabilities</li>
+                    <li className="flex items-center gap-3 text-gray-800 text-base"><FontAwesomeIcon icon={faRocket} className="text-[#3a3dc4] text-xl" /> Rapid Time to Value</li>
+                    <li className="flex items-center gap-3 text-gray-800 text-base"><FontAwesomeIcon icon={faUsers} className="text-[#3a3dc4] text-xl" /> Human-Centric Technology</li>
                     <li className="flex items-center gap-3 text-gray-800 text-base"><FontAwesomeIcon icon={faLock} className="text-[#3a3dc4] text-xl" /> Compliance Built-In</li>
                     <li className="flex items-center gap-3 text-gray-800 text-base"><FontAwesomeIcon icon={faSync} className="text-[#3a3dc4] text-xl" /> Continuous Optimization</li>
                   </ul>
@@ -183,7 +191,10 @@ export default function DigitalTransformationSolutions() {
             </div>
             {/* Execution Flow */}
             <div className="max-w-6xl mx-auto mb-16 px-4">
-              <h2 className="text-2xl font-bold mb-6 text-gray-900 text-center">How VirtuSwift Executes Your Transformation Journey</h2>
+              <div className="text-center mb-6">
+                <h3 className="text-2xl font-extrabold text-[#3a3dc4] mb-2 uppercase tracking-widest">OUR PROCESS</h3>
+                <h2 className="text-4xl md:text-5xl font-black mb-4 text-gray-800 leading-tight">How VirtuSwift Executes Your Transformation Journey</h2>
+              </div>
               <div className="flex flex-col md:flex-row gap-6 mt-6 justify-center">
                 {[
                   { step: 1, title: 'Discover & Define', desc: 'We assess your digital maturity, systems, teams, and vision to co-create a transformation blueprint.' },
@@ -191,8 +202,8 @@ export default function DigitalTransformationSolutions() {
                   { step: 3, title: 'Deploy & Integrate', desc: 'We implement technologies seamlessly — minimizing disruption, maximizing value.' },
                   { step: 4, title: 'Train & Optimize', desc: 'We onboard your team, support adoption, and continuously improve for impact and performance.' },
                 ].map((s) => (
-                  <div key={s.title} className="flex-1 flex flex-col items-center text-center bg-white rounded-lg p-6 shadow border-b-4 border-[#008BCF] mx-2 mb-4 md:mb-0 group transition">
-                    <div className="w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-br from-[#3a3dc4] to-[#008BCF] text-white text-2xl font-bold mb-2 group-hover:scale-110 transition">{s.step}</div>
+                  <div key={s.title} className="flex-1 flex flex-col items-center text-center bg-white rounded-lg p-6 shadow border-b-4 border-[#3a3dc4] mx-2 mb-4 md:mb-0 group transition">
+                    <div className="w-12 h-12 flex items-center justify-center rounded-full bg-[#3a3dc4] text-white text-2xl font-bold mb-2 group-hover:scale-110 transition">{s.step}</div>
                     <h4 className="font-semibold text-lg mb-1 text-gray-800">{s.title}</h4>
                     <p className="text-gray-600 text-sm">{s.desc}</p>
                   </div>
@@ -210,7 +221,10 @@ export default function DigitalTransformationSolutions() {
             </div>
             {/* Related Services */}
             <div className="max-w-6xl mx-auto mb-16 px-4">
-              <h2 className="text-2xl font-bold mb-6 text-gray-900 text-center">Explore More VirtuSwift Services</h2>
+              <div className="text-center mb-6">
+                <h3 className="text-2xl font-extrabold text-[#3a3dc4] mb-2 uppercase tracking-widest">EXPLORE MORE</h3>
+                <h2 className="text-4xl md:text-5xl font-black mb-4 text-gray-800 leading-tight">Explore More VirtuSwift Services</h2>
+              </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {[
                   { icon: faCloud, title: 'Cloud Services', desc: 'Migrate, modernize, and scale securely in the cloud. We build high-availability, high-performance cloud environments that reduce cost and improve agility.' },
