@@ -1,4 +1,8 @@
 import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import OTPVerification from '../components/OTPVerification';
+import { getApiUrl, apiEndpoints } from '../utils/api';
 
 const titles = ['Mr.', 'Ms.', 'Mrs.', 'Dr.', 'Prof.'];
 const locations = ['USA', 'UK', 'India', 'Germany', 'Other'];
@@ -22,6 +26,11 @@ const SubmitRFP: React.FC = () => {
     file: undefined as File | undefined,
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showOTPVerification, setShowOTPVerification] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState('');
+  const [messageType, setMessageType] = useState<'success' | 'error'>('success');
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value, type } = e.target;
     if (type === 'checkbox') {
@@ -35,10 +44,73 @@ const SubmitRFP: React.FC = () => {
     setForm(f => ({ ...f, file: e.target.files?.[0] }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Submit logic here
-    alert('Submitted!');
+    setIsSubmitting(true);
+    setSubmitMessage('');
+
+    try {
+      const submissionData = {
+        ...form,
+        name: `${form.firstName} ${form.lastName}`,
+        formType: 'RFP Submission',
+        projectType: form.industry,
+        requirements: form.comments,
+        timeline: 'To be discussed',
+        budget: form.revenue
+      };
+
+      const response = await fetch(getApiUrl(apiEndpoints.rfpForm), {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(submissionData),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setShowOTPVerification(true);
+      } else {
+        setSubmitMessage(data.message || 'Failed to submit RFP. Please try again.');
+        setMessageType('error');
+      }
+    } catch (error) {
+      setSubmitMessage('Network error. Please try again.');
+      setMessageType('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleVerificationSuccess = () => {
+    setShowOTPVerification(false);
+    setSubmitMessage('Thank you! Your RFP has been submitted successfully. We\'ll review it and get back to you soon.');
+    setMessageType('success');
+    
+    // Reset form
+    setForm({
+      title: '',
+      firstName: '',
+      lastName: '',
+      position: '',
+      email: '',
+      phone: '',
+      location: '',
+      industry: '',
+      company: '',
+      revenue: '',
+      comments: '',
+      terms: false,
+      file: undefined,
+    });
+  };
+
+  const handleVerificationCancel = () => {
+    setShowOTPVerification(false);
+    setSubmitMessage('RFP submission cancelled.');
+    setMessageType('error');
   };
 
   return (
@@ -85,9 +157,54 @@ const SubmitRFP: React.FC = () => {
               I have read and accept the <a href="/terms" style={{ color: '#3a3dc4', textDecoration: 'underline' }}>Terms of Use</a>. Please read our <a href="/privacy" style={{ color: '#3a3dc4', textDecoration: 'underline' }}>privacy statement</a> to understand how we plan to use your personal information.
             </span>
           </div>
-          <button type="submit" style={{ background: '#3a3dc4', color: '#fff', border: 'none', borderRadius: 24, padding: '12px 38px', fontSize: 16, fontWeight: 600, cursor: 'pointer', marginTop: 8, letterSpacing: 1 }}>Submit</button>
+          {submitMessage && (
+            <div style={{
+              marginBottom: 16,
+              padding: 12,
+              borderRadius: 4,
+              backgroundColor: messageType === 'success' ? '#f0f9ff' : '#fef2f2',
+              color: messageType === 'success' ? '#065f46' : '#991b1b',
+              fontSize: 14
+            }}>
+              {submitMessage}
+            </div>
+          )}
+          
+          <button 
+            type="submit" 
+            disabled={isSubmitting}
+            style={{ 
+              background: isSubmitting ? '#9ca3af' : '#3a3dc4', 
+              color: '#fff', 
+              border: 'none', 
+              borderRadius: 24, 
+              padding: '12px 38px', 
+              fontSize: 16, 
+              fontWeight: 600, 
+              cursor: isSubmitting ? 'not-allowed' : 'pointer', 
+              marginTop: 8, 
+              letterSpacing: 1,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: 8
+            }}
+          >
+            {isSubmitting && <FontAwesomeIcon icon={faSpinner} className="animate-spin" />}
+            {isSubmitting ? 'Submitting...' : 'Submit'}
+          </button>
         </form>
       </div>
+
+      {/* OTP Verification Modal */}
+      {showOTPVerification && (
+        <OTPVerification
+          email={form.email}
+          onVerificationSuccess={handleVerificationSuccess}
+          onCancel={handleVerificationCancel}
+          formType="RFP Submission"
+        />
+      )}
     </div>
   );
 };

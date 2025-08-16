@@ -1,4 +1,8 @@
 import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import OTPVerification from '../OTPVerification';
+import { getApiUrl, apiEndpoints } from '../../utils/api';
 
 const questions = [
   {
@@ -166,6 +170,10 @@ const AssessmentForm: React.FC = () => {
   const [answers, setAnswers] = useState<any[]>([]);
   const [form, setForm] = useState({ name: '', email: '', erp: '', privacy: false });
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showOTPVerification, setShowOTPVerification] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState('');
+  const [messageType, setMessageType] = useState<'success' | 'error'>('success');
 
   const handleOptionChange = (value: string | string[]) => {
     const newAnswers = [...answers];
@@ -179,10 +187,57 @@ const AssessmentForm: React.FC = () => {
     setForm(f => ({ ...f, [name]: type === 'checkbox' ? checked : value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitMessage('');
+
+    try {
+      const submissionData = {
+        ...form,
+        formType: 'Assessment Request',
+        assessmentType: 'Cloud Journey Assessment',
+        currentChallenges: 'Assessment responses collected',
+        goals: 'Cloud optimization and strategy guidance',
+        answers: answers,
+        industry: 'Technology', // Default or could be collected
+        phone: '', // Optional field
+        company: '' // Optional field
+      };
+
+      const response = await fetch(getApiUrl(apiEndpoints.assessmentForm), {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(submissionData),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setShowOTPVerification(true);
+      } else {
+        setSubmitMessage(data.message || 'Failed to submit assessment. Please try again.');
+        setMessageType('error');
+      }
+    } catch (error) {
+      setSubmitMessage('Network error. Please try again.');
+      setMessageType('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleVerificationSuccess = () => {
+    setShowOTPVerification(false);
     setSubmitted(true);
-    // Here you would send the data to your backend or API
+  };
+
+  const handleVerificationCancel = () => {
+    setShowOTPVerification(false);
+    setSubmitMessage('Assessment submission cancelled.');
+    setMessageType('error');
   };
 
   if (submitted) {
@@ -238,7 +293,54 @@ const AssessmentForm: React.FC = () => {
             VirtuSwift is committed to protecting and respecting your privacy. By completing this assessment you are consenting to VirtuSwift's collection, processing, and storing of the data included in your responses. We will only use your personal information and any other data you include in your assessment to administer your account as you've requested. Occasionally, we would like to contact you about our products and services. If you consent to us contacting you, please tick the checkbox to enable email communication from VirtuSwift. You can unsubscribe at any time. For more information, please review our Privacy Policy. By clicking submit, you consent to allow VirtuSwift to store and process the personal information submitted to provide you the content requested.
           </label>
         </div>
-        <button type="submit" style={{ width: '100%', background: '#3a3dc4', color: '#fff', border: 'none', borderRadius: 24, padding: '14px 0', fontSize: 18, fontWeight: 600, letterSpacing: 2, cursor: 'pointer', marginTop: 8 }}>SUBMIT</button>
+        {submitMessage && (
+          <div style={{
+            marginBottom: 16,
+            padding: 12,
+            borderRadius: 10,
+            backgroundColor: messageType === 'success' ? '#f0f9ff' : '#fef2f2',
+            color: messageType === 'success' ? '#065f46' : '#991b1b',
+            fontSize: 14,
+            textAlign: 'left'
+          }}>
+            {submitMessage}
+          </div>
+        )}
+        
+        <button 
+          type="submit" 
+          disabled={isSubmitting}
+          style={{ 
+            width: '100%', 
+            background: isSubmitting ? '#9ca3af' : '#3a3dc4', 
+            color: '#fff', 
+            border: 'none', 
+            borderRadius: 24, 
+            padding: '14px 0', 
+            fontSize: 18, 
+            fontWeight: 600, 
+            letterSpacing: 2, 
+            cursor: isSubmitting ? 'not-allowed' : 'pointer', 
+            marginTop: 8,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: 8
+          }}
+        >
+          {isSubmitting && <FontAwesomeIcon icon={faSpinner} className="animate-spin" />}
+          {isSubmitting ? 'SUBMITTING...' : 'SUBMIT'}
+        </button>
+
+        {/* OTP Verification Modal */}
+        {showOTPVerification && (
+          <OTPVerification
+            email={form.email}
+            onVerificationSuccess={handleVerificationSuccess}
+            onCancel={handleVerificationCancel}
+            formType="Assessment Request"
+          />
+        )}
       </form>
     );
   }

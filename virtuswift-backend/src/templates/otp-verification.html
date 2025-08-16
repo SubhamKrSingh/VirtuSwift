@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Your Email - VirtuSwift</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #3a3dc4;
+            margin-bottom: 10px;
+        }
+        .otp-code {
+            background-color: #f8f9fa;
+            border: 2px dashed #3a3dc4;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            margin: 30px 0;
+        }
+        .otp-number {
+            font-size: 36px;
+            font-weight: bold;
+            color: #3a3dc4;
+            letter-spacing: 8px;
+            margin: 10px 0;
+        }
+        .warning {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 20px 0;
+            color: #856404;
+        }
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+        }
+        .button {
+            display: inline-block;
+            background-color: #3a3dc4;
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .contact-info {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">VirtuSwift</div>
+            <h1>Email Verification Required</h1>
+        </div>
+
+        <p>Hello {{userName}},</p>
+        
+        <p>Thank you for your interest in VirtuSwift! To complete your form submission, please verify your email address using the verification code below:</p>
+
+        <div class="otp-code">
+            <p style="margin: 0; font-size: 16px; color: #666;">Your Verification Code</p>
+            <div class="otp-number">{{otpCode}}</div>
+            <p style="margin: 0; font-size: 14px; color: #666;">Enter this code on the verification page</p>
+        </div>
+
+        <div class="warning">
+            <strong>⚠️ Important Security Information:</strong>
+            <ul style="margin: 10px 0; padding-left: 20px;">
+                <li>This code expires in <strong>{{expiryMinutes}} minutes</strong></li>
+                <li>Never share this code with anyone</li>
+                <li>VirtuSwift will never ask for this code via phone or email</li>
+                <li>If you didn't request this code, please ignore this email</li>
+            </ul>
+        </div>
+
+        <div class="contact-info">
+            <h3>Need Help?</h3>
+            <p>If you're having trouble with verification or didn't request this code, please contact our support team:</p>
+            <p>📧 Email: <a href="mailto:{{supportEmail}}">{{supportEmail}}</a></p>
+            <p>🌐 Website: <a href="https://virtuswift.com">www.virtuswift.com</a></p>
+        </div>
+
+        <div class="footer">
+            <p><strong>VirtuSwift</strong> - Transforming Business Through Technology</p>
+            <p>© {{currentYear}} VirtuSwift. All rights reserved.</p>
+            <p style="font-size: 12px; color: #999;">
+                This is an automated message. Please do not reply to this email.
+            </p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faCloud,
@@ -20,12 +21,12 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 const services = [
-  { icon: faNetworkWired, label: 'Integration' },
-  { icon: faCog, label: 'Automation' },
-  { icon: faCloud, label: 'Cloud Services' },
-  { icon: faCode, label: 'Development' },
-  { icon: faDatabase, label: 'Data Solutions' },
-  { icon: faUsers, label: 'IT Staffing' },
+  { icon: faNetworkWired, label: 'Integration', link: '/services/sap' },
+  { icon: faCog, label: 'Automation', link: '/services/devops' },
+  { icon: faCloud, label: 'Cloud Services', link: '/services/cloud-strategy-consulting' },
+  { icon: faCode, label: 'Development', link: '/services/custom-software-development' },
+  { icon: faDatabase, label: 'Data Solutions', link: '/data-analytics-monetization' },
+  { icon: faUsers, label: 'IT Staffing', link: '/services/it-staffing-talent-solutions' },
 ];
 
 const BLUE = '#3a3dc4';
@@ -96,14 +97,15 @@ const ServiceIconCarousel: React.FC = () => {
               const realIdx = idx % services.length;
               const isHovered = hoveredIdx === realIdx;
               return (
-                <div
+                <Link
                   key={`${service.label}-${idx}`}
-                  className="flex flex-col items-center mx-8"
+                  to={service.link}
+                  className="flex flex-col items-center mx-8 cursor-pointer transform hover:scale-105 transition-all duration-300"
                   onMouseEnter={() => setHoveredIdx(realIdx)}
                   onMouseLeave={() => setHoveredIdx(null)}
                 >
                   <div
-                    className={`rounded-2xl flex items-center justify-center mb-4 transition-all duration-300 shadow-sm bg-blue-50`}
+                    className={`rounded-2xl flex items-center justify-center mb-4 transition-all duration-300 shadow-sm bg-blue-50 hover:shadow-lg`}
                     style={{ width: 80, height: 80 }}
                   >
                     <FontAwesomeIcon
@@ -127,7 +129,7 @@ const ServiceIconCarousel: React.FC = () => {
                   >
                     {service.label}
                   </span>
-                </div>
+                </Link>
               );
             })}
           </div>

@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+import { faMapMarkerAlt, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { faLinkedin, faTwitter, faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons';
+import OTPVerification from '../components/OTPVerification';
+import { getApiUrl, apiEndpoints } from '../utils/api';
 
 interface FormData {
   contactType: string;
@@ -32,10 +34,72 @@ const Contact: React.FC = () => {
     message: ''
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showOTPVerification, setShowOTPVerification] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState('');
+  const [messageType, setMessageType] = useState<'success' | 'error'>('success');
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log('Form submitted:', formData);
+    setIsSubmitting(true);
+    setSubmitMessage('');
+
+    try {
+      const submissionData = {
+        ...formData,
+        name: `${formData.firstName} ${formData.lastName}`,
+        formType: 'Contact Form'
+      };
+
+      const response = await fetch(getApiUrl(apiEndpoints.contactForm), {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(submissionData),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setShowOTPVerification(true);
+      } else {
+        setSubmitMessage(data.message || 'Failed to submit form. Please try again.');
+        setMessageType('error');
+      }
+    } catch (error) {
+      setSubmitMessage('Network error. Please try again.');
+      setMessageType('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleVerificationSuccess = () => {
+    setShowOTPVerification(false);
+    setSubmitMessage('Thank you! Your message has been submitted successfully. We\'ll get back to you soon.');
+    setMessageType('success');
+    
+    // Reset form
+    setFormData({
+      contactType: '',
+      firstName: '',
+      lastName: '',
+      email: '',
+      phone: '',
+      jobTitle: '',
+      company: '',
+      industry: '',
+      revenue: '',
+      country: '',
+      message: ''
+    });
+  };
+
+  const handleVerificationCancel = () => {
+    setShowOTPVerification(false);
+    setSubmitMessage('Form submission cancelled.');
+    setMessageType('error');
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -150,11 +214,27 @@ const Contact: React.FC = () => {
                     />
                   </div>
 
+                  {submitMessage && (
+                    <div className={`mb-4 p-3 rounded-md ${
+                      messageType === 'success' ? 'bg-green-50 text-green-700' : 'bg-red-50 text-red-700'
+                    }`}>
+                      {submitMessage}
+                    </div>
+                  )}
+
                   <button
                     type="submit"
-                    className="bg-[#3a3dc4] text-white px-8 py-3 rounded-md font-medium shadow-md hover:bg-[#2f3099] transition-colors"
+                    disabled={isSubmitting}
+                    className="bg-[#3a3dc4] text-white px-8 py-3 rounded-md font-medium shadow-md hover:bg-[#2f3099] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                   >
-                    Submit
+                    {isSubmitting ? (
+                      <>
+                        <FontAwesomeIcon icon={faSpinner} className="animate-spin mr-2" />
+                        Submitting...
+                      </>
+                    ) : (
+                      'Submit'
+                    )}
                   </button>
                 </form>
               </div>
@@ -207,6 +287,16 @@ const Contact: React.FC = () => {
 
       {/* Global Presence Section */}
       {/* This section has been removed as per user request. */}
+
+      {/* OTP Verification Modal */}
+      {showOTPVerification && (
+        <OTPVerification
+          email={formData.email}
+          onVerificationSuccess={handleVerificationSuccess}
+          onCancel={handleVerificationCancel}
+          formType="Contact Form"
+        />
+      )}
     </div>
   );
 };

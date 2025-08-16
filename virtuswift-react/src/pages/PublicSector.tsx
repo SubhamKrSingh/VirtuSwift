@@ -86,8 +86,8 @@ const PublicSector: React.FC = () => {
         {activeTab === 'Overview' && (
           <div className={`flex flex-col md:flex-row gap-8 mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <div className="md:w-1/2">
-              <h2 className="text-3xl font-bold mb-4">Transforming Public Sector with VirtuSwift IT Expertise</h2>
-              <p className="text-gray-600 mb-6">
+              <h2 className="text-4xl font-extrabold mb-4 text-gray-900">Transforming Public Sector with VirtuSwift IT Expertise</h2>
+              <p className="text-lg text-gray-700 mb-6">
                 At VirtuSwift, we deliver tailored IT solutions to revolutionize public sector operations. Our expertise in government systems, citizen services, and secure infrastructure empowers public agencies to enhance service delivery and operational efficiency.
               </p>
               <Link to="/contact?industry=publicsector" className="inline-block bg-[#3a3dc4] text-white px-6 py-2 rounded-lg hover:bg-[#f05a28] transition-all duration-300 hover:scale-105 hover:shadow-lg">Explore Now</Link>
@@ -100,8 +100,8 @@ const PublicSector: React.FC = () => {
         {/* Capabilities Tab */}
         {activeTab === 'Capabilities' && (
           <div className={`mb-12 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <h3 className="text-xl font-semibold text-[#3a3dc4] mb-2">CAPABILITIES</h3>
-            <h2 className="text-3xl font-bold mb-4">Revolutionize Public Sector with VirtuSwift</h2>
+            <h3 className="text-2xl font-bold text-[#3a3dc4] mb-4">CAPABILITIES</h3>
+            <h2 className="text-4xl font-extrabold mb-4 text-gray-900">Revolutionize Public Sector with VirtuSwift</h2>
             <div className="space-y-8">
               <div className="flex flex-col md:flex-row gap-6">
                 {[

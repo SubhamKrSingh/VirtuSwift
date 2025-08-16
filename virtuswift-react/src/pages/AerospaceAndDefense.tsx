@@ -111,10 +111,10 @@ const AerospaceAndDefense: React.FC = () => {
         {activeSubTab === 'Overview' && (
           <div className={`flex flex-col md:flex-row gap-8 mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <div className="md:w-1/2">
-              <h2 className="text-3xl font-bold mb-4">
+              <h2 className="text-4xl font-extrabold mb-4 text-gray-900">
                 Transforming {activeMainTab} with VirtuSwift IT Expertise
               </h2>
-              <p className="text-gray-600 mb-6">
+              <p className="text-lg text-gray-700 mb-6">
                 {activeMainTab === 'Aerospace & Defense'
                   ? "At VirtuSwift, we deliver tailored IT solutions to revolutionize aerospace and defense operations. Our expertise in mission-critical systems, cybersecurity, and compliance empowers organizations to enhance operational security and mission readiness."
                   : "At VirtuSwift, we deliver tailored IT solutions to revolutionize automotive operations. Our expertise in connected vehicles, smart manufacturing, and mobility services empowers companies to enhance innovation and customer experiences."
@@ -135,8 +135,8 @@ const AerospaceAndDefense: React.FC = () => {
         {/* Capabilities Tab */}
         {activeSubTab === 'Capabilities' && (
           <div className={`mb-12 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <h3 className="text-xl font-semibold text-[#3a3dc4] mb-2">CAPABILITIES</h3>
-            <h2 className="text-3xl font-bold mb-4">Revolutionize {activeMainTab} with VirtuSwift</h2>
+            <h3 className="text-2xl font-bold text-[#3a3dc4] mb-4">CAPABILITIES</h3>
+            <h2 className="text-4xl font-extrabold mb-4 text-gray-900">Revolutionize {activeMainTab} with VirtuSwift</h2>
             <div className="space-y-8">
               <div className="flex flex-col md:flex-row gap-6">
                 {(activeMainTab === 'Aerospace & Defense' ? [
@@ -175,8 +175,8 @@ const AerospaceAndDefense: React.FC = () => {
                       animationFillMode: 'forwards'
                     }}
                   >
-                    <h4 className="text-lg font-semibold text-[#3a3dc4]">{capability.title}</h4>
-                    <p className="text-gray-600">{capability.description}</p>
+                    <h4 className="text-xl font-bold text-[#3a3dc4] mb-2">{capability.title}</h4>
+                    <p className="text-base text-gray-700">{capability.description}</p>
                   </div>
                 ))}
               </div>
@@ -187,7 +187,7 @@ const AerospaceAndDefense: React.FC = () => {
         {/* Benefits Tab */}
         {activeSubTab === 'Benefits' && (
           <div className={`transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <h2 className="text-3xl font-bold mb-8">A Future-Ready {activeMainTab} Ecosystem</h2>
+            <h2 className="text-4xl font-extrabold mb-8 text-gray-900">A Future-Ready {activeMainTab} Ecosystem</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {(activeMainTab === 'Aerospace & Defense' ? [
                 { icon: faCogs, title: "Certified Experts", text: "Our team is trained in advanced defense IT systems and security compliance standards." },
@@ -214,8 +214,8 @@ const AerospaceAndDefense: React.FC = () => {
                   }}
                 >
                   <FontAwesomeIcon icon={benefit.icon} className="text-3xl text-[#3a3dc4] mb-4 transition-transform duration-300 hover:scale-110" />
-                  <h4 className="font-bold text-lg mb-2">{benefit.title}</h4>
-                  <p className="text-gray-600 text-center">{benefit.text}</p>
+                  <h4 className="font-bold text-xl mb-2 text-gray-900">{benefit.title}</h4>
+                  <p className="text-base text-gray-700 text-center">{benefit.text}</p>
                 </div>
               ))}
             </div>
@@ -224,8 +224,8 @@ const AerospaceAndDefense: React.FC = () => {
             <div className="space-y-12 mt-12">
               <div className={`flex flex-col md:flex-row gap-8 transition-all duration-1000 delay-800 hover:shadow-2xl hover:scale-105 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
                 <div className="md:w-1/2">
-                  <h3 className="text-xl font-semibold mb-4">Empowered by Industry Partnerships</h3>
-                  <p className="text-gray-600 mb-4">
+                  <h3 className="text-2xl font-bold mb-4 text-gray-900">Empowered by Industry Partnerships</h3>
+                  <p className="text-lg text-gray-700 mb-4">
                     {activeMainTab === 'Aerospace & Defense'
                       ? "Since 2010, VirtuSwift has partnered with leading defense tech providers to deliver innovative IT solutions, improving mission effectiveness and operational security."
                       : "Since 2010, VirtuSwift has partnered with leading automotive tech providers to deliver innovative IT solutions, improving manufacturing efficiency and customer experiences."
@@ -246,7 +246,7 @@ const AerospaceAndDefense: React.FC = () => {
             {/* Related Resources */}
             <div className={`bg-gray-50 py-12 mt-12 transition-all duration-1000 delay-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               <div className="container mx-auto px-4">
-                <h2 className="text-3xl font-bold mb-8">Related Resources</h2>
+                <h2 className="text-4xl font-extrabold mb-8 text-gray-900">Related Resources</h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   {(activeMainTab === 'Aerospace & Defense' ? [
                     {
@@ -291,8 +291,8 @@ const AerospaceAndDefense: React.FC = () => {
                       }}
                     >
                       <img src={resource.image} alt={resource.title} className="w-full h-40 object-cover rounded-lg mb-4 transition-all duration-500 hover:scale-105" />
-                      <h4 className="text-lg font-semibold text-[#3a3dc4] mb-2">{resource.title}</h4>
-                      <p className="text-gray-600">{resource.description}</p>
+                      <h4 className="text-xl font-bold text-[#3a3dc4] mb-2">{resource.title}</h4>
+                      <p className="text-base text-gray-700">{resource.description}</p>
                     </div>
                   ))}
                 </div>
